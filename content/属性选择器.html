@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* 选择指定属性名的标签 */
+			/* [type]{
+				border: 1px solid red; 
+			}*/
+			/* 选择指定属性名和属性值的标签-精准匹配 */
+			/* [type=password]{
+				border: 1px solid red; 
+			}*/
+			/* 没有空格代表并且的意思，表明寻找既有type也有name的标签 */
+			/* [type][name]{
+				border: 1px solid red; 
+			}*/
+			/*  属性值带有op的标签，op只要包含即匹配，如aop op1。。。 */
+			/* [class *= op]{
+				border: 1px solid red;
+			}*/
+			/* 属性值包含特定词汇的标签，精确匹配，aop op1不行，但是bopc op可以 */
+			/* [class ~= op]{
+				border: 1px solid red;
+			}*/
+			/* 属性名属性值是以指定值开头 必须是一个单词 op op1/op1 op都不行，op-op1是可以的*/
+			/* 【class｜=op】{
+				border: 1px solid red; 
+			}*/
+			/* 属性值以指定值开头即可，op oppo op1 op-oo都可以  */
+			/* 【class ^= op】{
+				border: 1px solid red;
+			} */
+			/* 属性值以指定值结尾,不需要是单独单词，只要以结尾即可 */
+			/* [class $= pc]{
+				border: 1px solid red;
+			} */
+			/* 属性选择器来提取公共样式 */
+			/* .icon1, .icon2 {
+				width: 35px;
+				height: 35px;
+				border: 1px solid red;
+				background-image: url();
+			} */
+			[class *= icon]{
+				width: 35px;
+				height: 35px;
+				background-image: url();
+			}
+			.icon2{
+				background-position: 0px -35px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <input type="text" placeholder="please input your name" class="op">
+		<input type="password" name="" id="" class="aop">
+		<p class="bopc op">p1</p>
+		<button type="button" class="coap">button1</button>
+		<button class="op1">button2</button> -->
+		 <div class="icon1"></div>
+		 <div class="icon2"></div>
+		 <div class="icon3"></div>
+	</body>
+</html>

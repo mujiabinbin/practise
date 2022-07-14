@@ -1,0 +1,139 @@
+*{
+	margin: 0;
+}
+.topbar{
+	width: 1210px;
+	height: 86px;
+	/* border: 1px solid red; */
+	margin: 0 auto;
+}
+.topbar .logo{
+	width:300px;
+	height: 86px;
+	float: left;
+	/* background-color: yellowgreen; */
+	/* line-height: 86px; */
+}
+.topbar .logo img{
+	/* height: 45px; */
+	width: 160px;
+	margin-top: 20px;
+	line-height: 86px;
+}
+.topbar .nav{
+	width: 800px;
+	height: 86px;
+	float: right;
+	/* background-color: blue; */
+}
+.topbar .nav ul{
+	list-style: none;
+	float: right;
+	height: 86px;
+}
+.topbar .nav ul li{
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+	/* color: white; */
+	margin-top: 30px;
+	/* padding-left: 100px; */
+	margin-left: 100px;
+	height: 56px;
+	box-sizing: border-box;
+}
+.topbar .nav ul li.bottomline{
+	border-bottom: 3px solid blue;
+	color: blue;
+}
+.banner{
+	/* width: 1200px; */
+	height: 480px;
+	background-image: url(../img/app-banner.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.banner .slogen{
+	width: 800px;
+	height: 480px;
+	/* margin: 50px 50px; */
+	/* margin: auto; */
+	/* margin-bottom: 90px;
+	margin-left: 90px; */
+	/* background-color: gray; */
+	overflow: hidden;
+}
+.banner .slogen h1{
+	color: white;
+	margin-top: 150px;
+	margin-left: 200px;
+	font-size: 56px;
+	letter-spacing: 5px;
+	/* word-spacing: 2px; */
+	font-weight: bold;
+}
+.banner .slogen p{
+	color: white;
+	margin-top: 25px;
+	margin-left: 200px;
+	font-size: 22px;
+	letter-spacing: 8px;
+	/* font-weight: bold; */
+}
+.banner .slogen img{
+	/* width: 185px;
+	height: 40px;
+	background-color: #398cff;
+	border-radius: 20px; */
+	display: inline-block;
+	margin-top: 35px;
+	margin-left: 200px;
+	/* font-size: 18px;
+	color: white; */
+}
+.intr{
+	width: 1200px;
+	height: 270px;
+	/* background-color: aqua; */
+	margin: 0 auto;
+	margin-top: 43px;
+}
+.intr .content{
+	width:350px;
+	height: 110px;
+	display: inline-block;
+	/* background-color: red; */
+	margin: 12px 23px;
+}
+.intr .content .icon{
+	float: left;
+}
+.intr .content .icon img{
+	width: 50px;
+	/* height: 52px; */
+}
+.intr .content .icon img.special{
+	width: 40px;
+}
+.intr .content .desc{
+	float: right;
+	margin-right: 75px;
+}
+.intr .content .desc.special{
+	/* float: right; */
+	margin-right: 65px;
+}
+.intr .content .desc.special2{
+	/* float: right; */
+	margin-right: 25px;
+}
+.intr .content .desc h3{
+	font-size: 22px;
+	color: #333333;
+}
+.intr .content .desc p{
+	margin-top: 15px;
+	font-size: 16px;
+	color: gray;
+}

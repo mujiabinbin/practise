@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/placeholder.css"/>
+		<link rel="stylesheet" href="css/tishi.css"/>
+		<title>12306</title>
+	</head>
+	<body>
+		<form action=success.html method="POST">
+		<table border="0px" style="width:986px;" align="center" cellspacing="0">
+			<tr border="0px" style="background-color: blue;">
+				<td height=43px>&nbsp;&nbsp;账户信息</td>
+			</tr>
+			
+			<tr border="0px">
+				<td>
+			        <table style="width: 100%;" border=0px; cellspacing=10px;>
+						<tr>
+							<td style="width: 38%;" align="right"><span style="color: red;">*</span>用户名:</td>
+							<td style="width: 24%;" align="center"><input type="text" name="username" style="width:160px;" placeholder="用户名设置后不可更改"></td>
+							<td style="width: 38%;" align="left"><span id="tishi">6-30位字母·数字或开头</font></span></td>
+						</tr>
+						<tr height="43">
+							<td  align="right"><span style="color: red;">*</span>登录密码:</td>
+							<td align="center"><input name="psw" style="width:160px;" type="password" placeholder="6-20位数字或字母" /></td>
+							<td align="left"><span  id="tishi">密码错误</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>确认密码:</td>
+							<td align="center"><input name="psw1" style="width:160px;" type="password" placeholder="请输入你的密码" /></td>
+							<td align="left"></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>证件类型:</td>
+							<td align="center">
+								<select name="id_type" style="width:160px;">
+									<option  value=“身份证”>身份证</option>
+									<option  value=“护照”>护照</option>
+									<option  value=“学生证” selected>驾照</option>
+								</select> </td>
+							<td align="left"><span id="tishi">证件填写规则</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>姓名:</td>
+							<td align="center"><input name="realname" style="width:160px;" type="text" placeholder="请输入姓名" /></td>
+							<td align="left"><span id="tishi">（用于验证身份）</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>证件号码:</td>
+							<td align="center"><input name="id_number" style="width:160px;" type="text" placeholder="请输入证件号码" /></td>
+							<td align="left"><span id="tishi">（用于验证身份）</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>证件有效截止日期:</td>
+							<td align="center"><input name="id_date" type="date" style="width:160px;" /></td>
+							<td align="left"><span id="tishi">（用于验证身份）</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>出生日期:</td>
+							<td align="center"><input name="birthday" type="date" style="width:160px;" type="text" placeholder="用户名设置后不可更改" /></td>
+							<td align="left"><span id="tishi">（用于验证身份）</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>性别:</td>
+							<td align="center"><input type="radio" name=“gender” value="male" id="nan"><label for="nan">男</label>
+								<input type="radio" name=“gender” value="female" id="nv"><label for="nan">女</label>
+							</td>
+							<td align="left"></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>邮箱:</td>
+							<td align="center"><input name="email" style="width:160px;" type="text" placeholder="请输入正确的邮箱地址" /></td>
+							<td align="left"></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>手机号（+86）:</td>
+							<td align="center"><input name="tel_num" style="width:160px;" type="text" placeholder="请输入手机号码" /></td>
+							<td align="left"><span id="tishi">请正确填写手机号码，稍后将向该手机号码发送短信验证码</span></td>
+						</tr>
+						<tr>
+							<td align="right"><span style="color: red;">*</span>旅客类型:
+				</td>
+				<td align="center"><select name="travel_type" style="width:160px;">
+						<option  value=“儿童”>儿童</option>
+						<option  value=“军人”>军人</option>
+						<option  value=“成人” selected>成人</option>
+					</select> </td>
+				<td align="left"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="3"><input type="checkbox" />我已阅读并同意遵守<a href="https://www.baidu.com"
+						target="_blank">《中国天路客户服务中心网站服务规定》</a><a href="https://www.baidu.com"
+						target="_blank">《隐私权政策》</a></td>
+			</tr>
+			</tr>
+			<tr>
+				<td align="center" colspan="3"><input style="background-color:blue;width:100px;height:30px;font_size:12px;" type="submit" /></td>
+			</tr>
+		            </table>
+		</td>
+		</tr>
+		</table>
+		</form>
+	</body>
+</html>

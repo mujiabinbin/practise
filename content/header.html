@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body{
+				margin: 0;
+				background-image: url(img/bg.jpeg);
+			}
+			.header{
+				width: 100%;
+				height: 90px;
+				/* border: 1px red ; */
+				margin: 0px auto;/* 上下边界为0，左右位于上层容器居中 */
+			}
+			.logo{
+				/* 因为logo与navi之间有5px的margin，所以为了在1100宽的header下显示一行，logo减少5px */
+				/* navi里面的间距导致整个拉长20px，因此logo还需要减少20才能保证header为1100 */
+				width: 100px;
+				height: 90px;
+				/* background-color: pink; */
+				display:inline-block;
+				/* vertical-align:middle; */
+				/* margin-top:23px; */
+				float: left;
+				text-align: center;
+				
+			}
+			.navi{
+				/* 每个li都有间距，所以导致累计超出550，所以计算得出宽度应为570 */
+				width: 575px;
+				height: 90px;
+				/* background-color:tomato; */
+				display:inline-block; 
+				/* vertical-align:middle; */
+				float: right;
+			}
+			.logo-img{
+				margin-top:22px;
+				height: 45px;
+				text-align: center;
+				/* line-height: 90px; */
+				
+			}
+			ul{
+				
+				margin: 0px;
+				padding: 0;
+				list-style: none;
+				text-align: center;
+				
+			}
+			
+			li{
+				width: 110px;
+				height: 90px;
+				/* border: 1px solid green; */
+				display: inline-block;
+				text-align: center;
+				line-height: 90px;
+				
+			}
+			.icon{
+				vertical-align: middle;
+				width: 45px;
+				}
+			span{
+				color: white;
+				vertical-align: middle;
+			}
+			a{
+				text-decoration: none;
+			}
+		</style>
+		
+		<title>head</title>
+		
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo">
+				<img src="img/logo.webp" alt="logo" class="logo-img">
+			</div>
+			<div class="navi">
+				<ul>
+					<li>
+						<a href="">
+							<img src="img/icon1.png" alt="javaicon" class="icon">
+						<span>java</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/icon1.png" alt="python" class="icon">
+						<span>python</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/icon1.png" alt="html" class="icon">
+						<span>html</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/icon1.png" alt="javascript" class="icon">
+						<span>script</span>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/icon1.png" alt="test" class="icon">
+						<span>test</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	
+</html>

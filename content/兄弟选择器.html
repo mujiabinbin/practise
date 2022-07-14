@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			/* 相邻兄弟选择器，用+隔开，找到满足条件相邻后面的第一个标签 
+			找到ul标签里面的class名为li2的标签后面相邻的第一个li标签*/
+			ul .li2 + li{
+				border: 1px solid red;
+			}
+			/* 找到ul标签里面所有class名为li2的标签后面相邻第一个兄弟li标签的后面相邻的第一个兄弟li标签 */
+			ul .li2 + li +li{
+				border: 1px solid green;
+			}
+			/* 后续兄弟选择器,使用～隔开，找到满足条件标签后面所有的兄弟标签
+			找到页面中ul标签的后代中class名为li2后面所有标签为li的兄弟标签*/
+			ul .li2 ～ li{
+				border: 1px solid red;
+			}
+			.box+p{
+				/* box标签后面相邻的第一个标签是box1的div2，而不是p标签，所以这样的设置无效 */
+				background-color: pink;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>大吉大利</li>
+			<li class="li2">今晚吃鸡</li>
+			<li>召唤师峡谷</li>
+			<li>小乔</li>
+			<li>大乔</li>
+		</ul>
+		<div class="box">div1</div>
+		<div class="box1">div2</div>
+		<p>p1</p>
+	</body>
+</html>

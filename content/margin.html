@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body{
+				margin: 0;
+			}
+			/* .box1{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				background-color: pink;
+				margin-top: 10px;
+				margin-bottom: 10px; */
+				/* 在垂直方向相邻margin会重叠，按照较大的值。水平方向不重叠，直接相加即可。 */
+				/* float: left;
+				margin-left: 10px;
+				margin-right: 10px;
+			} */
+			/* .box2{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				background-color: tomato;
+				float: left;
+				margin-right: 10px;
+			} */
+			
+			.box3{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+				background-color: blue;
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+			.box4{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				background-color: yellow;
+				margin-top: 20px;
+				/* margin-top会传递给父元素，因为如果找不到父元素的边界，就传递给父元素。 */
+				/* 解决margin-top传递问题：1.需要给父元素设置一个border或padding，但是会改变盒子大小。
+				2.给父元素添加overflow:hidden,超出部分溢出，产生一个BFC容器，里面的元素如何排列不会影响容器外的元素 */
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3">
+			<div class="box4"></div>
+		</div>
+	</body>
+</html>

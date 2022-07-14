@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 1000px;
+				height: 500px;
+				border: 1px solid red;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				/* 块级元素同行显示，中间5px间距，浏览器兼容问题 */
+				/* display: inline-block; */
+				/* float可以让块级元素同行显示，无间距，无浏览器兼容问题，排列不下自动换行显示
+				 right：右浮动，none：不浮动；只有设置浮动的元素才可以同行显示；
+				 多个元素同时浮动，第一个元素找到父盒子边界，后面找到前面元素边界；*/
+				 /* 浮动特点：浮动元素会脱离文档流，在标准文档流之上，浮动元素原来的空间不存在*/
+				 /* 行内元素设置浮动支持宽高*/
+				 /* 标准文档流：在页面布局过程中，元素按照从上倒下，从左到右，块级独占一行，行级元素同行排列的规则。
+				 脱离文档流：在页面布局过程中，元素不再遵循标准文档流规则，有自己的排列规范。*/
+				 float: left;
+			}
+			.box1{
+				background-color: pink;
+			}
+			.box2{
+				background-color: yellow;
+			}
+			.box1{
+				background-color: blue;
+			}
+			.box1{
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+		</div>
+	</body>
+</html>

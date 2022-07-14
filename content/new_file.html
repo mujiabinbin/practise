@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="radio-inline">
+			<input type="radio" name="killOrder" id="killOrder1" value="1" />
+			<label for="killOrder1">是</label>
+		</div>
+		<div class="radio-inline">
+			<input type="radio" name="killOrder" id="killOrder2" value="0" checked />
+			<label for="killOrder2">否</label>
+		</div>
+		<div class="radio-inline">
+			<label><input type="radio" name="killOrder" id="killOrder1" value="1" />是</label>
+		</div>
+		<div class="radio-inline">
+			<label><input type="radio" name="killOrder" id="killOrder2" value="0" checked />否</label>
+		</div>
+		<form action="success.html" method=“get”>
+			<!-- #设置提交服务器地址“sucess.html”，get从服务器获取数据，也可以提交数据，数据会显示在地址栏，不安全；还有一种方式是“post”，post不在链接上显示数据 -->
+			<h3>输入</h3>
+			请输入姓名：
+			<input type="text" placeholder="请输入姓名" name="name1"> <!-- #name1是此属性在数据库中此属性的字段 -->
+
+			<h3>密码</h3>
+			请输入密码：
+			<input type="password" placeholder="请输入mima" name=“psw”>
+
+			<h3>请选择性别/单选</h3>
+			<input type="radio" name=“gender” value="male" id="nan"><label for="nan">男</label>
+			<input type="radio" name=“gender” value="nv">女
+
+
+			<h3>爱好：</h3>
+			<input type="checkbox" checked name=“hobby” value=“1”><!-- #value为具体选中的值 -->
+			<input type="checkbox" name=“hobby” value=“2”>多选2
+			<input type="checkbox" name=“hobby” value=“3”>多选3
+
+			<h3>证件：</h3>
+			<select name="zhengjian" id=“”>
+				<option value=“shenfenzheng”>身份证</option>
+				<option value=“huzhao”>护照</option>
+				<option value=“jiazhao” selected>驾照</option>
+			</select>
+
+				<h3>文本域</h3>
+				<textarea name="wenben" id="" cols="10" rows="5"></textarea>
+
+
+				<!-- 按钮： -->
+
+				<h3>按钮</h3>
+
+				<input type="button" value=“普通按钮”>
+				<input type="reset" value=“重置按钮”>
+				<input type="submit" value=“提交按钮”>
+
+				<button type="button">普通按钮"</button>
+				<button type="reset">重置按钮</button>
+				<button type="submit">提交按钮</button>
+
+				<!-- <fieldset>
+					<legend>登陆</legend>#标题标签
+					<form action="http://www.baidu.com">
+						username:<input type="test" placeholder="qingshuruyonghuming">
+						password:<input type="password">
+					</form>
+				</fieldset> -->
+
+		</form>
+	</body>
+</html>

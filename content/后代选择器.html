@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			/* 后代选择器（派生选择器）：找到标签里满足条件的所有后代标签，找到class名为box标签里面所有的p标签。
+			可以找到儿子，孙子。。。 */
+			.box p{
+				background-color: pink;
+			}
+			/* 字元素选择器，找到标签里满足条件的直接字元素，中间使用>隔开
+			 只找到box下面一级符合条件的元素--儿子元素，孙子重孙子等不符合*/
+			.box > p{
+				
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<p>p1</p>
+				</li>
+				<li>
+					<p>p2</p>
+				</li>
+				<li>
+					<p>p3</p>
+				</li>
+			</ul>
+			<p>p4</p>
+		</div>
+		<p>p5</p>
+	</body>
+</html>

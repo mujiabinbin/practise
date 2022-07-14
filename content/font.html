@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			div{
+				font-family: "宋体",Arial, Helvetica, sans-serif;
+				/* 设置多种字体需要用逗号隔开，如果字体名中文或多单词需要使用单号或双引号，
+				系统会在系统内找第一个字体，如果没有第一种就找第二种字体，以此类推，如果都
+				没有会使用到sans-serif字体，因为此中字体通用*/
+				font-size: 20px;
+				font-weight: 100;/* 100-900 bold bolder lighter normal，有些字体不支持bolder */
+				font-style: italic;normal italic 斜体 oblique 倾斜
+			}
+			@fontface{
+				font-family: myfont;/* 给字体取名个名字 */
+				src:url(font/xxx.ttf),url(font/xxx.worf)/* 字体文件可以有多个格式，用英文逗号隔开。 */
+			}
+			/* 可以引入字体下载，一个fontface只能引入一个字体，如想引入多个，则需要写多个fontface
+			@font-face */
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div>
+			 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+			 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+			 文本
+		</div>
+		<b>bold</b> <!-- 标签默认加粗，如果需要更改样式可以使用normal等属性 -->
+	</body>
+</html>
