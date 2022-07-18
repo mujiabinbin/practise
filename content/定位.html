@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			.box1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			/* 将盒子2移动到盒子三右侧下方 */
+			.box2{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				margin-left: 100px;
+				margin-top: 100px;
+			}
+			/* 将盒子三移动到盒子二移动后的左侧 */
+			.box3{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				margin-top: -100px;
+				/* 在页面布局过程中，元素从上到下，从左到右，块状元素独占一行，行级元素共享一行 */
+				/* 破块文档流：在页面布局过程中，元素在移动过程中不遵循标准文档流，移动完成后荏苒遵循标准文档流 */
+				/* 脱离文档流：在页面布局中，元素不在遵循标准文档流，有自己的排列规范，如float */
+			}
+			
+			.box4{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</body>
+</html>
