@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			.box1{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+				position: absolute;
+				/* 绝对定位
+				 1.设置绝对定位的文档流会脱离文档流原来位置不存在
+				 2.后面定位会盖住前面定位的元素
+				 3.元素设置绝对定位，当前位置脱离文档流
+				 4.一旦设置偏移量，绝对定位根据文档<!DOCTYPE html>进行移动*/
+			}
+			.box2{
+				width: 200px;
+				height: 200px;
+				background-color: springgreen;
+				position: absolute;
+				/* top:0px;
+				left:0px; */
+				
+			}
+			.box3{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+			}
+			.box4{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+				position: relative;
+				/* 定位父级，通过设置相对定位和绝对定位以及固定定位后（静态定位不可以），决定了定位的元素的参考位置
+				 多个定位父级，参考最近的定位父级别*/
+			}
+			.box5{
+				width: 200px;
+				height: 200px;
+				background-color: springgreen;
+			}
+			.box6{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+			}
+			
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4">
+			<!-- 结构父级，在html代码结构中父级元素 -->
+			<div class="box5">
+				<div class="box6"></div>
+			</div>
+		</div>
+		
+		
+		
+	</body>
+</html>

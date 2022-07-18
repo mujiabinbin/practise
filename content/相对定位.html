@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+			}
+			.box1{
+				background-color: pink;
+			}
+			.box2{
+				background-color: red;
+				/* position: static; *//* 静态定位-默认值 */
+				position: relative;
+				/* 1.相对定位，只设置相对定位，不会有影响。
+				2.设置相对定位的元素，设置了偏移量，元素会按照制定规则，元素会按照指定的偏移量移动
+				3.盒子原来的空间存在
+				4.盒子设置相对定位元素破坏文档流进行移动
+				5.设置相对定位参考元素原来位置进行移动
+				 left：距离参考位置的左边缘进行移动
+				 top：距离参考位置的上边缘进行移动
+				 right：距离参考位置的右边缘进行移动
+				 bottom：距离参考位置的下边缘进行移动*/
+				left:100px;
+				top: 100px;
+			}
+			.box3{
+				background-color: yellow;
+			}
+			.box4{
+				background-color: green;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</body>
+</html>
