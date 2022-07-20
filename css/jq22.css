@@ -1,5 +1,6 @@
 body{
 	margin: 0;
+	background-color: #f4f4f4;
 }
 .fdel::after{
 	content: "";
@@ -59,4 +60,75 @@ body{
 	width: 100%;
 	height: 400px;
 	background-image: url();
+}
+.midbar{
+	height: 50px;
+	width: 100%;
+	border: 1px solid white;
+	background-color: white;
+}
+.midbar > ul{
+	list-style: none;
+	text-align: center;
+}
+
+.midbar > ul > li{
+	display: inline-block;
+	border-right:1px solid #e8e8e8 ;
+	padding: 0px 20px;
+	font-size: 15px;
+	position: relative;
+	/* box-sizing: border-box; */
+}
+
+.midbar > ul > li > a{
+	text-decoration: none;
+	color: #69696d;
+}
+.midbar > ul > li > i{
+	color: #69696d;
+}
+.midbar >ul > li.special{
+	border: none;
+}
+.midbar >ul > li ul{
+	/* display: block;
+	width: 2100px;
+	height: 100px;
+	background-color: aqua;
+	position: absolute;
+	top: 35px;
+	left: -296px; */
+	display: none;
+}
+
+.midbar > ul > li:hover ul.item2{
+	display: block;
+	width: 1400px;
+	height: 100px;
+	background-color: aqua;
+	position: absolute;
+	top: 35px;
+	left: -296px;
+	z-index: 3;
+}
+.midbar > ul > li:hover ul.item4{
+	display: block;
+	width: 800px;
+	height: 100px;
+	background-color: aqua;
+	position: absolute;
+	top: 35px;
+	left: -296px;
+	z-index: 3;
+}
+.midbar >ul > li ul li{
+	display: inline-block;
+	text-decoration: none;
+	
+}
+.content{
+	width: 100%;
+	height: 200px;
+	background-color: red;
 }
