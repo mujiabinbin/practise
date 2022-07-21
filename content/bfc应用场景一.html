@@ -14,10 +14,11 @@
 				/* 即使存在浮动也是如此 */
 			}
 			.article{
+				
 				height: 400px;
 				background-color: tomato;
-				float: left;
-				/* overflow: hidden; */
+				/* float: left; *//* 不设置宽度，宽度由内容撑开 */
+				overflow: hidden;/* 不设置宽度，宽度自适应页面宽度 */
 				/* 除非这个元素自己形成了一个新的BFC区域 */
 			}
 			/* 每个元素左外边缘（margin-left），与包含块的左边相接触 */
