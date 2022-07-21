@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body{
+	            height: 600px;
+				position: relative;
+			}
+			.container{
+				width: 800px;
+				height: 80px;
+				/* border: 1px solid red; */
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto auto;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			ul::after{
+				content: "";
+				display: block;
+				border: 15px solid aqua;
+				border-left:15px solid transparent ;
+				border-bottom:15px solid transparent ;
+				position: absolute;
+				top: 80px;
+				left: -40px;
+			}
+				
+			li{
+				display: inline-block;
+				line-height: 80px;
+				background-color: aqua;
+				padding: 0 30px;
+				position: relative;
+				margin-right:60px ;
+				text-align: right;
+			}
+			li::before{
+				content: "";
+				display: block;
+				border: 40px solid aqua;
+				border-top:40px solid transparent ;
+				border-right:40px solid transparent ;
+				border-bottom:40px solid transparent ;
+				position: absolute;
+				left: 108px;
+			}
+			li::after{
+				content: "";
+				display: inline-block;
+				border: 40px solid aqua;
+				border-left:40px solid transparent ;	
+				position: absolute;
+				left: -40px;
+				z-index: -1;
+			}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<div class="container">
+			<ul>
+				<li>导航一</li>
+				<li>导航二</li>
+				<li>导航三</li>
+				<li>导航四</li>
+			</ul>
+		</div>
+	</body>
+</html>

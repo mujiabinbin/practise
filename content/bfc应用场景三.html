@@ -3,7 +3,25 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<style>
+			.container{
+				border: 1px solid red;
+				overflow: hidden;/* 计算BFC区域的高度时，浮动元素也参与计算,所以将父盒子也设置成bfc区域。
+				此场景设置float：left｜position：fixed/absolute｜display：inlineblock/flex也可以 */
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				float: left;
+				/* 子元素浮动，父元素高度塌陷 */
+			}
+		</style>
 	</head>
 	<body>
+		<div class="container">
+			<div class="box">box1</div>
+			<div class="box">box2</div>
+		</div>
 	</body>
 </html>
