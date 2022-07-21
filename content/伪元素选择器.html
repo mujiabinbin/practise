@@ -24,34 +24,41 @@
 			} */
 			/* 在标签内容之后添加一块渲染区域，可以添加内容或样式，需要添加content使用，否则无效果 */
 			/* 行内元素，非block，不可设置高宽 如需要转化支持宽高，需要display设置转换*/
-			/* .box::after{
-				content：“css”;
-				background-color: blue;
-			} */
+			
 			.box{
 				width: 200px;
-				height: 200px;
-				border: 1px solid red;
+				height: 500px;
+				background-color: tomato;
+				display: block;
+				/* overflow: hidden; */
 			}
 			.box::before{
 				/* 向区域添加内容 */
 				content: "";
 				display: block;
-				width: 0;
-				border: 10px solid transparent;
-				border-bottom: 10px solid tomato;
+				width: 200px;
+				height: 300px;
+				background-color: aliceblue;
+				/* border-bottom: 10px solid tomato; */
+			}
+			.box::after{
+				content: "";
+				display: block;
+				width: 200px;
+				height: 300px;
+				background-color: blue;
 			}
 		</style>
 		<title></title>
 	</head>
 	<body>
-		<!-- <div class="box"> -->
-			<!-- ：：before -->
-			<!-- 空间站缓缓飞过祖国大地，仰望星河，看闪耀的“中国宫”过境祖国上空。
+		<div class="box">
+			：：before
+			空间站缓缓飞过祖国大地，仰望星河，看闪耀的“中国宫”过境祖国上空。
 			舱壁上鲜艳的五星红旗与蔚蓝色的星球交相辉映。虽遥遥千里，但是如此清晰而美好。
-		</div> -->
+		</div>
 		<!-- 案例：鼠标滑过文字出现二维码浮层，浮层上边框居中接近文字处为三角形图形 -->
 		<!-- before内容 -->
-		<div class="box">二维码文本</div>
+		<!-- <div class="box">二维码文本</div> -->
 	</body>
 </html>
