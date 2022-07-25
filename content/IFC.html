@@ -8,16 +8,29 @@
 				border: 1px solid red;
 			}
 			.span1{
+				/* fontsize可以影响行盒的高度，值越大，行盒越高 */
 				font-size: 40px;
+				/* 文本之间默认基线对齐 */
+				vertical-align: middle;
+				/* 设置span1自身的对齐是中线对齐，因为文本间默认基线对齐，因此span2是基线对齐，所以是span1的中线与span2的基线对齐 */
 			}
 			.span2{
 				font-size: 80px;
+				font-family: "宋体";
+				
 			}
+			/* height与line-height都会改变行盒的高度 */
+			/* .input{
+				height: 100px;
+				line-height: 100px;
+				
+			} */
 		</style>
 	</head>
 	<body>
 		<div class="container">
 		<span class="span1">40px</span>
 		<span class="span2">80px</span>
+		<!-- <input type="text"> -->
 		</div>
 </html>
