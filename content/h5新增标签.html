@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="success.html" method="GET">
+			<h3>邮箱输入框</h3>
+			<input type="email" required autofocus><!-- required：必填项 --><!-- autofocus:自动获取焦点 -->
+			<!-- 提供了邮箱格式的验证，需要输入格式才能提交数据，格式不一定完全正确以后通过js进行验证 -->
+			<input type="number" readonly value="18" name="age"><!-- readonly：只读，不可更改，可以复制，可以提交 -->
+			<!-- 文本输入只能输入数字来完成验证 -->
+			<input type="url" disabled><!-- disable:禁用，不可更改，可以复制，不可以提交到数据库 -->
+			<!-- 验证输入的内容是否是网址：http://xxx.xxx or  https://xxx.xxx-->
+			<input type="search">
+			<!-- 搜索输入框提供了输入文本输入内容清空内容功能 -->
+			<input type="range">
+			<input type="color">
+			<input type="file" multiple>
+			<!-- 默认只能上传一个文件，多个文件 上传属性加mutiple -->
+			<input type="date">
+			<!-- 年/月/日 -->
+			<input type="month">
+			<!-- 年/月 -->
+			<input type="week">
+			<!-- 年/周 -->
+			<input type="time">
+			<input type="text" list="mylist">
+			<!-- 通过input的list属性绑定datalist的id=“mylist”选项完成输入提示功能 -->
+			<datalist id="mylist">
+				<option value="">xiaomi</option>
+				<option value="">iphone</option>
+				<option value="">huawei</option>
+				<option value="">sumsong</option>
+			</datalist>
+			<button type="submit">提交</button>
+		</form>
+		<audio src="" controls autoplay loop muted></audio>
+		<!-- src：链接音频文件的路径 -->
+		<!-- controls为控制音频显示的操作界面，不加的话音频无法显示出来，无法控制播放操作 -->
+		<!-- autoplay自动播放，但存在兼容，后期可以通过js控制 -->
+		<!-- loop 循环播放 -->
+		<!--muted  静音播放，默认值而已，点击播放按钮可以正常播放  -->
+		<!-- 不同浏览器兼容问题，同一音频需要引入不同的文件 -->
+		 <audio controls>
+			 <source src="" type="audio/mp3">
+			 <source src="" type="audio/ogg"> 
+		 </audio>
+		 
+		 <video src="" controls loop autoplay muted></video>
+		 <!-- src：链接视频的文件路径-->
+		 <!-- controls为控制视频显示的操作界面，不加的话视频无法显示出来，无法控制播放操作 -->
+		 <!-- autoplay自动播放，但存在兼容，后期可以通过js控制 -->
+		 <!--muted  静音播放，默认值而已，点击播放按钮可以正常播放  -->
+		 <video controls>
+			 <source src="文件为mp4的文件路径" type="video/mp4">
+			 <source src="文件为rm的文件路径" type="video/rm">
+			 <!-- 不同浏览器兼容问题，同一视频需要引入不同的文件 -->
+		 </video>
+	</body>
+</html>
