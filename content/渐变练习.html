@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 400px;
+				height: 400px;
+				/* rgba(0-255,0-255,0-255,0-1),可以设置有透明度的颜色，a代表透明度，0代表完全透明，1代表不透明 */
+				/* 多种渐变叠加用逗号隔开，逗号前面的效果盖住后面的效果 */
+				background-image: repeating-linear-gradient(-45deg,
+				rgba(252, 51, 86, 0.3) 0px,
+				rgba(23, 33, 255, 0.3) 20px,
+				rgba(255, 255, 0, 0.3) 20px,
+				rgba(255, 255, 0, 0.3) 40px),
+				 /* rgba(122, 255, 108, 0.3) 0px,rgba(122, 255, 108 ,0.3) 20px, */
+				repeating-linear-gradient(45deg,
+				rgba(255,0,0,0.3) 0px,
+				rgba(255,0,0,0.3) 20px,
+				rgba(255,255,0,0.3) 20px,
+				rgba(255,255,0,0.3) 40px
+				)
+			}
+			.box1{
+				width: 300px;
+				height: 300px;
+				border: 1px solid red;
+				background-size: contain;
+				background-position: center center;
+				background-image: linear-gradient(transparent 50%,red),url(../img/logo.png);
+				/* 属性里前面盖住后面的，图片不透明，想要实现图片上蒙一层滤镜效果，需要把滤镜的渐变效果设置在图片前面 */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box1"></div>
+	</body>
+</html>

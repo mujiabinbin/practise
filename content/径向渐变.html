@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 600px;
+				height: 400px;
+				border: 1px solid red;
+				/* background-image: radial-gradient(ellipse at top left, red 0%,green 50%); */
+				/* 椭圆圆心：at x轴 y轴    
+				单词:left right top bottom center 两两搭配使用，默认center
+				像素：0px 0px，左上角 
+				百分比：分别参考盒子的宽度和高度*/
+				/* 形状：
+				ellipse 椭圆，默认
+				 circle 圆形*/
+				 /* 大小：
+				 farthest-corner:渐变的半径是从圆心到最远的角
+				 closest-corner:渐变的半径是从圆心到最近的角
+				 farthest-side：渐变半径从圆心到最远的边
+				 closest-side：渐变半径从圆心到最近的边
+				 */
+				background-image: radial-gradient(farthest-corner at 100px 50px, red 0px,red 5px,green);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

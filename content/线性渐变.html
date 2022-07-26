@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 400px;
+				height: 400px;
+				border: 1px solid red;
+				/* background-image: linear-gradient(red 0%,green 80%,yellow 100%); */
+				/* 1.线性渐变：linear-gradient()
+				 2.至少需要两种颜色,多种颜色用英文逗号隔开，默认是均匀渐变
+				 3.设置渐变范围可以用色标百分比控制，如红到绿为0-80%，80-100为绿变黄
+				 4.色标：有一个颜色和一个位置构成，决定渐变的范围，首位色标不设置时，默认为0和100%
+				 5.如果首色标50%开始，那前50%都为纯色填充，从50%到80%开始由红到绿渐变，尾部如果设置不是100%，也是同样逻辑
+				 6.如果两个色标位置相同，中间出现断层
+				 7.渐变线的方向：默认为垂直方向，由上至下
+				 8.改变方向使用“to结束方向 left top bottom right”,可以两两搭配
+				 9.角度改变方向：以deg为单位，垂直向上为0deg，顺时针开始计算度数，可以设置负值，则为逆时针渐变*/
+				 /* background-image: linear-gradient(to bottom right,red ,green 80%,yellow 100%); */
+				 /* background-image: linear-gradient(30deg,red,green 80%,yellow 100%); */
+				 /* background-image: linear-gradient(pink 0px,pink 20px,yellow 20px,yellow 40px,pink 20px); */
+				 /* 重复线性渐变*/
+				 background-image: repeating-linear-gradient(pink 0px,pink 20px,yellow 20px,yellow 40px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
