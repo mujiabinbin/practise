@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 300px;
+				height: 300px;
+				border: 1px solid red;
+				background-color: pink;
+				/* 盒子阴影 x轴偏移量 y轴偏移量 虚化程度 阴影大小 颜色 */
+				/* inset 内阴影 */
+				/* box-shadow:2px 5px 10px 2px green inset; */
+				/* box-shadow: 2px 2px red; *//* 虚化程度和阴影大小可以不写 */
+				box-shadow:2px 5px 10px 2px green, -3px -5px 10px 3px yellow;
+				/*box-shadow可以设置多层阴影，中间用逗号隔开  */
+			}
+			.box1{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+				color: red;
+				text-shadow: 2px 5px 5px red;
+				/* 给本文添加阴影 */
+				/* 可以设置文字发光效果 */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box1">
+			文字文字文字文字文字文字
+		</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: aqua;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 20px;
+				border-bottom-left-radius: 30px;
+				border-bottom-right-radius: 40px;
+				/* 复合属性 */
+				border-radius: 10px 20px 30px 40px;/* 左上角开始，顺时针 */
+				border-radius: 10px 20px 30px;/* 左上角，右上角和左下角，右下角 */
+				border-radius: 10px 20px;/* 左上角右下角两个，右上角左下角两个 */
+				border-radius: 10px;/* 四个角 */
+				border-radius: 10px 10px 10px 10px/20px 20px 20px 20px;/* (水平半径)/(垂直半径) */
+			}
+			.box1{
+				width: 300px;
+				height: 300px;
+				border: 20px solid red;
+				border-radius: 30px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box1"></div>
+	</body>
+</html>
