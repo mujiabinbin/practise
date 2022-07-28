@@ -56,10 +56,10 @@ header nav .nav1 > ul > li .sec-nav{
 	top: 60px;
 	left: -72px;
 	display: none;
+	transition: all 0.5s;
 }
 header nav .nav1 > ul > li:hover .sec-nav{
-	display: block;
-	transition: all 0.5s;
+	display: block;	
 }
 header nav .nav1 ul li a{
 	font-size: 14px;
