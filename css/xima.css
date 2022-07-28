@@ -48,8 +48,18 @@ header nav .nav1 > ul > li{
 	box-sizing: border-box;
 	position: relative;
 }
+header nav .nav1 > ul > li .sec-nav{
+	width: 200px;
+	height: 200px;
+	border: 1px solid rebeccapurple;
+	position: absolute;
+	top: 60px;
+	left: -72px;
+	display: none;
+}
 header nav .nav1 > ul > li:hover .sec-nav{
 	display: block;
+	transition: all 0.5s;
 }
 header nav .nav1 ul li a{
 	font-size: 14px;
@@ -62,15 +72,7 @@ header nav .nav1 ul li a.faxian{
 	font-size: 16px;
 	color: #413f4c;
 }
-.sec-nav{
-	width: 200px;
-	height: 200px;
-	border: 1px solid rebeccapurple;
-	position: absolute;
-	top: 60px;
-	left: -72px;
-	display: none;
-}
+
 /* .sec-nav ul li:hover .sec-nav{
 	display: block;
 } */

@@ -13,12 +13,17 @@
 				/* *background-color: pink;
 			} */
 			/* 选择器前缀法 */
-			@media screen\0{
+			/* @media screen\0{
 				.box{
 					color: red;
 					background-color: pink;
-				}
+				} */
 			}
+			<!--[if gte ie 8]>
+			<link rel="stylesheet" href="css/...">
+			<![endif]-->
+			/* 只在大于等于ie8时引用 */
+			
 		</style>
 	</head>
 	<body>

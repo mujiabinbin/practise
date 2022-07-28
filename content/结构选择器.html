@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* .box{
+				color: red;
+			} */
+			
+			/* 先找到满足条件的标签，这些标签是某个标签的第一个子元素 */
+			/* 找到class名为box的标签的后代p标签，并且p标签是某个标签的第一个子元素 */
+			/* 符合条件的为p1和p7 */
+			/* 注意：如果某标签的第一个子元素不是p标签，属性设置不起作用 */
+			.box p:first-child{
+				color: red;
+			}
+			/* 先找到满足条件的标签，这些标签是某个标签的最后一个子元素 */
+			/* 找到class名为box的标签的后代p标签，并且p标签是某个标签的最后一个子元素 */
+			/* 符合条件的为p8 */
+			/* 注意：如果某标签的第一个子元素不是p标签，属性设置不起作用 */
+			.box p:last-child{
+				color: aqua;
+			}
+			/* nth-child(n) 找到满足条件的标签，并且这个标签是某个标签的第n个子标签*/
+			/* 找到class名为box的标签的后代p标签，并且p标签是某个标签的第n个子元素 */
+			/* 满足条件的是p2和p8 */
+			/* 注意：如果某标签的第二个子元素不是p标签，属性设置不起作用 */
+			.box p:nth-child(2){
+				color: blue;
+			}
+			/* nth-child(2n) 找到满足条件的标签，并且这个标签是某个标签的偶数子标签*/
+			/* nth-child(2n+-1) 找到满足条件的标签，并且这个标签是某个标签的奇数子标签*/
+			/* 注意：如果某标签的第2n或2n+-1个子元素不是p标签，属性设置不起作用 */
+			.box p:nth-child(2n){
+				color: bisque;
+			}
+			/* nth-last-child(n) 找到满足条件的标签，并且这个标签是某个标签的倒数第n个子标签*/
+			/* 注意：如果某标签的最后一个子元素不是p标签，属性设置不起作用 */
+			.box p:nth-last-child(2){	
+			}
+			/* nth-of-type(n) 找到满足条件的标签，将这些标签筛选进行重新排序，找到其中的第n个标签*/
+			/* 注意：如果某标签的第一个子元素不是p标签，会排除掉不符合条件的标签，将符合条件的标签按条件附上属性 */
+			.box p:nth-of-type(2){
+				color: blanchedalmond;
+			}
+			.box p:nth-last-of-type(2){
+				color: blanchedalmond;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!-- <span>p6</span> -->
+			<p>p1</p>
+			<p>p2<p>
+			<!-- <span>p9</span> -->
+			<p>p3</p>
+			<p>p4</p>
+			<p>p5</p>
+			<!-- <span>p10</span> -->
+			 <ul>
+				 <li>p7</li>
+				 <!-- <span>p10</span> -->
+				 <li>p8</li>
+			 </ul>
+		</div>
+	</body>
+</html>
