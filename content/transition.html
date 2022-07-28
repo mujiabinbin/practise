@@ -10,14 +10,14 @@
 				background-color: aqua;
 				position: relative;
 			}
-			span{
+			.box span{
 				border: 1px solid red;
 				line-height: 200px;
 				display: block;
 				margin: 0 auto;
-			}
-			span:hover{
 				transition: all 1s;
+			}
+			.box:hover span{
 				color: red;
 			}
 			.box1{
@@ -27,19 +27,28 @@
 				position: absolute;
 				top: 0px;
 				left: 0px;
-				transition: all 0.5s; 
+				transition: all 5s; 
+				overflow: hidden;
+				display: none;/* transition在display属性下失效，z-indexing有效 */
 			}
-			.box1:hover{
+			.box:hover .box1{
 				position: absolute;
-				top: 10px;
-				left: 20px;
+				/* top: 10px;
+				left: 20px; */
+				display: block;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="box">
 			<span>transition</span>
-			<div class="box1"></div>
+			<div class="box1">
+				<ul>
+					<li>
+						<a href="">标题一</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>
