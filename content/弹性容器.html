@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 1000px;
+				height: 500px;
+				border: 1px solid red;
+				display: flex;/* 弹性块级容器 */
+				/* display: inline-flex; *//* 弹性行级容器 */
+				/* 特点：1.里面的元素同行显示，排列不下，按对应比例压缩显示
+				 2.弹性盒子不设高度，高度自适应
+				 3.对兄弟元素无影响
+				 4. 只对子元素有影响，对孙元素无影响*/
+				 /* flex-wrap:wrap; */
+				 /*设置是否换行*/
+				/* flex-direction: column; */
+				 /* 设置主轴的方向，row为默认值，水平方向为主轴，弹性项目从左到右
+				 row-reverse：水平方向为主轴，弹性项目从左到右
+				 column：主轴方向为垂直方向，弹性项目从上到下依次排列
+				 column-reverse：主轴方向为垂直方向，弹性项目从下到上依次排列*/
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid green;
+				background-color: pink;
+				box-sizing: border-box;
+				/* float: left; */
+			}
+			.box1{
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box">box1
+				<!-- <div class="box1">box11</div>
+				<div class="box1">box12</div> -->
+			</div>
+			<div class="box">box2</div>
+			<div class="box">box3</div>
+			<div class="box">box4</div>
+			<div class="box">box5</div>
+			<div class="box">box6</div>
+		</div>
+		<!-- <span>text text</span> -->
+	</body>
+</html>

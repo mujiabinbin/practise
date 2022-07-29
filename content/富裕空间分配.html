@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container {
+				width: 1000px;
+				height: 500px;
+				border: 1px solid red;
+				display: flex;
+				justify-content: center;
+				align-items:center;
+				/* justify-content：主轴上的富裕空间的分配
+				 flex-start：默认值，主轴的富裕空间放在弹性项目之后，如果主轴变为flex-direction：colomn，则变为垂直由上到下，富裕空间仍旧放在弹性项目之后
+				 flex-end：主轴的富裕空间放在弹性项目之前，如果主轴变为flex-direction：colomn，则变为垂直由下到上，富裕空间仍旧放在弹性项目之前
+				 space-between：首尾仅靠弹性容器，中间均分富裕空间
+				 space-around：每个弹性项目两侧均分
+				 space-evenly：每个弹性项目之间间距相同，包括首尾巴部分
+				 center：所有弹性项目居中*/
+				/* justify-content: flex-start; */
+				/* align-items:flex-start; */
+				 /*flex-start：默认值，侧轴上富裕空间均分放在每行弹性项目之后
+				  flex-end：侧轴上富裕空间均分放在每行弹性项目之前
+				  center：弹性项目在当前行居中
+				  stretch：当弹性项目没有设置高度时的默认值，将弹性项目拉伸撑满整个弹性空间*/
+				  /* 如果想要容器内项目水平垂直居中，可以设置justify-content:center;align-items:center;*/
+			}
+
+			.box {
+				width: 200px;
+				height: 200px;
+				border: 1px solid green;
+				box-sizing: border-box;
+				background-color: pink;
+				/* 设置压缩因子，默认值为1，压缩因子越大，压缩空间越大，盒子越小 */
+				/* flex-shrink: 1; */
+				flex-grow: 0;
+				/* 设置弹性因子，默认值为0 
+				富裕空间：1000-200*4=200
+				总弹性因子：0+1+2+3=6
+				每份：200/6=33.33
+				box1=200+33.33*3
+				box2=200+33.33*1
+				box3=200+33.33*0
+				box4=200+33.33*2*/
+			}
+			.box:nth-child(2){
+				/* 处理当前弹性项目侧轴上富裕空间分配 */
+				/* align-self: flex-start; */
+				/* flex-shrink: 2; */
+				/* flex-grow: 1; */
+			}
+			.box:nth-child(4){
+				/* 处理当前弹性项目侧轴上富裕空间分配 */
+				/* align-self: flex-end; */
+				/* flex-shrink: 3; */
+				/* flex-grow: 2; */
+			}
+			.box:nth-child(1){
+				/* 处理当前弹性项目侧轴上富裕空间分配 */
+				/* align-self: flex-end; */
+				/* flex-shrink: 3; */
+				/* flex-grow: 3; */
+			}
+			
+			/* 前提：弹性容器宽度小于弹性项目总宽度，弹性项目不换行
+			 弹性容器：1100
+			 所有弹性项目：1200px
+			 压缩总空间：100px
+			 总压缩因子：1+2+3+1+1+1=9
+			 100/9=11.11
+			 box1:200-（11.11*1）=188.89
+			 box2:200-（11.11*2）=177.78
+			 box3:200-（11.11*1）=188.89
+			 box4:200-（11.11*3）=166.67
+			 box6:200-（11.11*1）=188.89
+			 box6:200-（11.11*1）=188.89*/
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box">box1</div>
+			<div class="box">box2</div>
+			<div class="box">box3</div>
+			<div class="box">box4</div>
+			<!-- <div class="box">box5</div>
+			<div class="box">box6</div> -->
+	</body>
+</html>
