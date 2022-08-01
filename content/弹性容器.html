@@ -5,10 +5,11 @@
 		<title></title>
 		<style>
 			.container{
-				width: 1000px;
-				height: 500px;
+				width: 100vw;
+				height: 100vh;
 				border: 1px solid red;
 				display: flex;/* 弹性块级容器 */
+				justify-content: space-between;
 				/* display: inline-flex; *//* 弹性行级容器 */
 				/* 特点：1.里面的元素同行显示，排列不下，按对应比例压缩显示
 				 2.弹性盒子不设高度，高度自适应
@@ -18,7 +19,7 @@
 				 /*设置是否换行*/
 				/* flex-direction: column; */
 				 /* 设置主轴的方向，row为默认值，水平方向为主轴，弹性项目从左到右
-				 row-reverse：水平方向为主轴，弹性项目从左到右
+				 row-reverse：水平方向为主轴，弹性项目从右到左
 				 column：主轴方向为垂直方向，弹性项目从上到下依次排列
 				 column-reverse：主轴方向为垂直方向，弹性项目从下到上依次排列*/
 			}
