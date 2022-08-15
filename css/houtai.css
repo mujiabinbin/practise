@@ -122,7 +122,7 @@ main aside nav ul li:first-child:hover a::after{
 }
 main aside nav ul li:hover a::after{
 	background-position: -8px 0px;
-	/* 第二个和第三个li鼠标hover的时候图标无变化 */
+	/* 第二个和第三个li鼠标hover的时候图标变化 */
 }
 
 main aside nav ul li .nav2 ul li{
