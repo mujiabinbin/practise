@@ -7,6 +7,7 @@ body{
 	background-color: #eff3f5;
 	display: flex;
 	flex-direction: column;
+	min-width: 1375px;
 }
 header{
 	width: 100%;
@@ -194,11 +195,11 @@ main article .header .group select{
 	background-repeat: no-repeat;
 	background-position: 180px 20px;
 }
-main article .header .btn-group{
+main .btn-group{
 	display: flex;
 	justify-content: center;
 }
-main article .header .btn-group .btn{
+main .btn-group .btn{
 	padding: 12px 20px;
 	border: 1px solid blue;
 	background-color: transparent;
@@ -207,7 +208,41 @@ main article .header .btn-group .btn{
 	border-radius: 4px;
 	margin: 0 10px;
 }
-main article .header .btn-group .btn-blue{
+main .btn-group .btn-blue{
 	background-color: blue;
 	color: white;
+}
+main article .data .btn-group{
+	justify-content: flex-start;
+	margin-top: 30px;
+	/* height: 20px; */
+}
+main article .data .btn-group button{
+	/* height: 10px; */
+}
+main article .data .datatable{
+	
+	/* width: 100%; */
+	/* border: 1px solid red; */
+	margin-top: 10px;
+}
+main article .data .datatable table{
+	width: 100%;
+	color: #666;
+}
+main article .data .datatable table thead{
+	background-color: #f5f7fa;
+	font-size: 18px;
+	/* height: 30px; */
+}
+/* main article .data .datatable table thead td{
+	display: inline-block;
+	height: 30px;
+} */
+main article .data .datatable table thead td:last-child{
+	text-align: right;
+}
+main article .data .datatable table tbody .lastcolomn{
+	text-align: right;
+	color: blue;
 }
