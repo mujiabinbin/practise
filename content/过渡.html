@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 100%;
+				height: 500px;
+				border: 1px solid red;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: aqua;
+				/* 设置过渡属性名 */
+				transition-property:width,height,background-color;
+				/* 设置过渡时长  ms代表毫秒 代表秒 1s=1000ms*/
+				transition-duration: 2s,3s;
+				/* ˙注意：过渡属性属性名必须与过渡时长一起使用 */
+				/* 多个属性名同时过渡，中间使用逗号隔开;过渡属性名与时长一一对应 */
+				/* 如果过渡属性名多余执行时长的个数，时间重复一遍，一一对应 */
+				transition-timing-function: cubic-bezier(.23,.84,.83,.31);
+				/* cubic-bezier贝塞尔曲线 */
+				/* 设置执行速率 */
+				/* ease为默认值，低速度开始，然后变快，结束前变慢；linear：匀速；ease-in：低速开始；
+				ease-out：低速结束；ease-in-out低速开始和结束； */
+				transition-delay: 1s;
+				/* 设置延迟时长 */
+				transition: margin-left 3s 2s linear,margin-top 2s 1s ease;
+				/* 复合属性：两个时间，前面是执行时长，后面是延迟时长 */
+			}
+			.container:hover .box{
+				/* margin-left: 500px; */
+				width: 500px;
+				height: 600px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>
