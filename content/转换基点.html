@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 100%;
+				height: 500px;
+				border: 1px solid red;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			img{
+				width: 200px;
+				border: 1px solid green;
+				transition: all 1s;
+				/* 设置转换基点：top left center right bottom 两两搭配使用
+				 默认为center center，中心点进行旋转*/
+				 /* 还可以设置像素，如：0px，0px是左上角*/
+				 /* 还可以设置百分比 如：50% 50%是中心点center*/
+				 /* 转换基点需要设置在未更改css样式上，因为默认转换基点在center center，
+				 在更改样式时设置转换基点会从center center变为更改指定的点，样式会错乱，所以不能设置在hover上*/
+				transform-origin: top left;
+				
+			}
+			.container:hover img{
+				/* transform: rotate(60deg);
+				transform: scale(2); */
+				/* 位移默认参考盒子原来的位置影响，不受转换基点影响 */
+				transform: translate(200px,200px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img src="../img/rotate.png" alt="">
+		</div>
+	</body>
+</html>
