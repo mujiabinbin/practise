@@ -1,0 +1,22 @@
+//先定义变量
+$mycolor:pink;
+$myborder:1px dashed gray;
+$add:50px;
+.box1{
+    width: 200px+$add;
+    height: 200px+$add;
+    background-color: $mycolor;
+    border: $myborder
+}
+.box2{
+    width: 300px+$add * 2;
+    height: 300px-$add * 1;
+    background-color: $mycolor;
+    border: $myborder;
+}
+.box3{
+    width: 400px-$add * 4 ;
+    height: 400px+$add * 3;
+    background-color: $mycolor;
+    border: $myborder
+}
