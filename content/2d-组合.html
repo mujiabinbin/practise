@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 100%;
+				height: 500px;
+				border: 1px solid red;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: aqua;
+				transition: all 0.5s;
+			}
+			.container:hover{
+				/* 向右移动500px，旋转90度 */
+				/* 多个2d转换组合在一起，使用空格隔开 */
+				transform: translateX(500px) rotate(90deg);
+				/* 旋转90度，向右移动500px */
+				/* 先旋转90度，x轴变为顺时针向下方向，y轴也随之变化 */
+				transform: rotate(90deg) translateX(500px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box">box</div>
+		</div>
+	</body>
+</html>
