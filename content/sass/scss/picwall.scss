@@ -36,20 +36,20 @@ body{
         &:first-child{
             transform: scale(0.4) translate(10%,40%) rotate(-8deg);
             .image{ 
-                background-image: url(../../../img/qqsafebg.png);
+                background-image: url(../../../img/album/album01.jpeg);
                 //应该参考css文件的路径，因为html文件引入的是css文件，与scss文件无关}
         }
     }
         &:nth-child(2){
             transform: scale(0.4) translate(-10%,-20%) rotate(-3deg);
             .image{
-                background-image: url(../../../img/jq22/logo.png);
+                background-image: url(../../../img/album/album02.jpeg);
             } 
         }
         &:last-child{
             transform: scale(0.4) translate(-20%,15%) rotate(-5deg);
-            .img{
-                background-image: url(../../../img/xima/logo_2021_554d3ee.png);
+            .image{
+                background-image: url(../../../img/album/album03.jpeg);
             } 
         }
         h3{
