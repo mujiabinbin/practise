@@ -1,0 +1,67 @@
+body{
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+.container{
+    width: 600px;
+    height: 700px;
+    //border: 1px solid #ccc;
+    border-radius: 5px 5px 5px 5px;
+    position: relative;
+    .item{
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.5s;
+        .image{
+            width: 540px;
+            height: 560px;
+            //border: 1px solid red;
+            margin: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            opacity: 0.5;
+            transition: opacity 0.5s;
+        }
+        &:first-child{
+            transform: scale(0.4) translate(10%,40%) rotate(-8deg);
+            .image{ 
+                background-image: url(../../../img/qqsafebg.png);
+                //应该参考css文件的路径，因为html文件引入的是css文件，与scss文件无关}
+        }
+    }
+        &:nth-child(2){
+            transform: scale(0.4) translate(-10%,-20%) rotate(-3deg);
+            .image{
+                background-image: url(../../../img/jq22/logo.png);
+            } 
+        }
+        &:last-child{
+            transform: scale(0.4) translate(-20%,15%) rotate(-5deg);
+            .img{
+                background-image: url(../../../img/xima/logo_2021_554d3ee.png);
+            } 
+        }
+        h3{
+            font-size: 24px;
+            text-align: center;
+        }
+        &:hover{
+            transform: scale(1);
+            z-index: 1;
+            .image{
+                opacity: 1;
+            }
+        }
+    }
+}
