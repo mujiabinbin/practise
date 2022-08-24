@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 100%;
+				height: 500px;
+				border: 1px solid red;
+				perspective: 500px;
+				/* 每个舞台都有自己的灭点，默认在舞台中心点：center，center */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				perspective-origin: top left;/* 灭点设置为上左，表明观众位置为下右 */
+				/* 设置灭点位置 */
+				/* 单词：left right center top bottom */
+				/* 像素：100px,100px*/
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: tomato;
+				transition: all 1s; 
+			}
+			.container:hover .box{
+				transform: rotate(60deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>
