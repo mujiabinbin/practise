@@ -9,30 +9,34 @@
 				height: 500px;
 				border: 1px solid red;
 				/* 设置景深，搭建3d舞台 */
-				perspective: 500px;
+				perspective: 100px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				transform-style: preserve-3d;
+				perspective-origin: top left;
+				/* background-color: gray; */
+				/* opacity: 0.3; */
 			}
 			.box{
 				width: 200px;
 				height: 200px;
 				background-color: aqua;
-				transition: all 2s;
+	            transition: all 1s;
 			}
 			.container:hover .box{
-				/* transform: translateX(200px);
-				transform: translateY(200px);
-				transform: translateZ(200px); */
+				/* transform: translateX(200px); */
+				/* transform: translateY(200px); */
+				/* transform: translateZ(-150px); */
 				/* transform: translate3d(200px,200px,200px); */
-				/* transform: scale(2); *//* x轴缩放，宽度的缩放或者scaleX(2)*/
+				/* transform: scaleX(2); */ /*x轴缩放*/
 				/* transform: scaleY(2); *//* y轴缩放，高度的缩放 */
-				/* transform: scaleZ(2); *//* z轴缩放，相当于厚度的变化，直观上无法发现效果 */
+				transform: scaleZ(2);/* z轴缩放，相当于厚度的变化，直观上无法发现效果 */
 				/* transform: scale3d(2,0.5,1.5); *//* 三个轴同时缩放 */
-				transform: rotateX(60deg);/* 沿着X轴旋转 */
-				transform: rotateY(60deg);/* 沿着Y轴旋转 */
-				transform: rotateZ(60deg);/* 沿着Z轴旋转 */
-				transform: rotate3d(1,0,0,60deg);/* 沿着原点（0，0，0）到设置坐标点（1，0，0）的一条直线为轴进行转转 */
+				/* transform: rotateX(60deg); *//* 沿着X轴旋转 */
+				/* transform: rotateY(60deg); *//* 沿着Y轴旋转 */
+				/* transform: rotateZ(60deg); *//* 沿着Z轴旋转 */
+				/* transform: rotate3d(1,1,1,60deg); *//* 沿着原点（0，0，0）到设置坐标点（1，0，0）的一条直线为轴进行转转 */
 			}
 		</style>
 	</head>
