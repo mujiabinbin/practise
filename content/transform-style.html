@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container {
+				width: 100%;
+				height: 500px;
+				border: 1px solid red;
+				perspective: 500px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgba(0, 0, 0, 0.3);/* 设置透明度，看transform-style：perserve-3d效果 */
+				/* 设置转换类型,其子元素如何在3d空间中展示 */
+				transform-style: preserve-3d;/* flat,默认，代表子元素在2d空间中展示 */
+				/* perserve-3d，代表子元素在3d空间中展示 */
+			}
+
+			.box {
+				width: 200px;
+				height: 200px;
+				background-color: tomato;
+				transition: all 1s;
+			}
+
+			.container:hover .box {
+				transform: rotateY(60deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>
