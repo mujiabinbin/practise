@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 500px;
+				height: 200px;
+				/* border: 1px solid red; */
+				margin: 100px auto;
+				display: flex;
+				background-color: rgba(0, 0, 0, 0.3);
+				perspective: 300px;
+				transform-style: preserve-3d;
+			}
+			.container div{
+				width: 50%;
+				height: 200px;
+				background-color: green;
+				transition: all 1s;
+			}
+			.container .box1{
+				transform-origin: left center; 
+			}
+			.container .box1:hover{
+				transform: rotateY(30deg);
+				
+				/* perspective-origin: -200px; */
+			}
+			.container .box2{
+				transform-origin: right center; 
+			}
+			.container .box2:hover{
+				transform: rotateY(30deg);
+				/* perspective-origin: 100px; */
+				/* transform-origin: top right; */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box1"></div>
+			<div class="box2"></div>
+		</div>
+	</body>
+</html>
