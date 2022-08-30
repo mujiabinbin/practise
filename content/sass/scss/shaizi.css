@@ -20,6 +20,7 @@ body {
   transition: all 6s;
   transform-style: preserve-3d;
   transform-origin: top center;
+  animation: rotate 1s linear 1s infinite normal both;
 }
 
 .container .box .side {
@@ -62,6 +63,14 @@ body {
   transform: translateZ(-200px);
 }
 
-.container .box:hover {
-  transform: rotateX(2160deg);
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
