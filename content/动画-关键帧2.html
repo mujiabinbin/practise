@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: tomato;
+				/* 使用关键帧 */
+				/* 设置动画的名字，使用关键帧的名字 */
+				animation-name: move2;
+				/* 设置动画的执行时长 */
+				animation-duration: 3s;
+			}
+			/* 盒子右移500px，有两个关键帧，初始状态-右移500px */
+			/* 定义关键帧 */
+			@keyframes move {
+				from{
+					/* 开始状态 */
+					transform: translateX(0px);
+				}
+				to{
+					/* 结束状态 */
+					transform: translateX(500px);
+				}
+				/* from相当于0%，to相当于100% */
+			}
+			/* 盒子变圆后再右移500px，有三个关键帧，开始状态-变圆-右移500px */
+			/* 还可以使用百分比定义关键帧,当动画执行到某个百分比是什么状态 */
+			/* 百分比和执行时长有关系，跨度越大，分配时间越多 */
+			@keyframes move2 {
+				0%{
+					transform: translateX(0px);
+					border-radius: 0px;
+				}
+				50%{
+					transform: translateX(0px);
+					border-radius: 50%;
+				}
+				100%{
+					transform: translateX(500px);
+					border-radius: 50%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
