@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: tomato;
+				animation-name: move;
+				animation-duration: 3s;
+				/* 设置速率：
+				 1 ease：低速开始，变快，低速结束，默认值
+				 2 linear：匀速
+				 3 ease-in：低速开始
+				 4 ease-out：低速结束
+				 5 cubic-bezier（x1,y1,x2,y2）贝塞尔曲线
+				 */
+				animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+				/* 设置动画的延迟。默认为0s */
+				animation-delay: 1s;
+				/* 设置执行的次数，n代表执行次数 */
+				animation-iteration-count: infinite;/* 无限次 */
+				/* 设置执行的方向:
+				 1 normal 正常播放
+				 2 alternate 奇数次正向播放，偶数次反向播放
+				 3 alternate-reverse 奇数次反向播放，偶数次正向播放
+				 4 reverse 反向播放*/
+				animation-direction: reverse;
+				/*设置第一帧或最后一帧是否作用在元素上：
+				 1 forwards 将最后一帧作用在元素上，保持结束状态
+				 2 backwards  将第一帧作用在元素上，保持开始状态
+				 3 both 将第一帧与最后一帧都作用在元素上 */
+				 animation-fill-mode:both;
+				 /* 复合属性 */
+				 animation: move 3s linear 1s infinite alternate both;
+				 animation: name duration timing-function delay iteration-count direction fill-mode;
+			}
+			
+			
+			.box:hover{
+				/* 控制动画是否播放：
+				 1 running，播放，默认值
+				 2 paused，暂停*/
+				animation-play-state: paused;
+			}
+			@keyframes move {
+				from{
+					transform: translateX(0px);
+				}
+				to{
+					transform: translateX(500px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

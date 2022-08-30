@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: tomato;
+				/* 使用关键帧 */
+				/* 设置动画的名字，使用关键帧的名字 */
+				animation-name: move;
+				/* 设置动画的执行时长 */
+				animation-duration: 3s;
+			}
+			/* 盒子右移500px，有两个关键帧，初始状态-右移500px */
+			/* 定义关键帧 */
+			@keyframes move {
+				from{
+					/* 开始状态 */
+					transform: translateX(0px);
+				}
+				to{
+					/* 结束状态 */
+					transform: translateX(500px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
