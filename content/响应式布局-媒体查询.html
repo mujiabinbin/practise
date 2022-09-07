@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--  在引入css文件时规定css样式的作用范围 -->
+		<!-- <link rel="stylesheet" href="../css/xiangying.css" media="only screen"> -->
+		<!-- only print 仅仅在打印机使用
+		 only screen 仅仅在彩色屏幕使用-->
+		  <style>
+		  	.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+			}
+			/* @media 媒体查询语句 */
+			/* @media screen {
+				.box{
+					background-color: tomato;
+				} 
+			}*/
+			/* @media print {
+				.box{
+					background-color: pink;
+				}
+			} */
+			/* @media all {
+				.box{
+					background-color: black;
+				}
+			} */
+			/* and代表并且的意思：即是彩色屏幕，又是宽度为320的屏幕 */
+			/* @media screen and (width:320px){
+			    .box{
+					background-color: blue;
+				}	
+			} */
+			/* pc端样式，大于750px */
+			/* @media screen and (min-width:750px) {
+				.box{
+					background-color: blue;
+				}	
+			} */
+			/* 移动端样式, 小于750px */
+			@media screen and (max-width:750px) {
+				.box{
+					background-color: yellow;
+				}	
+			}
+			/* @media screen and (orientation:landscape){
+				.box{
+					background-color: transparent;
+				}	
+			} */
+			/* 媒体关键字：not代表非，不是的意思 */
+			/* @media not screen and (orientation:landscape){
+				.box{
+					background-color: transparent;
+				}	
+			} */
+			/* ，代表或者的意思,逗号前后的条件满足一个即可实现页面效果，媒体类型相互独立 */
+			/* @media screen and (max-width:750px),screen and (min-width:320px){
+				.box{
+					background-color: yellow;
+				}	
+			} */
+			/* only代表仅仅的意思 */
+			/* @media only screen and (width:320px) {
+				.box{
+					background-color: aquamarine;
+				}
+			} */
+		  </style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
