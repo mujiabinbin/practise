@@ -60,6 +60,7 @@ body{
                 //transform-origin: left center;
                 transform: translateZ(-200px);
             }
+            
         }
         @keyframes rotate {
             // 0%{
@@ -89,7 +90,6 @@ body{
             100%{
                 transform: rotateZ(360deg);
             }
-
         }
         animation: rotate 1s linear 1s infinite normal both;
         // animation-play-state: paused;
