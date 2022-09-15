@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 引入bootstrap的css文件 -->
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+        <!-- 引入jquery文件 -->
+         <script src="../javascritpt/jquery-3.6.1.js"></script>
+         <!-- 引入bootstrap的js文件 -->
+         <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+        <style>
+            
+            img{
+                width: 100%;
+            }
+            #carouselExampleIndicators{
+              margin: 5px 0px;
+            }
+            p{
+              color: gray;
+            }
+          
+            .collapse ul li{
+              display: flex;
+            }
+            nav .d-flex button{
+              width: 25%;
+              margin-right: 125px;
+            }
+            .hot{
+              font-size: x-large;
+              margin: 15px 0px;
+            }
+            .media img{
+              width: 30%;
+            }
+            .recomond{
+              font-size: x-large;
+              margin: 20px 0px;
+            }
+        </style>
+    </head>
+    <body>
+      
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">电影网</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">热门 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">最新</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                分类
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" href="#">动作</a></li>
+                <li><a class="dropdown-item" href="#">现实</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">其他</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">排行</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control mr-2" type="search" placeholder="输入电影名" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">搜索</button>
+          </form>
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+   登陆
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">登陆</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">请输入邮箱</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">正输入正确的邮箱地址</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">密码</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">用户协议</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">登陆</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </nav>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-interval="3000">
+                <img src="../img/lunbo/banner.jpeg" alt="...">
+              </div>
+              <div class="carousel-item" data-interval="3000">
+                <img src="../img/lunbo/banner2.jpeg" alt="...">
+              </div>
+              <div class="carousel-item" data-interval="3000">
+                <img src="../img/lunbo/banner2.jpeg" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </button>
+          </div>
+          <span class="badge badge-primary hot">今日热门</span>
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <img src="../img/movielist/44334fc2b4babb7458fa22464900c0b6.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">绣春刀</h5>
+                      <p class="card-text">绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介.</p>
+                      <a href="#" class="btn btn-primary">马上播放</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <img src="../img/movielist/44334fc2b4babb7458fa22464900c0b6.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">绣春刀</h5>
+                      <p class="card-text">绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介.</p>
+                      <a href="#" class="btn btn-primary">马上播放</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <img src="../img/movielist/44334fc2b4babb7458fa22464900c0b6.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">绣春刀</h5>
+                      <p class="card-text">绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介.</p>
+                      <a href="#" class="btn btn-primary">马上播放</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <img src="../img/movielist/44334fc2b4babb7458fa22464900c0b6.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">绣春刀</h5>
+                      <p class="card-text">绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介绣春刀简介.</p>
+                      <a href="#" class="btn btn-primary">马上播放</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <span class="badge badge-success recomond">为您推荐</span>
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="../img/movielist/9520b3d397d8d23af991ce76c552b597.jpeg" class="mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">刺客联盟</h5>
+              <p>刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介.</p>
+              <a href="#" class="btn btn-primary">马上播放</a>
+            </div>
+          </li>
+          <li class="media my-4">
+            <img src="../img/movielist/9520b3d397d8d23af991ce76c552b597.jpeg" class="mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">刺客联盟</h5>
+              <p>刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介.</p>
+              <a href="#" class="btn btn-primary">马上播放</a>
+            </div>
+          </li>
+          <li class="media">
+            <img src="../img/movielist/9520b3d397d8d23af991ce76c552b597.jpeg" class="mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">刺客联盟</h5>
+              <p>刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介刺客联盟简介.</p>
+              <a href="#" class="btn btn-primary">马上播放</a>
+            </div>
+          </li>
+        </ul>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    </body>
+</html>
