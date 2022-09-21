@@ -18,10 +18,27 @@
 			var number2 =1;
 			document.write(number1+number2);
 			document.write(number1-number2); */
-			var number1 = Number(prompt("请第一次输入数字"));
+			/* var number1 = Number(prompt("请第一次输入数字"));
 			var number2 = Number(prompt("请第二次输入数字"));
 			document.write(number1+number2);
-			document.write(number1-number2); 
+			document.write(number1-number2); */
+			var num = 123.2;
+			var str = num.toString();
+			document.write(str+1);//将1也转换称string类型
+			var num =123.4567;
+			var str1 = num.toFixed(3);
+			document.write(str1+2);// 此时str1数据类型已经为string，所以+“1”也变成string
+			var num1=100;
+			var num2="j10";
+			document.write(num1-num2);
+			var num="23.6";
+			var num1=Number(num);
+			var num2=parseInt(num);
+			var num3=parseFloat(num);
+			document.write(num1);
+			document.write(num2);
+			document.write(num3);
+			
 			
 		</script>
 	</body>
