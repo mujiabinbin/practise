@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//关系运算符
+			/* document.write(1>2);//返回false
+			var num1=1;
+			var num2=2;
+			document.write(num1<=num2);// 返回true
+			document.write("1"==1);//返回true
+			document.write("1"===1);//返回false */
+			//逻辑预算符
+			var num=10;
+			document.write(num>=0 && num<100);//大于等于0，小于100，返回true
+			document.write(num<0 || num>100);//大于100，小于0，返回false
+			document.write(!(num>0));//大于0取反，返回false
+			document.write(!num);//false
+			document.write(!undefined);//true
+			document.write(!null);//true
+			document.write(!true);//false
+			document.write(!"abc");//false
+			
+			var total;
+			document.write(!total);//true
+			//对正常变量取反，都会返回false，只有当变量为undefined和null时为true
+		</script>
+	</body>
+</html>
