@@ -5,6 +5,7 @@
 		<title></title>
 	</head>
 	<body>
+		<!-- <div style="width: 100px; height: 100px; border-radius: 50%; background-color: rgba(144, 238, 144, 0);"></div> -->
 		<!-- <div style="width: 200px;height: 200px;border: 1px solid red;"></div> -->
 		<!-- <script>
 			var width1=prompt("请输入div的宽度");
@@ -36,11 +37,20 @@
 			var num =`1+1=${1+1}`;
 			document.write(num);
 		</script> -->
-		<script>
+		<!-- <script>
 			var str =`这是一个很长长长
 			        长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
 					长长长的字符串`;
 			document.write(str);		   
+		</script> -->
+		<script>
+			var r = parseInt(prompt("请输入rgb中r的值"));
+			var g = parseInt(prompt("请输入rgb中g的值"));
+			var b = parseInt(prompt("请输入rgb中b的值"));
+			var a = parseInt(prompt("请输入rgb中a的值"));
+			var a1 = a+1;
+			var bgcolor = `rgba(${r},${g},${b},${a1})`;
+			document.write(`<div style="width: 100px; height: 100px; border-radius: 50%; background-color: ${bgcolor};"></div>`)
 		</script>
 	</body>
 </html>
