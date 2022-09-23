@@ -27,6 +27,43 @@
 			var total;
 			document.write(!total);//true
 			//对正常变量取反，都会返回false，只有当变量为undefined和null时为true
+			var num = 2;
+			num =3;//变量由2变成3
+			num = num+3;//修改变量num的数据，新的变量是旧的变量基础上+3
+			num = num-3;//在上面基础上6-3=3
+			num = num*3;//在上面基础上3*3=9
+			num = num/3;//在上面基础上9/3=3
+			num = num%3;//在上面基础上3%3=0
+			document.write(num);//输出0
+			var num=3;
+			num+=3;//num=num+3
+			var num=3;
+			num-=3;//num=num-3
+			var num=3;
+			num*=3;//num=num*3
+			var num=3;
+			num/=3;//num=num/3
+			var num=3;
+			num%=3;//num=num%3
+			var num=3;
+			num++;//num=num+1 自增1
+			var num=3;
+			num--;//num=num-1 自减1
+			
+			var num1=1;
+			var num2=2;
+			num2=num1++ +num2;//num1++在表达式中先读取以前的操作，在执行表达式操作，所以只读取num1，不是num1++
+			document.write(num2);//3
+			document.write(num1);//2
+			document.write(num1++ +num2 +num1-- +num2++);//2+3+3+3=11
+			document.write(num1);//2
+			document.write(num2);//4
+			var num =1;
+			var a=num++ + num--;//3 num=1
+			var b=++num - --num;//1 num=1
+			var num2 =2;
+			var c = ++num2 - --num2;//1 num2=2
+			var d = --num2 + num2++;//2 num2=2
 		</script>
 	</body>
 </html>
