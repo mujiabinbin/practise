@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			循环:
+			1 循环的次数
+			var 当前循环的次数 = 1
+			每次循环,循环自增
+			var 结束循环的次数 = 130
+			2 循环执行的代码 
+			*/
+		  /* for(var i=1;i<=5;i++){
+			   document.write(`${i}重复执行5遍<br>`);
+		   }; */
+		   /* for(var i=1;i<=100;i++){
+			   document.write(`${i}<br>`);
+		   }; */
+		   /* for(var i=1;i<=100;i++){
+			   if(i % 2==0){
+				   document.write(`${i}`);
+			   }else{
+				   document.write("<br>");
+			   };
+		   }; */
+		   var n=0;
+		   for(var i=1;i<=100;i++){
+			   n=n+i;
+			   if(i==100){
+				   document.write(`<br>${n}`);
+			   }else{
+				   document.write(`&nbsp`);
+			   };
+		   };
+		</script>
+	</body>
+</html>
