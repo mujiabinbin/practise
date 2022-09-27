@@ -31,11 +31,45 @@
             document.write(time);*/
             //var time = new Date().getHours;
             //document.write(new Date().getHours);
-            var time = new Date().getHours();
+            /* var time = new Date().getHours();
             document.write(time);
             if(time<12 && time>6){document.write("morning");}
             else if(time>=12 && time<18){document.write("afternoon");}
-            else{document.write("night");}
+            else{document.write("night");} */
+			/* 练习：1 用户输入成绩，判断成绩是优秀，及格，不及格
+			       2 用户登录:用户输入用户和密码用两个变量保存,判断是否登陆成功并输出登陆结果
+				   3 判断用户输入是否为水仙花数字,水仙花数:一个三位数,每位的立方和相加等于自身,如153=1*1*1+5*5*5+3*3*3
+				   类似数还有370 371 407 */
+				   
+			/* var result = Number(prompt("请输入成绩"));
+			  if(result>=60 && result<90){
+				  document.write("及格");
+			  }else if(result>=90){
+				  document.write("优秀");
+			  }else{
+				  document.write("不及格");
+			  }; */
+			  
+			  /* var username = "admin";
+			  var password = "adm123";
+			  var user = prompt("请输入用户名");
+			  var psw = prompt("请输入密码");
+			  
+			  if(user==username && psw==password){
+				  document.write("登陆成功");
+			  }else{
+				  document.write("用户名或密码错误，请重新输入");
+			  } */
+			  /* var num = Number(prompt("请输入一个三位数"));
+			  var num100 = parseInt(num/100);
+			  var num10 =parseInt((num-num100*100)/10);
+			  var num1 = parseInt(num-num100*100-num10*10);
+			  if(num==num100*num100*num100+num10*num10*num10+num1*num1*num1 && num100>0){
+				  document.write("您输入的数字是水仙花数");
+			  }else{
+				  document.write("你输入的数字不是水仙花数");
+			  } */
+			  
             
         </script>
     </body>
