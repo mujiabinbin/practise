@@ -33,7 +33,42 @@
 			document.write(result); */
 			//判断当前日期是星期几，
 			/* var day = new Date().getDay();
-			document.write(day); */
+			if(day==0){
+				document.write("今天是星期日");
+			}else if(day==1){
+				document.write("今天是星期一");
+			}else if(day==2){
+				document.write("今天是星期二");
+			}else if(day==3){
+				document.write("今天是星期三");
+			}else if(day==4){
+				document.write("今天是星期四");
+			}else if(day==5){
+				document.write("今天是星期五");
+			}else if(day==6){
+				document.write("今天是星期六");
+			} */
+			var day=new Date().getDay();
+			switch(day){
+				case 0:
+				document.write("今天是星期日");break;
+				case 1:
+				document.write("今天是星期1");break;
+				case 2:
+				document.write("今天是星期2");break;
+				case 3:
+				document.write("今天是星期3");break;
+				case 4:
+				document.write("今天是星期4");break;
+				case 5:
+				document.write("今天是星期5");break;
+				case 6:
+				document.write("今天是星期6");break;
+				default:
+				document.write("输出错误");break;
+				
+			}
+			
 			//随机生成一个1000以内的数，用户输入一个数与这个随机数做比较，大了就提示大了，小了就提示小了，直到相等结束游戏
 			/* var random = parseInt(Math.random()*100);
 			for(var i=1;i<=10;i++){
@@ -41,7 +76,7 @@
 				if(guess>random){
 					alert(`大了，你还有${10-i}次机会`);
 				}else if(guess<random){
-					alert(`小了，你还有${10-i}次机会`);
+					alert(`小了，你还有${10-i} 次机会`);
 				}else{
 					alert("猜对啦！");
 					i=101;
@@ -49,7 +84,20 @@
 			}
 			document.write(`幸运数字是：${random}`); */
 			
-			
+			/* var random=parseInt(Math.random()*1000);
+			alert(random);
+			var usrinput=Number(prompt("请输入数字"));
+			for(var i=0;random != usrinput;i++){
+				
+				if(usrinput>random){
+					alert("大了");
+				}else if(usrinput<random){
+					alert("小了");
+				}
+				var usrinput=Number(prompt("请输入数字"));
+			};
+			alert("猜对了");
+			document.write(i+1); */
 		</script>
 	</body>
 </html>
