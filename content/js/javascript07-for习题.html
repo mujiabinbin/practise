@@ -48,7 +48,7 @@
 			}else if(day==6){
 				document.write("今天是星期六");
 			} */
-			var day=new Date().getDay();
+			/* var day=new Date().getDay();
 			switch(day){
 				case 0:
 				document.write("今天是星期日");break;
@@ -67,7 +67,7 @@
 				default:
 				document.write("输出错误");break;
 				
-			}
+			} */
 			
 			//随机生成一个1000以内的数，用户输入一个数与这个随机数做比较，大了就提示大了，小了就提示小了，直到相等结束游戏
 			/* var random = parseInt(Math.random()*100);
@@ -98,6 +98,56 @@
 			};
 			alert("猜对了");
 			document.write(i+1); */
+			/* var year=Number(prompt("请输入年"));
+			var month=Number(prompt("请输入月"));
+			var day=Number(prompt("请输入日"));
+			var num=0;
+			var numfeb=28;
+			if(year%4==0){
+				numfeb=29
+			};
+				switch(month){
+					case 1:num=day; break;
+					case 2:num=31+day; break;
+					case 3:num=31+numfeb+day; break;
+					case 4:num=31+numfeb+day+31; break;
+					case 5:num=31+numfeb+day+31+30; break;
+					case 6:num=31+numfeb+day+31+30+31; break;
+					case 7:num=31+numfeb+day+31+30+31+30; break;
+					case 8:num=31+numfeb+day+31+30+31+31; break;
+					case 9:num=31+numfeb+day+31+30+31+31+31; break;
+					case 10:num=31+numfeb+day+31+30+31+31+31+30; break;
+					case 11:num=31+numfeb+day+31+30+31+31+31+30+31; break;
+					case 12:num=31+numfeb+day+31+30+31+31+31+30+31+30; break;
+					default:"请输入正确的月份";break;
+				
+			};
+			document.write(`${year}年${month}月${day}日是${year}年的第${num}天`); */
+			var year=Number(prompt("请输入年份"));
+			var month=Number(prompt("请输入月份"));
+			var day=Number(prompt("请输入日期"));
+			var days=day;
+			var monthfeb=28;
+			if(year%4==0){
+				monthfeb=29
+			};
+			switch(month){
+				case 12:days+=30;
+				case 11:days+=31;
+				case 10:days+=30;
+				case 9:days+=31;
+				case 8:days+=31;
+				case 7:days+=30;
+				case 6:days+=31;
+				case 5:days+=30;
+				case 4:days+=31;
+				case 3:days+=monthfeb;
+				case 2:days+=31;
+				case 1:days;
+				
+			}
+			
+			document.write(`${year}年${month}月${day}日是${year}年的第${days}天`);
 		</script>
 	</body>
 </html>
