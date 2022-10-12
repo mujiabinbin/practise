@@ -18,18 +18,58 @@
 			/* var i=0;
 			var sum=0;
 			while(i<=100){
-				sum+=i;
-				i+=2;
+				if(i%2==0){
+					sum+=i;
+				}
+				i++;
 			}
 			document.write(sum); */
-			//100 以内所有质数
-			var i=0;
+			//100 以内所有质数：循环嵌套，先判断单个数字为质数，在外面套一个循环来找出100以内
+			/* var i=0;
 			while(i<100){
 				i++;
-				if(i%2!=0 && i%3!=0  && i%5!=0 && i%7!=0 || (i==2 && i==3 && i==5 && i==7)){
+				if(i==2 || i==3 || i==5 || i==7 || (i%2!=0 && i%3!=0  && i%5!=0 && i%7!=0)){
 					document.write(`${i}<br>`);
 				}
+			}; */
+			//20块钱买可乐，3块一瓶，喝完退瓶1元，问最多可以喝多少瓶可乐
+			/* var i=20;
+			var count=0;
+			while(i>=3){
+				i=i-3+1;
+				count++;
+			}
+			document.write(count); */
+
+			//龟兔赛跑，路程由用户设置，兔子每次走5，乌龟每次走2，兔子每次50%不跑，乌龟稳定速度，跑完比赛路程兔子和乌龟用的次数以及谁赢了
+			var road = Number(prompt("请输入路程"));
+			var rab = 0;
+			var tur = 0;
+			while (rab*5 < road && tur*2 < road) {
+				tur++;
+				if (Math.random() > 0.5) {
+					rab++;
+				}
+			}
+			if (rab * 5 > tur * 2) {
+				document.write("兔子赢了");
+			} else if (rab * 5 == tur * 2) {
+				document.write("兔子乌龟一起到达");
+			} else {
+				document.write("乌龟赢了");
 			};
+			document.write(`兔子走了${rab}次，乌龟走了${tur}次`);
+			//输入一个数字，倒叙输出数字，并求位数之和
+			/* var total=0;
+			var num=Number(prompt("请输入数字"));
+			while(num>0){
+			var ge=parseInt(num%10);
+			document.write(ge);
+			num=parseInt(num/10);
+			total+=ge;
+			};
+			document.write("<br>");
+			document.write(total);
 		</script>
 	</body>
 </html>
