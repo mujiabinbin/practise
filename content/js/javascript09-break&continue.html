@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			/* var i=0;
+			while(i<10){
+				i++;
+				if(i==5){
+					continue;
+				}
+				document.write(i);
+			} */
+			/* var i=0;
+			while(i<=10){
+				i++;
+				if(i==5){
+					break;
+				}
+				document.write(i);
+			} */
+			 //判断一个数是否是质数
+			/* var num=Number(prompt("请输入数字，判断是否为质数"));
+			 var count=0;
+			 if(num==1){
+				 document.write(`${num}不是质数`);
+			 }
+			 if(num==2){
+			     document.write(`${num}是质数`);
+			 }
+			 for(var i=2;i<num;i++){
+				 if(num%i==0){
+					 count++; 
+				 }
+			 }
+			 if(count==0){
+				 document.write(`${num}是质数`);
+			 }else{
+				  document.write(`${num}不是质数`);
+			 } */
+			/* var num=Number(prompt("请输入数字，判断是否为质数"));
+			 for(i=2;i<num;i++){
+				 if(num%i==0){
+					 break;
+				 }
+			 }
+			 if(i<num){
+				 document.write(`${num}不是质数`);
+			 }else{
+				 document.write(`${num}是质数`);
+			 } */
+			 
+			 /* for(var i=1;i<=9;i++){
+				 for(var j=1;j<=9;j++){
+					 document.write(j);
+					 break;//结束内循环
+				 }
+				 break;//结束外循环
+			 } */
+			 //用户三次机会登陆,对了提示对了,错了提示重新输入
+			 var username="admin";
+			 var password="adm123";
+			 
+			 for(var i=0;i<=3;i++){
+				 var nameinput=prompt("请输入用户名");
+				 var pswinput=prompt("请输入密码");
+				 if(nameinput==username && pswinput==password){
+					 alert("登陆成功");
+					 break;
+				 }else{
+					 alert(`用户名或密码错误，你还有${3-i}次机会，请重新输入`);
+				 }
+			 }
+			 //1 登陆 2 注册 3 退出 使用for while break switch来完成
+		</script>
+	</body>
+</html>

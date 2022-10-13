@@ -41,19 +41,19 @@
 			}
 			document.write(count); */
 
-			//龟兔赛跑，路程由用户设置，兔子每次走5，乌龟每次走2，兔子每次50%不跑，乌龟稳定速度，跑完比赛路程兔子和乌龟用的次数以及谁赢了
+			//龟兔赛跑，路程由用户设置，兔子每次走4，乌龟每次走2，兔子每次50%不跑，乌龟稳定速度，跑完比赛路程兔子和乌龟用的次数以及谁赢了
 			var road = Number(prompt("请输入路程"));
 			var rab = 0;
 			var tur = 0;
-			while (rab*5 < road && tur*2 < road) {
+			while (rab*4 < road && tur*2 < road) {
 				tur++;
 				if (Math.random() > 0.5) {
 					rab++;
 				}
 			}
-			if (rab * 5 > tur * 2) {
+			if (rab * 4 > tur * 2) {
 				document.write("兔子赢了");
-			} else if (rab * 5 == tur * 2) {
+			} else if (rab * 4 == tur * 2) {
 				document.write("兔子乌龟一起到达");
 			} else {
 				document.write("乌龟赢了");
@@ -69,7 +69,7 @@
 			total+=ge;
 			};
 			document.write("<br>");
-			document.write(total);
+			document.write(total);*/
 		</script>
 	</body>
 </html>
