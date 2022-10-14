@@ -6,7 +6,6 @@
 	</head>
 	<body>
 		<script>
-			
 			/* var i=0;
 			while(i<10){
 				i++;
@@ -23,7 +22,7 @@
 				}
 				document.write(i);
 			} */
-			 //判断一个数是否是质数
+			//判断一个数是否是质数
 			/* var num=Number(prompt("请输入数字，判断是否为质数"));
 			 var count=0;
 			 if(num==1){
@@ -53,16 +52,16 @@
 			 }else{
 				 document.write(`${num}是质数`);
 			 } */
-			 
-			 /* for(var i=1;i<=9;i++){
+
+			/* for(var i=1;i<=9;i++){
 				 for(var j=1;j<=9;j++){
 					 document.write(j);
 					 break;//结束内循环
 				 }
 				 break;//结束外循环
 			 } */
-			 //用户三次机会登陆,对了提示对了,错了提示重新输入
-			 var username="admin";
+			//用户三次机会登陆,对了提示对了,错了提示重新输入
+			/* var username="admin";
 			 var password="adm123";
 			 
 			 for(var i=0;i<=3;i++){
@@ -74,8 +73,65 @@
 				 }else{
 					 alert(`用户名或密码错误，你还有${3-i}次机会，请重新输入`);
 				 }
-			 }
-			 //1 登陆 2 注册 3 退出 使用for while break switch来完成
+			 } */
+			//1 登陆 2 注册 3 退出 使用for while break switch来完成
+			// 登陆后实现二级菜单，存钱，取钱，查询余额 转账 退出一级菜单
+			var username;
+			var password;
+			var exit = true;
+			while (exit == true) {
+				var condition = Number(prompt("请输入操作数字:1:注册 2:登陆 3:退出登陆"));
+				switch (condition) {
+					case 1:
+						username = prompt("请输入注册用户名");
+						password = prompt("请输入注册密码");
+						alert("注册成功");
+						break;
+					case 2:
+						for (var i = 0; i <= 3; i++) {
+							var userinput = prompt("请输入用户名");
+							var pswinput = prompt("请输入密码");
+							if (userinput == username && pswinput == password) {
+								alert("登陆成功");
+								var sencondexit = true;
+								var money = 0;
+								var makemoney = 0;
+								var takemoney = 0;
+								//while (sencondexit==true) {
+									var secondmenu = Number(prompt("请选择二级菜单:1:查询 2:存钱 3:取钱 4:返回一级菜单”));
+											/* switch (secondmenu){
+												case 1:
+													money = money + makemoney - takemoney;
+													alert(money);
+													break;
+												case 2:
+													makemoney = Number(prompt("请输入存钱金额"));
+													alert("存钱成功");
+													break;
+												case 3:
+													takemoney = Number(prompt("请输入取钱金额"));
+													alert("取钱成功");
+													break;
+												case 4:  
+													sencondexit = false;
+													break;
+											}; */
+										//};
+										break;
+									}else {
+										alert(`用户名或密码错误，你还有${3-i}次机会`);
+									}
+								};
+								break;
+								case 3:
+									alert("退出登陆");
+								exit = false;
+								break;
+								default:
+								alert("你的输入有误，请重新输入");
+								break;
+							}
+						}
 		</script>
 	</body>
 </html>
