@@ -106,13 +106,22 @@
 													break;
 												case 2:
 													makemoney = Number(prompt("请输入存钱金额"));
-													money=money+makemoney;
-													alert("存钱成功");
+													if(typeof makemoney=="number" && !isNaN(makemoney)){
+														money=money+makemoney;
+														alert("存钱成功");
+													}else{
+														alert("请输入数字")
+													};
+													
 													break;
 												case 3:
 													takemoney = Number(prompt("请输入取钱金额"));
-													money=money-takemoney;
-													alert("取钱成功");
+													if(typeof takemoney=="number" && isNaN(takemoney)==false){
+														money=money+makemoney;
+														alert("取钱成功");
+													}else{
+														alert("请输入数字")
+													};
 													break;
 												case 4:  
 													sencondexit = false;

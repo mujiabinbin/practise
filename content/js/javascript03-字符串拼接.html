@@ -43,7 +43,7 @@
 					长长长的字符串`;
 			document.write(str);		   
 		</script> -->
-		<script>
+		<!-- <script>
 			var r = parseInt(prompt("请输入rgb中r的值"));
 			var g = parseInt(prompt("请输入rgb中g的值"));
 			var b = parseInt(prompt("请输入rgb中b的值"));
@@ -51,6 +51,17 @@
 			var a1 = a+1;
 			var bgcolor = `rgba(${r},${g},${b},${a1})`;
 			document.write(`<div style="width: 100px; height: 100px; border-radius: 50%; background-color: ${bgcolor};"></div>`)
+		</script> -->
+		<script>
+			/* var result=isNaN("a"-1);//"a1"-1导致NaN
+			document.write(result); */
+			/* document.write(typeof 123); */
+			var num=12;
+			if(typeof 12=="number" && !isNaN(num)){
+				document.write("数字");
+			}else{
+			    document.write("不是数字");
+			}
 		</script>
 	</body>
 </html>
