@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.brand{
+				width: 200px;
+				height: 100px;
+				background-color: blue;
+				color: white;
+				line-height: 100px;
+				font-size: 40px;
+				display: flex;
+				justify-content: space-around;
+				
+			}
+			.circle{
+				/* width: 200px;
+				height: 200px; */
+				border-radius: 50%;
+				/* border: 1px solid red; */
+				/* opacity: 0.1; */
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div class="brand"></div> -->
+		<!-- <div class="circle" style="background-color: red;"></div> -->
+		<script>
+			//随机车牌
+			/* var database1=["京"] */
+			var database2=[1,2,3,4,5,6,7,8,9,"A","B","C","D"];
+			var carbrand="";
+			for(var i=0;i<5;i++){
+				var index=parseInt(Math.random()*database2.length)
+				carbrand+=database2[index];
+			}
+			document.write(`<div class="brand">京${carbrand}</div>`);
+			//随机圆
+			var color=["red","yellow","blue","black"];
+			var indexcolor=parseInt(Math.random()*color.length);
+			var widthlength=[100,200,300,400];
+			var indexwidthlength=parseInt(Math.random()*widthlength.length);
+			var opacity=Math.random();
+			document.write(`<div class="circle" style="background-color: ${color[indexcolor]};width:${widthlength[indexwidthlength]}px;height:${widthlength[indexwidthlength]}px;opacity:${opacity}"></div>`)
+			
+		</script>
+	</body>
+</html>
