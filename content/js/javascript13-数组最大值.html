@@ -30,7 +30,76 @@
 				arr[arr.length-1-i]=temp;
 			}
 			document.write(arr); */
+			//删除指定位置的数据,删除下标为2的数据
+			/* var arr=[1,2,3,4,5,6]; */
+			/* var index=2; */
+			/* for(var i=2;i<arr.length-1;i++){
+				arr[i]=arr[i+1];
+			};
+			arr.length--;
+			document.write(arr); */
+			//指定位置插入一个数据
+			/* var arr=[1,2,3,4,5,6];
+			var index=2;
+			for(var i=arr.length;i>=index;i--){
+				arr[i]=arr[i-1];
+			};
+			arr[index]=7;
+			document.write(arr); */
+
+			//用数组保存用户名和密码，登陆时验证用户名密码正确
+			/* var user = ["admin1", "admin2", "admin3", "admin4"];
+			var pass = ["1", "2", "3", "4"];
+			for(var k=1;k<=3;k++){
+				var userinput = prompt("请输入用户名");
+				for (var i = 0; i <= user.length - 1; i++) {
+					if (userinput == user[i]) {
+						alert("用户名正确");
+						k=3;
+						for(var j=0;j<=3;j++){
+							var userpass = prompt("请输入密码");
+							if (userpass == pass[i]) {
+								alert("登陆成功");
+								break;
+							} else {
+								alert(`密码错误，您还有${3-j}次机会`);
+							}
+						}
+						break;
+					} else {
+						if (i == user.length - 1) {
+							alert(`用户名不存在，您还有${3-k}次机会`);
+						}
+					}
+				}
+			} */
 			
+			/* var user = ["admin1", "admin2", "admin3", "admin4"];
+			var pass = ["1", "2", "3", "4"];
+			var userinput=prompt("请输入用户名");
+			var userpass=prompt("请输入密码");
+			for(var i=0;i<=user.length-1;i++){
+				if(userinput==user[i] && userpass==pass[i]){
+					alert("登陆成功");
+					break;
+				}else{
+					if(i==user.length-1){
+						alert("用户名或密码错误");
+					}
+				}
+			} */
+
+
+
+
+			//合并两个数组
+			/* var arr1=[1,2,3,4];
+			var arr2=[5,6,7,8]; */
+			/* var arr=arr1+","+arr2; */
+			/* for(var i=0;i<=arr2.length-1;i++){
+				arr1[arr1.length]=arr2[i];
+			}
+			document.write(arr1); */
 		</script>
 	</body>
 </html>
