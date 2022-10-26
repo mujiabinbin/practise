@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			/* <!-- 数据去重5种方法：
+			1 利用嵌套for循环完成对原数组遍历及去重
+			2 对原数字进行排序，设置循环变量j对原数组进行遍历，利用新变量i来记录不重复数据的数量，遍历完后，数组长度减去数组长度-i
+			3 新建一个数组，遍历就数组，如果就数组的数据不在新数组中就把该数据添加到新数组中
+			4 新建一个数组，对原数组进行排序，排序后遍历原数组判断相邻数据是否存在
+			5 去重最终奥义.set(es6) --> */
+			//3
+			var arr=[1,1,2,3,4,4,4,6,5,7,7,6,8,9,6];
+			//3
+			/* var newarr=[];
+			for(var i=0;i<=arr.length-1;i++){
+				if(newarr.indexOf(arr[i])==-1){
+					newarr.push(arr[i]);
+				}
+			}
+			document.write(newarr); */
+			
+			//4 
+			//数组排序，由小到大
+			/* arr.sort(function(num1,num2){
+				return num1-num2;
+			});
+			document.write(arr); */
+			/* var newarr=[arr[0]];
+			for(var i=1;i<arr.length;i++){
+				if(arr[i]!=arr[i-1]){
+					newarr.push(arr[i]);
+				}
+			}
+			document.write(newarr); */
+			//1
+			/* for(var i=0;i<arr.length;i++){
+				for(var j=i;j<arr.length;j++){
+					if(arr[i]==arr[j] && i =!j){
+						arr.splice(j,1);
+						j--;
+					}
+				}
+			} */
+			//2
+			/* arr.sort(function(num1,num2){
+				return num1-num2;
+			});
+			var i=0;
+			for(var j=1;j<arr.length;j++){
+				if(arr[j]!=arr[i]){
+					i++;
+					arr[i]=arr[j];
+				}
+			}
+			arr.splice(i+1); *///后面无参数，表示后面数据全部删除
+			/* arr.length -= arr.length-i-1; */
+			
+			//5
+			/* var newarr=[...new Set(arr)];
+			document.write(newarr); */
+			
+		</script>
+	</body>
+</html>
