@@ -11,7 +11,7 @@
 		成绩数组：【45，12，89，92，53，76，89，61】
 			 1 追加成绩 34，89，90
 			 2 删除第一个数据
-			 3 删除最低分，并在同样的位置添加656 67
+			 3 删除最低分，并在同样的位置添加65 67
 			 4 成绩转化为字符串，以“-”分隔
 			 5 获取第一次和最后一次出现89的下标
 			 6 所有成绩加5分
@@ -20,6 +20,47 @@
 			 9 数组倒叙存放
 			 10 获取除去第一个和最后一个的成绩
 			 */
+			var result=[45,12,89,92,53,76,89,61];
+			result.push(34,89,90);
+			/* document.write(result); */
+			result.splice(0,1);
+			/* document.write(result); */
+			var lowest=result[0];
+			for(var i=1;i<result.length;i++){
+				if(lowest>result[i]){
+					lowest=result[i];
+				}
+			}
+			result.splice(result.indexOf(lowest),1,65,57);
+			/* document.write(result); */
+			var strresult=result.join("-");
+			/* document.write(strresult); */
+			/* document.write(result.indexOf(89),result.lastIndexOf(89)); */
+			for(var j=0;j<=result.length-1;j++){
+				result[j]+=5;
+			}
+			/* document.write(result); */
+			var unquantified=[];
+			for(var k=0;k<=result.length-1;k++){
+				if(result[k]<60){
+					unquantified.push(result[k]);
+				}
+			}
+			/* document.write(unquantified); */
+			for(var l=0;l<=result.length-1;l++){
+				if(result[l]==94){
+					result.splice(result.indexOf(result[l]),1,67,87,90);
+				}
+			}
+			/* document.write(result); */
+			/* document.write(result.reverse()); */
+			/* result.pop();
+			result.shift(); */
+			var result1= result.slice(1,result.length-1);
+			document.write(result1);
+			
+			
+			
 		</script>
 	</body>
 </html>
