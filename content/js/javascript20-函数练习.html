@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			var arr = ["顺丰", "韵达", "圆通", "顺丰", "韵达", "京东", "京东", "韵达", "顺丰", "京东"];
+			/* 
+			 1 获取京东快递第一次和最后一次出现的下标
+			 2 数组中数据进行输出，中间以“-”区分
+			 3 获取最后四个快递，添加进新数组中
+			 4 删除前四个快递，并追加一个京东，三个顺丰
+			 5 所有快递倒叙存放
+			 6 删除第一个和最后一个快递
+			 7 求出快递数量最多的公司并输出数量
+			 */
+			//1
+			//document.write(arr.indexOf("京东"),arr.lastIndexOf("京东"));
+			//2
+			//document.write(arr.join("-"));
+			//3
+			/* var newarr=[];
+			for(var i=arr.length-1;i>=arr.length-4;i--){
+				newarr.unshift(arr[i]);
+			}
+			document.write(newarr); */
+			//4
+			/* arr.shift(0,1,2,3);
+			arr.push("京东","顺丰","顺丰","顺丰");
+			document.write(arr); */
+			//5
+			//document.write(arr.reverse());
+			//6
+			/* arr.shift();
+			arr.pop();
+			document.write(arr); */
+			//7
+			/* var jingdong = 0;
+			var shunfeng = 0;
+			var yunda = 0;
+			var yuantong = 0;
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] == "京东") {
+					jingdong++;
+				} else if (arr[i] == "顺丰") {
+					shunfeng++;
+				} else if (arr[i] == "圆通") {
+					yuantong++;
+				} else if (arr[i] == "韵达") {
+					yunda++;
+				}
+			}
+			var a = [
+				["京东", jingdong],
+				["顺丰", shunfeng],
+				["韵达", yunda],
+				["圆通", yuantong]
+			];
+
+			var max = a[0];
+
+			var maxspare = [];
+			for (var j = 1; j < a.length; j++) {
+				if (a[j][1] > max[1]) {
+
+					var max = a[j];
+
+				} else if (a[j][1] == max[1]) {
+					maxspare.push(a[j]);
+				}
+			}
+			document.write(max, maxspare);
+ */
+			/* 
+			 函数：
+			 1 传入一个数字，判断该数是否是水仙花数
+			 2 实现川a车牌号并输出
+			 3 传入一个数组，判断该数组是否都为数字组成
+			 4 传入一个全数字数组，判断该数组是否为回文数组
+			 5 传入一个数据，判断该数据在数组中出现的次数并返回
+			 */
+		</script>
+	</body>
+</html>
