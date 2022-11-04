@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			/* 
+			1 登陆
+			2 查看所有商品
+			3 查看购物车
+			4 添加商品到购物车
+			5 结账
+			6 对商品进行修改（管理员）
+			
+			一 商品信息：编号 名称 价格 库存 描述 销量
+			 */
+			var goods = [
+				[001, "milk", 20, 100, "fresh milk for you", 0],
+				[002, "bread", 10, 50, "bakon bread for family", 0],
+				[003, "susi", 88, 20, "from japan", 0],
+				[004, "apple", 5, 300, "import form usa", 0]
+			];
+			var user = 
+				["user01", "user01"];
+			var admin = ["admin", "admin"];
+		
+			var charts = [];
+				//[001,"milk",20,2]
+			var TurnOn=true;
+			
+			
+				var menu1=Number(prompt("1 for userlogin,2 for admin login,3 for exit"));
+				switch(menu1){
+					case 1:
+					userlogin()
+					break;
+					case 2:
+					adminlogin()
+					break;
+					case 3:
+					alert("thanks for visiting,bye!");
+					TurnOn=false;
+					break;
+				}
+			
+			while(TurnOn){
+				var menu2=Number(prompt("1 for shopping mall 2 for chart  3 for exit"));
+				switch(menu2){
+					case 1:
+					shoppingmall();
+					break;
+					case 2:
+					shoppingcharts();
+					break;
+					case 3:
+					TurnOn=false;
+					break;
+					
+				}
+			}	
+			
+			function userlogin(){
+				var userinput=prompt("please input your username");
+				var passinput=prompt("please input your password");
+					if(userinput==user[0] && passinput==user[1]){
+						alert("login successful");
+					}else{
+							alert("wrong username or password");
+							TurnOn=false;
+								
+				}
+			}
+			function adminlogin(){
+				var admininput=prompt("please input your adminname");
+				var passinput=prompt("please input your password");
+					if(admininput==admin[0] && passinput==admin[1]){
+						alert("login successful");
+					}else{
+							alert("wrong adminname or password");
+							TurnOn=false;
+								
+				}
+			}
+			function shoppingmall(){
+				var str="code  name  price  storage  description sale \n";
+				for(var i=0;i<goods.length;i++){
+					str += goods[i].join("  ")+"\n";
+				}  
+				var code= prompt(`${str} please input the code you want to buy`);
+				var num=Number(prompt("please input how much do you want"));
+				alert("add to chart succsessful");
+				for(var j=0;j<goods.length;j++){
+					if(code==goods[j][0]){
+						charts.push([goods[j][0],goods[j][1],goods[j][2],num]);
+					}
+				}	
+			}
+			function shoppingcharts(){
+				var str="code  name  price  number \n";
+				var price=0;
+				for(var i=0;i<charts.length;i++){
+					str+=charts[i].join("  ")+"\n";
+					price+=charts[i][2]*charts[i][3];
+				}
+				var check=Number(prompt(`${str} ${price} please input your money`));
+				if(check>=price){
+					alert("check successful");
+					for(var j=0;j<charts.length;j++){
+						for(var k=0;k<goods.length;k++){
+							if(goods[k][0]==charts[j][0]){
+								goods[k][3]-=charts[j][3];
+								goods[k][5]+=charts[j][3];
+							}
+						}
+						
+					}
+					charts=[];
+				}else{
+					alert("money not enough");
+				}
+			}
+		</script>
+	</body>
+</html>

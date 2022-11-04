@@ -44,7 +44,23 @@
 			//获取数组中某数据在数组中第一次/最后一次出现的下标
 			/* var arr=[1,2,3,3,5];
 			document.write(arr.lastIndexOf(3)); */
-			
+			//排序
+			/* var arr=[1,2,"a","s","b",5,4,6];
+			document.write(arr.sort()); */
+			var arr=[777,654,21,9998,8,76];
+			/* function paixu(num1,num2){
+				return num1-num2;
+			}
+			arr.sort(paixu);
+			document.write(arr); */
+			/* arr.sort(function(num1,num2){
+				return num1-num2;
+			}) */
+			//随机打乱顺序
+			arr.sort(function(num1,num2){
+				return Math.random()-0.5
+			})
+			document.write(arr);
 			
 		</script>
 	</body>
