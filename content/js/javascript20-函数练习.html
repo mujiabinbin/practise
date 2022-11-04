@@ -3,11 +3,28 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<style>
+			/* body{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.brand{
+				width: 200px;
+				height: 100px;
+				align-items: center;
+				justify-content: space-evenly;
+				background-color: blue;
+				color: white;
+				font-size: 30px;
+				line-height: 100px;
+			} */
+		</style>
 	</head>
 	<body>
-
+		<!-- <div class="brand">川</div> -->
 		<script>
-			var arr = ["顺丰", "韵达", "圆通", "顺丰", "韵达", "京东", "京东", "韵达", "顺丰", "京东"];
+			/* var arr = ["顺丰", "韵达", "圆通", "顺丰", "韵达", "京东", "京东", "韵达", "顺丰", "京东"]; */
 			/* 
 			 1 获取京东快递第一次和最后一次出现的下标
 			 2 数组中数据进行输出，中间以“-”区分
@@ -27,6 +44,15 @@
 				newarr.unshift(arr[i]);
 			}
 			document.write(newarr); */
+			//3-2
+			//var newarr=arr.slice(arr.length-4,arr.length);
+			//var newarr=arr.slice(-4);//支持开始下标为负数，即开始从倒数第n个开始,如果截取数组结尾是原数组最后一个数据，那么结尾下标可以不写
+			/* newarr.push("京东");
+			newarr.push("顺丰");
+			newarr.push("顺丰");
+			newarr.push("顺丰"); */
+			
+	
 			//4
 			/* arr.shift(0,1,2,3);
 			arr.push("京东","顺丰","顺丰","顺丰");
@@ -74,14 +100,94 @@
 			}
 			document.write(max, maxspare);
  */
-			/* 
+			/*    
 			 函数：
 			 1 传入一个数字，判断该数是否是水仙花数
 			 2 实现川a车牌号并输出
-			 3 传入一个数组，判断该数组是否都为数字组成
+			 3 传入一个数组，判断该数组是否都为数字 组成
 			 4 传入一个全数字数组，判断该数组是否为回文数组
 			 5 传入一个数据，判断该数据在数组中出现的次数并返回
 			 */
+			//1
+			/* var num=Number(prompt("请输入数字"));
+			function flower(a){
+				var count=0;//获取数字的位数
+				while(a!=0){
+					count++;
+					a=parseint(a/10);
+				}
+				var ge=a%10;
+				var shi=(a-ge)/10%10;
+				var bai=(a-shi*10-ge)/100%10;
+				if(ge*ge*ge+shi*shi*shi+bai*bai*bai==a){
+					document.write(`${a}是水仙花数`);
+				}else{
+					document.write(`${a}不是水仙花数`);
+				}
+			}
+			flower(num); */
+			//2 
+			/* var brandinput=prompt("请输入川A"); */
+			/* var index=[0,1,2,3,4,5,6,7,8,9];
+			var brand=[];
+			function carbrand(){
+				for(var i=0;i<6;i++){
+					var j=parseInt(Math.random()*index.length)
+					brand[i]=index[j];
+				}
+			}
+			carbrand();
+			var carbrand= brand.join("");
+			document.write(`<div class="brand">川A ${carbrand} </div>`); */
+			//3
+
+			/* var arr = [12,4,88,0,21,6,4,4,6,88];
+			
+			function shuzi(num){
+				for(var i=0;i<num.length;i++){
+					if(typeof num[i] != "number" || isNaN(num[i])){
+						document.write(`${num} is not number`);
+						return;
+					}else{
+						if(i==num.length-1){
+							document.write(`${num} is number`);
+						}
+					}
+				}
+			}
+			shuzi(arr);
+ */
+			
+				//4
+				/* var arr=[1,2,3,4,3,2,1];
+				function shuzu(num){
+					newarr=arr.slice(0);//复制数组
+					for(var i=0;i<num.length;i++){
+						if(arr[i]!=arr.reverse()[i]){
+							document.write(`${num}不是一个回文数组`);
+							break;
+						}else{
+							if(i==num.length-1){
+								document.write(`${num}是一个回文数组`);
+							}
+						}
+					}
+				}
+				shuzu(arr); */
+				//5
+				/* var userinput=Number(prompt("请输入数字"));
+				var count=0;
+				function total(num){
+					for(var i=0;i<arr.length;i++){
+						if(num==arr[i]){
+							count++;
+						}
+					}
+					return count;
+				}
+				total(userinput);
+				document.write(`${userinput}在${arr}中出现${count}次`); */
+				
 		</script>
 	</body>
 </html>

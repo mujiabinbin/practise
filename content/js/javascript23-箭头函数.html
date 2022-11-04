@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			/* demo()//调用在定义前后，都可用
+			
+			function demo(){
+				document.write("funtion demo");
+			}
+			
+			jiantoudemo();//调用在定义前，不可用
+			var jiantoudemo=()=>{
+				document.write("jiantoudemo");
+			}
+			jiantoudemo();//调用在定义后，可用 */
+			/* function add(a,b){
+				return a+b;
+			}
+			var arrow=(a,b) => a+b;
+			var arrow=a=>a+5; */
+			var arr=[1,2,4,3,8,3];
+			/* arr.sort(function(num1,num2){
+				return num1-num2;
+			}); */
+			arr.sort((num1,num2)=>num1-num2);
+			document.write(arr);
+			
+		</script>
+	</body>
+</html>
