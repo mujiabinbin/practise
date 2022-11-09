@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div onclick="demo()">点击事件</div>
+		<div id="click">点击事件2</div>
+		
+		<script>
+			
+			/* function demo(){
+				alert("函数实现onclick");
+			} */
+			var click=document.querySelector("#click"); 
+			click.onclick=function(){
+				alert("完全js实现点击事件");
+			}
+		</script>
+		
+	</body>
+</html>
