@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>caculator</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				
+				display: flex;
+				justify-content: center;
+				
+			}
+			.container{
+				/* border: 1px solid red; */
+				width: 400px;
+				height: 600px;
+			}
+			.input{
+				
+				width: 100%;
+				height: 100px;
+				background-color: blue;
+			}
+			.keyboard{
+				width: 100%;
+				height: 500px;
+				background-color: black;
+			
+			}
+			input{
+				border: 0px;
+				width: 100%;
+				height: 100px;
+				font-size: 48px;
+				background-color: blue;
+				text-align: right;
+				padding-right: 10px;
+				box-sizing: border-box;
+				color: white;
+				/* margin-right: 5px; */
+			}
+			ul{
+				width: 100%;
+				height: 100px;
+				/* border: 1px solid red; */
+				list-style: none;
+				display: flex;
+			}
+			li{
+				display: inline-block;
+				font-size: 38px;
+				font-weight: bold;
+				background-color: black;
+				width: 95px;
+				/* border: 1px solid blue; */
+				box-sizing: border-box;
+				color: white;
+				justify-content: space-between;
+				height: 100px;
+				align-items: stretch;
+				line-height: 100px;
+				margin-left: 5px;
+				text-align: center;
+				text-decoration: none;
+				border-radius: 5px;
+			}
+			li:hover{
+				background-color: gray;
+			}
+			
+		</style>
+	</head>
+	<body>
+	<div class="container">
+		<div class="input">
+			<input type="text" value="">
+		</div>
+		<div class="keyboard">
+			<ul>
+				<li onclick="acclick(``)">AC</li>
+				<li onclick="minusclick()">+/-</li>
+				<li onclick="nodeclick(`%`)">%</li>
+				<li onclick="nodeclick(`/`)">÷</li>
+			</ul>
+			<ul>
+				<li onclick="numclick(`7`)">7</li>
+				<li onclick="numclick(`8`)">8</li>
+				<li onclick="numclick(`9`)">9</li>
+				<li onclick="nodeclick(`*`)">×</li>
+			</ul>
+			<ul>
+				<li onclick="numclick(`4`)">4</li>
+				<li onclick="numclick(`5`)">5</li>
+				<li onclick="numclick(`6`)">6</li>
+				<li onclick="nodeclick(`-`)">-</li>
+			</ul>
+			<ul>
+				<li onclick="numclick(`1`)">1</li>
+				<li onclick="numclick(`2`)">2</li>
+				<li onclick="numclick(`3`)">3</li>
+				<li onclick="nodeclick(`+`)">+</li>
+			</ul>
+			<ul>
+				<li onclick="numclick(`0`)">0</li>
+				<li onclick="numclick(`.`)">.</li>
+				<li onclick="backclick()"><-</li>
+				<li onclick="evolclick()">=</li>
+				
+			</ul>
+		</div>
+	</div>	
+		
+		<script>
+			function numclick(num){
+				var input=document.querySelector("input");
+				input.value+=num;
+				
+			} 
+			function acclick(){
+				var input=document.querySelector("input");
+				input.value="";
+			}
+			function nodeclick(node){
+				var input=document.querySelector("input");
+				input.value+=node;
+				
+			}
+			function evolclick(){
+				var input=document.querySelector("input");
+				var text=input.value;
+				input.value = eval(text);
+				
+			}
+			function backclick(){
+				var input=document.querySelector("input");
+				var text=input.value;
+				var backinput=text.substr(0,text.length-1);
+				input.value=backinput;
+			}
+			function minusclick(){
+				var input=document.querySelector("input");
+				var text=input.value;
+				input.value=-text;
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
