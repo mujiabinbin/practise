@@ -6,10 +6,10 @@
 	</head>
 	<body>
 		<input type="text" id="demo" value="123">
-		<button id="buttondemo">button</button>
+		<button id="buttondemo">变颜色</button>
 		<div>
 			<p>context1</p>
-			<p class="p2demo" style="color: red;">context2</p>
+			<p class="p2demo">context2</p>
 		</div>
 		<div>
 			<p>context3</p>
@@ -46,9 +46,28 @@
 			console.log(tag[1]); */
 			/* var p1=document.querySelectorAll("div");
 			console.log(p1[0]); */
-			var p1=document.querySelector("div p");
-			console.log(p1);
+			/* var p1=document.querySelector("div p");
+			console.log(p1); */
+			/* var input=document.querySelector("input");
+			var text=input.value;
 			
+			input.value=eval(text+text);
+			document.write(input.value); */
+			
+			//var s="2+2";
+			/* var s="var x=10;var y=x+2;alert(y);"
+			var s1=eval(s);
+			
+			document.write(s1); */
+			/* var str="i love you ";
+			var str1=str.substr(3,5);
+			document.write(str1); */
+			
+			/* var buttonclick=document.querySelector("#buttondemo");
+			buttonclick.onclick=function(){
+				var p=document.querySelector("div p");
+				p.innerHTML="context11";
+			} */
 			
 		</script>
 	</body>
