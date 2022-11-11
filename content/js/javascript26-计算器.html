@@ -81,32 +81,32 @@
 		</div>
 		<div class="keyboard">
 			<ul>
-				<li onclick="acclick(``)">AC</li>
+				<li onclick="acclick()">AC</li>
 				<li onclick="minusclick()">+/-</li>
-				<li onclick="numclick(`%`)">%</li>
-				<li onclick="numclick(`/`)">÷</li>
+				<li onclick="nodeclick(`%`)">%</li>
+				<li onclick="nodeclick(`/`)">÷</li>
 			</ul>
 			<ul>
 				<li onclick="numclick(`7`)">7</li>
 				<li onclick="numclick(`8`)">8</li>
 				<li onclick="numclick(`9`)">9</li>
-				<li onclick="numclick(`*`)">×</li>
+				<li onclick="nodeclick(`*`)">×</li>
 			</ul>
 			<ul>
 				<li onclick="numclick(`4`)">4</li>
 				<li onclick="numclick(`5`)">5</li>
 				<li onclick="numclick(`6`)">6</li>
-				<li onclick="numclick(`-`)">-</li>
+				<li onclick="nodeclick(`-`)">-</li>
 			</ul>
 			<ul>
 				<li onclick="numclick(`1`)">1</li>
 				<li onclick="numclick(`2`)">2</li>
 				<li onclick="numclick(`3`)">3</li>
-				<li onclick="numclick(`+`)">+</li>
+				<li onclick="nodeclick(`+`)">+</li>
 			</ul>
 			<ul>
 				<li onclick="numclick(`0`)">0</li>
-				<li onclick="numclick(`.`)">.</li>
+				<li onclick="pointclick(`.`)">.</li>
 				<li onclick="backclick()"><-</li>
 				<li onclick="evolclick()">=</li>
 				
@@ -115,6 +115,7 @@
 	</div>	
 		
 		<script>
+			var point=true;
 			function numclick(num){
 				var input=document.querySelector("input");
 				input.value+=num;
@@ -124,10 +125,15 @@
 				var input=document.querySelector("input");
 				input.value="";
 			}
-			/* function nodeclick(node){
+			function nodeclick(node){
 				var input=document.querySelector("input");
-				input.value+=node; */
-				
+				var last=input.value.substr(length-1);
+				if(isNaN(last)==false){
+					input.value+=node;
+					point=true;
+				}else{
+				alert("invalad input");
+				}
 			}
 			function evolclick(){
 				var input=document.querySelector("input");
@@ -145,6 +151,13 @@
 				var input=document.querySelector("input");
 				var text=input.value;
 				input.value=-text;
+			}
+			function pointclick(pointinput){
+				var input=document.querySelector("input");
+				if(point==true){
+					input.value+=pointinput;
+					point=false;
+				}
 			}
 			
 			
