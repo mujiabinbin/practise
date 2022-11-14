@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+			}
+			.btn{
+				width: 70px;
+				height: 50px;
+			}
+			img{
+				width: 200px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			input{
+				width: 100px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <img src="id1.jpg" alt="">
+		<a href="http://www.baidu.com"></a> -->
+		<div class="container">
+			<img src="../../img/jq22/2022-06-28-01-34-38.png" alt="">
+			<!-- <img src="../../img/jq22/2022-07-04-01-21-01.png" alt="">
+			<img src="../../img/jq22/2022-07-14-13-38-32.png" alt="">
+			<img src="../../img/jq22/2022-07-15-00-17-46.png" alt="">
+			<img src="../../img/jq22/2022-07-15-00-33-07.png" alt=""> -->
+			
+		</div>
+		<button class="btn" onclick="btnclick()">切换图片</button>
+		<input class="input" type=""> <button class="btn" onclick="changebtn()" id="changebtn">更改图片</button>
+		<script>
+			var pic=["../../img/jq22/2022-07-04-01-21-01.png",
+			"../../img/jq22/2022-07-04-01-21-01.png",
+			"../../img/jq22/2022-07-14-13-38-32.png",
+			"../../img/jq22/2022-07-15-00-17-46.png",
+			"../../img/jq22/2022-07-15-00-33-07.png"];
+			
+			function btnclick(){
+				var i=parseInt(Math.random()*pic.length);
+				var img=document.querySelector("img");
+				img.setAttribute("src",pic[i]);
+				
+			}
+			function changebtn(){
+				var input=document.querySelector("input");
+				var newsrc=input.value;
+				var img=document.querySelector("img");
+				img.setAttribute("src",newsrc);
+				
+				
+			}
+			
+			/* var img=document.queryselector("img");
+			var src=img.getAttribute("src"); */
+			/* var a=document.querySelector("a");
+			var href= a.getAttribute("href");
+			document.write(href); */
+			/* var a=document.querySelector("a");
+			var href=a.setAttribute("href","http://www.sohu.com"); */
+			//点击按钮，切换随机图片
+		</script>
+	</body>
+</html>
