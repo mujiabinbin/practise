@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 100%;
+				border: 1px solid red;
+			}
+			/* .newAttribute{
+				background-color: red;
+				color: aqua;
+				
+			} */
+			img{
+				border: 1px solid red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- <div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div> -->
+		<input type="text">
+		<button onclick="addpic()">添加图片</button>
+		<button onclick="deletepic()">删除图片</button>
+		<button onclick="deleteall()">删除全部图片</button>
+		<div>图片</div>
+		
+		<script>
+			/* var newdiv=document.createElement("div");
+			newdiv.innerText=("this is a new div");
+			newdiv.setAttribute("class","newAttribute");
+			var body=document.body;
+			body.appendChild(newdiv);
+			var p=document.createElement("p");
+			p.innerText=("to be deleat");
+			var div=document.querySelector("div");
+			div.appendChild(p);
+			var farther=document.querySelector("div");
+			var p=document.querySelector("div p");
+			farther.removeChild(p); */
+			/* var div=document.querySelectorAll("div");
+			var body=document.body;
+			for(var i=0;i<div.length;i++){
+				body.removeChild(div[i]);
+			} */
+			//点击按钮 1 添加一张图片 2 删除一张图片 3 删除所有图片 
+			
+			
+			function addpic(){
+				var input=document.querySelector("input");
+				var value=input.value;
+				var pic=document.createElement("img");
+				var div= document.querySelector("div");
+				div.appendChild(pic);
+				var addimg=document.querySelectorAll("img");
+				addimg[addimg.length-1].setAttribute("src",value);
+			}
+			
+			function deletepic(){
+				var div=document.querySelector("div");
+				var img=document.querySelectorAll("img");
+				div.removeChild(img[img.length-1]);
+			}
+			
+			function deleteall(){
+				var div=document.querySelector("div");
+				var img=document.querySelectorAll("img");
+				for(var i=0;i<img.length;i++){
+					div.removeChild(img[i]);
+				}
+			}
+			
+		</script>
+	</body>
+</html>
