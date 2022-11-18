@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<title></title>
 		<style>
-			/* div{
-				width: 100%;
+			div{
+				/* width: 100%; */
 				border: 1px solid red;
-			} */
+			}
 			/* .newAttribute{
 				background-color: red;
 				color: aqua;
@@ -33,9 +33,12 @@
 			<p>p label</p>
 		</div> -->
 		<div>
-			<button onclick="minus(this)">-</button>
+			<!-- <button onclick="minus(this)">-</button>
 			<input type="text" value="1">
-			<button onclick="add(this)">+</button>
+			<button onclick="add(this)">+</button> -->
+			<input type="text">
+			<input type="text">
+			<input type="text">
 		</div>
 		
 		
@@ -98,10 +101,23 @@
 				var input=btn.nextElementSibling;
 				input.value--;
 			} */
-			function add(btn){
+			/* function add(btn){
 				var father=btn.parentElement;
 				console.log(father);
-			}
+			} */
+			/* var div=document.querySelector("div");
+			var btn=div.children;
+			console.log(btn); */
+			var div=document.querySelector("div");
+			/* var divwidth=div.firstElementChild;
+			var divheight=divwidth.nextElementSibling;
+			var divbgc=divheight.nextElementSibling; */
+			div.style.width="200px";
+			div.style.height="200px";
+			div.style.backgroundColor="blue";
+			var stylediv= getComputedStyle(div,null);
+			
+			console.log(stylediv.width,stylediv.height,stylediv.backgroundColor);
 			
 		</script>
 	</body>
