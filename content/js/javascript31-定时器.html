@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			button{
+			
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <button onclick="pause()">删除定时器</button> -->
+		<button onclick="play()">play</button>
+		<button onclick="pause()">pause</button>
+		<img src="../../img/lunbo/banner1.jpeg" alt="">
+		
+		<script type="text/javascript">
+			var img=document.querySelector("img");
+			
+			/* for(var i=0;i<4;i++){
+				setInterval(function(){
+					img.setAttribute(`"src","../../img/lunbo/banner${i+1}.jpeg"`)
+				},2000);
+			} */
+			var lunbo;
+			function play(){
+				var i=1;
+				lunbo= setInterval(function(){
+					img.setAttribute("src",`../../img/lunbo/banner${i}.jpeg`)
+					i++;
+					if(i>4){
+						i=1;
+					}
+				},2000);
+				return lunbo;
+			}
+			
+			function pause(){
+				clearInterval(lunbo);
+			}
+			
+			/* var timeout= setTimeout(function() {
+				document.write("定时器");
+			}, 2000);
+			
+			
+			function pause() {
+				clearTimeout(timeout);
+			} */
+			/* var timeout=setInterval(function(){
+				console.log("间隔定时器");
+			},2000);
+			
+			function pause(){
+				clearInterval(timeout);
+			} */
+			
+		</script>
+	</body>
+</html>

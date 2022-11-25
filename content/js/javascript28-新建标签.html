@@ -7,6 +7,7 @@
 			div{
 				/* width: 100%; */
 				border: 1px solid red;
+				border-radius: 50%;
 			}
 			/* .newAttribute{
 				background-color: red;
@@ -16,6 +17,9 @@
 			/* img{
 				border: 1px solid red;
 			} */
+			.bgcolor{
+				background-color: red;
+			}
 			
 		</style>
 	</head>
@@ -32,17 +36,36 @@
 		<!-- <div>
 			<p>p label</p>
 		</div> -->
-		<div>
+		width:<input type="text" id="width">
+		height:<input type="text" id="height">
+		<!-- background-color:<input type="text" id="bgcolor"> -->
+		<!-- border-radius: <input type="text" id="borderRadius"> -->
+		<button onclick="btnclick()">set</button>
+		<button onclick="transition()">start/end transition</button>
+		<div class="bgcolor">
 			<!-- <button onclick="minus(this)">-</button>
 			<input type="text" value="1">
 			<button onclick="add(this)">+</button> -->
-			<input type="text">
-			<input type="text">
-			<input type="text">
 		</div>
 		
 		
 		<script>
+			function btnclick(){
+				var div=document.querySelector("div");
+				div.style.width=document.querySelector("#width").value;
+				div.style.height=document.querySelector("#height").value;
+				/* div.style.backgroundColor=document.querySelector("#bgcolor").value; */
+			}
+			/* function transition(){
+				var div=document.querySelector("div");
+				var classname=div.getAttribute("class");
+				console.log(classname);
+				if(classname=="bgcolor"){
+					classname.setAttribute("class","");
+				}else{
+					classname.setAttribute("class","bgcolor");
+				}
+			} */
 			/* var newdiv=document.createElement("div");
 			newdiv.innerText=("this is a new div");
 			newdiv.setAttribute("class","newAttribute");
@@ -108,16 +131,9 @@
 			/* var div=document.querySelector("div");
 			var btn=div.children;
 			console.log(btn); */
-			var div=document.querySelector("div");
-			/* var divwidth=div.firstElementChild;
-			var divheight=divwidth.nextElementSibling;
-			var divbgc=divheight.nextElementSibling; */
-			div.style.width="200px";
-			div.style.height="200px";
-			div.style.backgroundColor="blue";
+			/* var div=document.querySelector("div");
 			var stylediv= getComputedStyle(div,null);
-			
-			console.log(stylediv.width,stylediv.height,stylediv.backgroundColor);
+			console.log(stylediv.width,stylediv.height,stylediv.backgroundColor); */
 			
 		</script>
 	</body>
