@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+ 
+			div {
+				/* border: 1px solid red; */
+			}
+
+			.container {
+				width: 500px;
+				height: 500px;
+				border: 1px solid aqua;
+				margin: 50px auto;
+			}
+
+			.header {
+				width: 100%;
+				height: 50px;
+				background-color: aqua;
+				display: flex;
+				justify-content: center;
+				line-height: 50px;
+				color: grey;
+				font-size: 26px;
+			}
+
+			.input {
+				width: 100%;
+				height: 400px;
+				/* display: flex; */
+				/* justify-content: center; */
+				/* line-height: 400px; */
+			}
+
+			.username {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-top: 100px;
+
+
+			}
+
+			.password {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-top: 50px;
+			}
+
+			input {
+				width: 300px;
+				height: 50px;
+				color: grey;
+				font-size: 20px;
+				/* border-radius: 5px; */
+				border: 1px solid grey;
+				outline: 1px solid grey;
+				display: inline-block;
+			}
+
+			.btn {
+				width: 100%;
+				height: 50px;
+				/* background-color: aqua; */
+				display: flex;
+				justify-content: center;
+				line-height: 50px;
+			}
+
+			button {
+				width: 200px;
+				border-radius: 10%;
+				background-color: aqua;
+				font-size: 20px;
+				color: grey;
+			}
+
+			.check {
+				width: 100%;
+				margin-left: 100px;
+			}
+
+			p {
+				font-size: 14px;
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">注册</div>
+			<div class="input">
+				<div class="username">
+					<input onfocus="namecheck()" onblur="namecheckover()" onkeyup="namekeyup()" type="text"
+						value="请输入用户名">
+				</div>
+				<div class="check">
+					<p>4-10个中文，英文及数字组成；不可包含符号等特殊字符</p>
+				</div>
+
+				<div class="password">
+					<input id="pass" onfocus="passcheck()" onblur="passcheckover()" onkeyup="passkeyup()" type="text"
+						value="请输入密码">
+				</div>
+				<div class="check">
+					<p id="passcheck">密码6-16个英文字母，数字及大写字母组成</p>
+				</div>
+			</div>
+			<div class="btn">
+				<button>注册</button>
+			</div>
+		</div>
+
+		<script>
+			function namecheck() {
+				var usernameinput = document.querySelector("input");
+				if (usernameinput.value == "请输入用户名") {
+					usernameinput.value = "";
+					/* usernameinput.style.backgroundColor = "aqua"; */
+					usernameinput.style.border = "2px solid aqua";
+					usernameinput.style.outline = "2px solid aqua";
+				} else if (usernameinput.value.length <= 10 || usernameinput.value.length > 4) {
+					usernameinput.style.border = "2px solid aqua";
+					usernameinput.style.outline = "2px solid aqua";
+				}
+
+			}
+
+			function namecheckover() {
+				var usernameinput = document.querySelector("input");
+				/* var userinputvalue=usernameinput.value; */
+				var p = document.querySelector("p");
+				if (usernameinput.value == "") {
+					usernameinput.value = "请输入用户名";
+					usernameinput.style.backgroundColor = "white";
+					usernameinput.style.border = "1px solid grey";
+					usernameinput.style.outline = "1px solid grey";
+
+				} else if (usernameinput.value.length > 10 || usernameinput.value.length < 4) {
+					p.innerText = "长度不符合要求，4-10位中文，英文或数字";
+					p.style.color = "red";
+					/* usernameinput.style.backgroundColor="red"; */
+					usernameinput.style.border = "1px solid red";
+					usernameinput.style.outline = "1px solid red";
+				} else {
+					var char = 0;
+					for (var i = 0; i < usernameinput.value.length; i++) {
+						if (usernameinput.value.charCodeAt(i) < 48) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 57 && usernameinput.value.charCodeAt(i) < 65) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 90 && usernameinput.value.charCodeAt(i) < 97) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 122) {
+							char++
+							break;
+						}
+
+					}
+					if (char > 0) {
+						p.innerText = "用户名不能包含特殊字符";
+						p.style.color = "red";
+					} else {
+						usernameinput.style.border = "1px solid grey";
+						usernameinput.style.outline = "1px solid grey";
+					}
+
+				}
+			}
+
+			function namekeyup() {
+				var usernameinput = document.querySelector("input");
+				var p = document.querySelector("p");
+				if (usernameinput.value.length > 10) {
+					p.innerText = "长度不符合要求，4-10位中文，英文或数字";
+					p.style.color = "red";
+					usernameinput.style.backgroundColor = "pink";
+					usernameinput.style.border = "1px solid red";
+					usernameinput.style.outline = "1px solid red";
+				} else if (usernameinput.value.length <= 10) {
+					var char = 0;
+					for (var i = 0; i < usernameinput.value.length; i++) {
+						if (usernameinput.value.charCodeAt(i) < 48) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 57 && usernameinput.value.charCodeAt(i) < 65) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 90 && usernameinput.value.charCodeAt(i) < 97) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 122) {
+							char++
+							break;
+						}
+
+					}
+					if (char > 0) {
+						p.innerText = "用户名不能包含特殊字符";
+						p.style.color = "red";
+					} else {
+						p.innerText = "4-10个中文，英文及数字组成；不可包含符号等特殊字符";
+						p.style.color = "black";
+						usernameinput.style.backgroundColor = "white";
+						usernameinput.style.border = "1px solid aqua";
+						usernameinput.style.outline = "1px solid aqua";
+					}
+
+				}
+			}
+
+			function passcheck() {
+				var passinput = document.querySelector("#pass");
+				if (passinput.value == "请输入密码") {
+					passinput.value = "";
+					/* usernameinput.style.backgroundColor = "aqua"; */
+					passinput.style.border = "2px solid aqua";
+					passinput.style.outline = "2px solid aqua";
+				} else if (passinput.value.length <= 16 || usernameinput.value.length > 4) {
+					passinput.style.border = "2px solid aqua";
+					passinput.style.outline = "2px solid aqua";
+				}
+
+			}
+
+			function passcheckover() {
+				var passinput = document.querySelector("#pass");
+				/* var userinputvalue=usernameinput.value; */
+				var p = document.querySelector("#passcheck");
+				if (passinput.value == "") {
+					passinput.value = "请输入密码";
+					passinput.style.backgroundColor = "white";
+					passinput.style.border = "1px solid grey";
+					passinput.style.outline = "1px solid grey";
+
+				} else if (passinput.value.length > 16 || passinput.value.length < 4) {
+					p.innerText = "密码长度不符合要求：4-16位，必须包含大小写字母及数字";
+					p.style.color = "red";
+					/* usernameinput.style.backgroundColor="red"; */
+					passinput.style.border = "1px solid red";
+					passinput.style.outline = "1px solid red";
+				} else {
+					var num = 0;
+					var capchar = 0;
+					var char = 0;
+					for (var i = 0; i < passinput.value.length; i++) {
+						var passchar = passinput.value.charCodeAt(i);
+						if (passchar >= 48 && passchar <= 57) {
+							num++;
+						} else if (passchar >= 97 && passchar <= 122) {
+							char++;
+						} else if (passchar >= 65 && passchar <= 90) {
+							capchar++;
+						}
+					}
+					if (num == 0) {
+						p.innerText = "密码必须包含数字";
+						p.style.color = "red";
+					} else if (capchar == 0) {
+						p.innerText = "密码必须包含大写字母";
+						p.style.color = "red";
+					} else if (char == 0) {
+						p.innerText = "密码必须包含小写字母";
+						p.style.color = "red";
+					} else {
+						passinput.style.border = "1px solid grey";
+						passinput.style.outline = "1px solid grey";
+					}
+
+				}
+			}
+
+			function passkeyup() {
+				var passinput = document.querySelector("#pass");
+				var p = document.querySelector("#passcheck");
+				if (passinput.value.length > 16) {
+					p.innerText = "密码长度不符合要求：4-16位，必须包含大小写字母及数字";
+					p.style.color = "red";
+					passinput.style.backgroundColor = "pink";
+					passinput.style.border = "1px solid red";
+					passinput.style.outline = "1px solid red";
+				} else if (passinput.value.length <= 16) {
+					p.innerText = "密码6-16个英文字母，数字及大小写字母组成";
+					p.style.color = "black";
+					passinput.style.backgroundColor = "white";
+					passinput.style.border = "1px solid aqua";
+					passinput.style.outline = "1px solid aqua";
+				}
+			}
+		</script>
+	</body>
+</html>

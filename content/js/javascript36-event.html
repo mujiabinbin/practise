@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			
+			#box{
+				width: 100%;
+				height: 200px;
+				background-color: red;
+			}
+			input{
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">this is a div</div>
+		<input type="text">
+		<select name="" id="">
+			<option value="china">china</option>
+			<option value="usa">usa</option>
+			<option value="japan">japan</option>
+		</select>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<p>1</p>
+		<script>
+			/* window.onload=function(){
+				var div=document.querySelector("#box");
+				console.log(div.innerHTML); }*///这段代码无论在页面什么位置，都可以执行
+				/* window.onresize=function(){
+					console.log("page change");
+				} */
+				/* var div=document.querySelector("#box");
+				div.onmousemove=function(){
+					console.log("div innermove");
+				}
+				var div=document.querySelector("#box");
+				div.onmouseenter=function(){
+					console.log("div enter");
+				}
+				var div=document.querySelector("#box");
+				div.onmouseleave=function(){
+					console.log("div leave");
+				}
+				var div=document.querySelector("#box");
+				div.ondblclick=function(){
+					console.log("div doubleclick");
+				} */
+				/* var input=document.querySelector("input");
+				input.onkeydown=function(){
+					console.log(`key down ${input.value}`);
+				}
+				
+				var input=document.querySelector("input");
+				input.onkeyup=function(){
+					console.log(`key up ${input.value}`);
+				}
+				var input=document.querySelector("input");
+				input.onkeypress=function(){
+					console.log(`key press ${input.value}`);
+				} */
+				/* var input=document.querySelector("input");
+				input.onfocus=function(){
+					console.log("on focus");
+					input.style.border="1px solid red";
+				}
+				var input=document.querySelector("input");
+				input.onblur=function(){
+					console.log("on blur");
+				} */
+				/* var sel=document.querySelector("select");
+				sel.onchange=function(){
+					console.log(this.value);
+				} */
+				/* window.onload=function(){
+					document.body.onwheel=function(){
+						console.log("wheel");
+					}
+					document.body.addEventListener("DOMMouseScroll",function(){
+						console.log("domwheel"));
+					}
+				} */
+				var div=document.querySelector("div");
+				div.addEventListener("touchstart",function(){
+					console.log("touchstart");
+				})
+				div.addEventListener("touchend",function(){
+					console.log("touchend");
+				})
+				div.addEventListener("touchmove",function(){
+					console.log("touchmove");
+				})
+			
+		</script>
+	</body>
+</html>

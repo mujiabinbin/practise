@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			div {
+				/* border: 1px solid red; */
+				/* width: 100%; */
+				margin: 20px;
+				/* width: 350px; */
+				/* display: flex;
+				justify-content: center; */
+
+			}
+
+			.container {
+				background-color: aqua;
+				width: 1400px;
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+
+			button {
+				width: 100px;
+				height: 50px;
+				font-size: 25px;
+				margin: 10px;
+			}
+
+			input {
+				width: 50px;
+				height: 48px;
+				font-size: 25px;
+				margin: 5px;
+			}
+
+			.time {
+				width: 100%;
+				/* margin: auto auto; */
+			}
+
+			p {
+				font-size: 100px;
+			}
+
+			.time {
+				width: 350px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="time">
+				<button onclick="minus(this)">-</button>
+				<input type="text" value="10"><label for="">分钟</label>
+				<button onclick="add(this)">+</button>
+			</div>
+			<div class="timeshow">
+				<p>
+					<label for="">09</label>
+					<label for="">:</label>
+					<label for="">59</label>
+				</p>
+			</div>
+			<div class="controller">
+				<button onclick="start()">开始</button>
+				<button onclick="pause()">暂停</button>
+				<button onclick="reset()">重制</button>
+			</div>
+		</div>
+
+		<script>
+			
+			function minus(elem) {
+				var input = elem.nextElementSibling;
+				if (input.value > 0) {
+					input.value--;
+				}
+			}
+
+			function add(elem) {
+				var input = elem.previousElementSibling.previousElementSibling;
+				input.value++;
+			}
+
+			var play;
+			
+			function start() {
+				var p = document.querySelector("p");
+				var lable1 = p.firstElementChild;
+				var lable2 = p.lastElementChild;
+				var input = document.querySelector("input");
+				
+				if (lable1.innerText == "09" && lable2.innerText == "59") {
+					lable1.innerText = input.value - 1;
+					lable2.innerText = 59;
+				}
+				while(play==undefined){
+					play = setInterval(function() {
+						if (lable1.innerText > 0) {
+							if (lable2.innerText == 0) {
+								lable2.innerText = 60;
+								lable1.innerText--;
+							};
+							lable2.innerText--;
+						} else if (lable1.innerText == 0 && lable2.innerText != 0) {
+							if (lable2.innerText == 0) {
+								lable2.innerText = 60;
+								lable1.innerText--;
+							};
+							lable2.innerText--;
+						};
+					}, 1000);
+				}
+			}
+
+			function pause() {
+				clearInterval(play);
+				play = undefined;
+				console.log(play);
+			}
+
+			function reset() {
+				clearInterval(play);
+				var input = document.querySelector("input");
+				var p = document.querySelector("p");
+				var lable1 = p.firstElementChild;
+				var lable2 = p.lastElementChild;
+				lable1.innerText = input.value - 1;
+				lable2.innerText = 59;
+				play = undefined;
+				console.log(play);
+			}
+		</script>
+	</body>
+</html>
