@@ -8,7 +8,7 @@
 				padding: 0;
 				margin: 0;
 			}
-
+ 
 			div {
 				/* border: 1px solid red; */
 			}
@@ -103,7 +103,7 @@
 						value="请输入用户名">
 				</div>
 				<div class="check">
-					<p>用户名4-10个字符组成</p>
+					<p>4-10个中文，英文及数字组成；不可包含符号等特殊字符</p>
 				</div>
 
 				<div class="password">
@@ -145,14 +145,37 @@
 					usernameinput.style.outline = "1px solid grey";
 
 				} else if (usernameinput.value.length > 10 || usernameinput.value.length < 4) {
-					p.innerText = "用户名4-16位英文或数字";
+					p.innerText = "长度不符合要求，4-10位中文，英文或数字";
 					p.style.color = "red";
 					/* usernameinput.style.backgroundColor="red"; */
 					usernameinput.style.border = "1px solid red";
 					usernameinput.style.outline = "1px solid red";
 				} else {
-					usernameinput.style.border = "1px solid grey";
-					usernameinput.style.outline = "1px solid grey";
+					var char = 0;
+					for (var i = 0; i < usernameinput.value.length; i++) {
+						if (usernameinput.value.charCodeAt(i) < 48) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 57 && usernameinput.value.charCodeAt(i) < 65) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 90 && usernameinput.value.charCodeAt(i) < 97) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 122) {
+							char++
+							break;
+						}
+
+					}
+					if (char > 0) {
+						p.innerText = "用户名不能包含特殊字符";
+						p.style.color = "red";
+					} else {
+						usernameinput.style.border = "1px solid grey";
+						usernameinput.style.outline = "1px solid grey";
+					}
+
 				}
 			}
 
@@ -160,17 +183,40 @@
 				var usernameinput = document.querySelector("input");
 				var p = document.querySelector("p");
 				if (usernameinput.value.length > 10) {
-					p.innerText = "用户名4-16位英文或数字";
+					p.innerText = "长度不符合要求，4-10位中文，英文或数字";
 					p.style.color = "red";
-					usernameinput.style.backgroundColor="pink";
+					usernameinput.style.backgroundColor = "pink";
 					usernameinput.style.border = "1px solid red";
 					usernameinput.style.outline = "1px solid red";
 				} else if (usernameinput.value.length <= 10) {
-					p.innerText = "用户名4-10个字符组成";
-					p.style.color = "black";
-					usernameinput.style.backgroundColor = "white";
-					usernameinput.style.border = "1px solid aqua";
-					usernameinput.style.outline = "1px solid aqua";
+					var char = 0;
+					for (var i = 0; i < usernameinput.value.length; i++) {
+						if (usernameinput.value.charCodeAt(i) < 48) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 57 && usernameinput.value.charCodeAt(i) < 65) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 90 && usernameinput.value.charCodeAt(i) < 97) {
+							char++;
+							break;
+						} else if (usernameinput.value.charCodeAt(i) > 122) {
+							char++
+							break;
+						}
+
+					}
+					if (char > 0) {
+						p.innerText = "用户名不能包含特殊字符";
+						p.style.color = "red";
+					} else {
+						p.innerText = "4-10个中文，英文及数字组成；不可包含符号等特殊字符";
+						p.style.color = "black";
+						usernameinput.style.backgroundColor = "white";
+						usernameinput.style.border = "1px solid aqua";
+						usernameinput.style.outline = "1px solid aqua";
+					}
+
 				}
 			}
 
@@ -199,14 +245,39 @@
 					passinput.style.outline = "1px solid grey";
 
 				} else if (passinput.value.length > 16 || passinput.value.length < 4) {
-					p.innerText = "密码4-16位大小英文或数字";
+					p.innerText = "密码长度不符合要求：4-16位，必须包含大小写字母及数字";
 					p.style.color = "red";
 					/* usernameinput.style.backgroundColor="red"; */
 					passinput.style.border = "1px solid red";
 					passinput.style.outline = "1px solid red";
-				}else{
-					passinput.style.border="1px solid grey";
-					passinput.style.outline="1px solid grey";
+				} else {
+					var num = 0;
+					var capchar = 0;
+					var char = 0;
+					for (var i = 0; i < passinput.value.length; i++) {
+						var passchar = passinput.value.charCodeAt(i);
+						if (passchar >= 48 && passchar <= 57) {
+							num++;
+						} else if (passchar >= 97 && passchar <= 122) {
+							char++;
+						} else if (passchar >= 65 && passchar <= 90) {
+							capchar++;
+						}
+					}
+					if (num == 0) {
+						p.innerText = "密码必须包含数字";
+						p.style.color = "red";
+					} else if (capchar == 0) {
+						p.innerText = "密码必须包含大写字母";
+						p.style.color = "red";
+					} else if (char == 0) {
+						p.innerText = "密码必须包含小写字母";
+						p.style.color = "red";
+					} else {
+						passinput.style.border = "1px solid grey";
+						passinput.style.outline = "1px solid grey";
+					}
+
 				}
 			}
 
@@ -214,30 +285,18 @@
 				var passinput = document.querySelector("#pass");
 				var p = document.querySelector("#passcheck");
 				if (passinput.value.length > 16) {
-					p.innerText = "密码4-16位大小英文或数字";
+					p.innerText = "密码长度不符合要求：4-16位，必须包含大小写字母及数字";
 					p.style.color = "red";
-					 passinput.style.backgroundColor="pink";
+					passinput.style.backgroundColor = "pink";
 					passinput.style.border = "1px solid red";
 					passinput.style.outline = "1px solid red";
 				} else if (passinput.value.length <= 16) {
-						p.innerText = "密码6-16个英文字母，数字及大写字母组成";
-						p.style.color = "black";
-						passinput.style.backgroundColor = "white";
-						passinput.style.border = "1px solid aqua";
-						passinput.style.outline = "1px solid aqua";
-				} /* else {
-					for (var i = 0; i < passinput.value.length; i++) {
-						if (passinput.value.charCodeAt(i) < 48 || (passinput.value.charCodeAt(i) > 57 && passinput.value
-							.charCodeAt(i) < 65) || (passinput.value.charCodeAt(i) > 90 && passinput.value.charCodeAt(i) < 97) ||
-							passinput.value.charCodeAt(i) > 122) {
-							p.innerText = "密码不可包含特殊字符";
-							p.style.color = "red";
-							passinput.style.border = "1px solid red";
-							passinput.style.outline = "1px solid red";
-							
-						}
-					}
-				} */
+					p.innerText = "密码6-16个英文字母，数字及大小写字母组成";
+					p.style.color = "black";
+					passinput.style.backgroundColor = "white";
+					passinput.style.border = "1px solid aqua";
+					passinput.style.outline = "1px solid aqua";
+				}
 			}
 		</script>
 	</body>
