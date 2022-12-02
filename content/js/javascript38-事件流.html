@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div {
+				border: 1px solid red;
+				/* width: 100px;
+				height: 100px; */
+				/* margin: 10px 10px; */
+				margin: auto auto;
+				
+			}
+
+			.div1 {
+				width: 300px;
+				height: 300px;
+			}
+
+			.div2 {
+				width: 200px;
+				height: 200px;
+			}
+
+			.div3 {
+				width: 100px;
+				height: 100px;
+			}
+
+			.div4 {
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">div1
+			<div class="div2">div2
+				<div class="div3"> div3
+					<div class="div4">
+						div4
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var div1 = document.querySelector(".div1");
+			var div2 = document.querySelector(".div2");
+			var div3 = document.querySelector(".div3");
+			var div4 = document.querySelector(".div4");
+
+			div1.onclick=function(){
+				div1.style.backgroundColor="red";
+				div1.style.transitionDelay="4s";
+				div1.style.transitionTimingFunction="liner";
+				div1.style.transitionDuration="1s";
+			}
+			div2.onclick=function(){
+				div2.style.backgroundColor="pink";
+				div2.style.transitionDelay="3s";
+				div2.style.transitionTimingFunction="liner";
+				div2.style.transitionDuration="1s";
+			}
+			div3.onclick=function(){
+				div3.style.backgroundColor="green";
+				div3.style.transitionDelay="2s";
+				div3.style.transitionTimingFunction="liner";
+				div3.style.transitionDuration="1s";
+			}
+			div4.onclick=function(){
+				div4.style.backgroundColor="blue";
+				div4.style.transitionDelay="1s";
+				div4.style.transitionTimingFunction="liner";
+				div4.style.transitionDuration="1s";
+			}
+			/* div1.addEventListener("click" , function(){
+				console.log("div1 click");
+			},true)
+			div2.addEventListener("click" , function(){
+				console.log("div2 click");
+			},true)
+			div3.addEventListener("click" , function(){
+				console.log("div3 click");
+			},true)
+			div4.addEventListener("click" , function(){
+				console.log("div4 click");
+			},true) */
+			/* div1.addEventListener("click", handle, true);
+
+			function handle() {
+				console.log("div1 click");
+			}
+			div1.removeEventListener("click", handle, true); */
+		</script>
+	</body>
+</html>
