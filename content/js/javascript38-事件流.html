@@ -44,6 +44,10 @@
 				</div>
 			</div>
 		</div>
+		<!-- <div class="div1"></div>
+		<div class="div2"></div>
+		<div class="div3"></div>
+		<div class="div4"></div> -->
 		<script>
 			var div1 = document.querySelector(".div1");
 			var div2 = document.querySelector(".div2");
@@ -51,28 +55,50 @@
 			var div4 = document.querySelector(".div4");
 
 			div1.onclick=function(){
-				div1.style.backgroundColor="red";
-				div1.style.transitionDelay="4s";
-				div1.style.transitionTimingFunction="liner";
-				div1.style.transitionDuration="1s";
+				
+				setTimeout(function(){
+					clearcolor();
+					div1.style.backgroundColor="red";
+				},3000)
+				
+				/* div1.style.transitionDelay="3s"; */
+				/* div1.style.transitionTimingFunction="liner";
+				div1.style.transitionDuration="1s"; */
 			}
 			div2.onclick=function(){
-				div2.style.backgroundColor="pink";
-				div2.style.transitionDelay="3s";
-				div2.style.transitionTimingFunction="liner";
-				div2.style.transitionDuration="1s";
+				
+				setTimeout(function(){
+					clearcolor();
+					div2.style.backgroundColor="pink";
+				},2000)
+				
+				/* div2.style.transitionDelay="2s"; */
+				/* div2.style.transitionTimingFunction="liner";
+				div2.style.transitionDuration="1s"; */
 			}
 			div3.onclick=function(){
-				div3.style.backgroundColor="green";
-				div3.style.transitionDelay="2s";
-				div3.style.transitionTimingFunction="liner";
-				div3.style.transitionDuration="1s";
+				
+				setTimeout(function(){
+					clearcolor();
+					div3.style.backgroundColor="green";
+				},1000)
+				
+				/* div3.style.transitionDelay="1s"; */
+				/* div3.style.transitionTimingFunction="liner";
+				div3.style.transitionDuration="1s"; */
 			}
 			div4.onclick=function(){
+				clearcolor();
 				div4.style.backgroundColor="blue";
-				div4.style.transitionDelay="1s";
-				div4.style.transitionTimingFunction="liner";
-				div4.style.transitionDuration="1s";
+				/* div4.style.transitionDelay="1s"; */
+				/* div4.style.transitionTimingFunction="liner";
+				div4.style.transitionDuration="1s"; */
+			}
+			function clearcolor(){
+				var divs=document.querySelectorAll("div");
+				for(var i=0;i<divs.length;i++){
+					divs[i].style.backgroundColor="white";
+				}
 			}
 			/* div1.addEventListener("click" , function(){
 				console.log("div1 click");
