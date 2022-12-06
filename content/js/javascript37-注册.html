@@ -8,7 +8,7 @@
 				padding: 0;
 				margin: 0;
 			}
- 
+
 			div {
 				/* border: 1px solid red; */
 			}
@@ -95,31 +95,37 @@
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<div class="header">注册</div>
-			<div class="input">
-				<div class="username">
-					<input onfocus="namecheck()" onblur="namecheckover()" onkeyup="namekeyup()" type="text"
-						value="请输入用户名">
-				</div>
-				<div class="check">
-					<p>4-10个中文，英文及数字组成；不可包含符号等特殊字符</p>
-				</div>
+		<form action="success.html">
+			<div class="container">
+				<div class="header">注册</div>
+				<div class="input">
+					<div class="username">
+						<input onfocus="namecheck()" onblur="namecheckover()" onkeyup="namekeyup()" type="text"
+							value="请输入用户名">
+					</div>
+					<div class="check">
+						<p>4-10个中文，英文及数字组成；不可包含符号等特殊字符</p>
+					</div>
 
-				<div class="password">
-					<input id="pass" onfocus="passcheck()" onblur="passcheckover()" onkeyup="passkeyup()" type="text"
-						value="请输入密码">
+					<div class="password">
+						<input id="pass" onfocus="passcheck()" onblur="passcheckover()" onkeyup="passkeyup()"
+							type="text" value="请输入密码">
+					</div>
+					<div class="check">
+						<p id="passcheck">密码6-16个英文字母，数字及大写字母组成</p>
+					</div>
 				</div>
-				<div class="check">
-					<p id="passcheck">密码6-16个英文字母，数字及大写字母组成</p>
+				<div class="btn">
+					<button id="btn">注册</button>
 				</div>
 			</div>
-			<div class="btn">
-				<button>注册</button>
-			</div>
-		</div>
+		</form>
+
 
 		<script>
+			var nameright;
+			var passright;
+
 			function namecheck() {
 				var usernameinput = document.querySelector("input");
 				if (usernameinput.value == "请输入用户名") {
@@ -127,9 +133,11 @@
 					/* usernameinput.style.backgroundColor = "aqua"; */
 					usernameinput.style.border = "2px solid aqua";
 					usernameinput.style.outline = "2px solid aqua";
+					nameright = false;
 				} else if (usernameinput.value.length <= 10 || usernameinput.value.length > 4) {
 					usernameinput.style.border = "2px solid aqua";
 					usernameinput.style.outline = "2px solid aqua";
+					nameright = true;
 				}
 
 			}
@@ -143,6 +151,7 @@
 					usernameinput.style.backgroundColor = "white";
 					usernameinput.style.border = "1px solid grey";
 					usernameinput.style.outline = "1px solid grey";
+					nameright = false;
 
 				} else if (usernameinput.value.length > 10 || usernameinput.value.length < 4) {
 					p.innerText = "长度不符合要求，4-10位中文，英文或数字";
@@ -150,6 +159,8 @@
 					/* usernameinput.style.backgroundColor="red"; */
 					usernameinput.style.border = "1px solid red";
 					usernameinput.style.outline = "1px solid red";
+					nameright = false;
+
 				} else {
 					var char = 0;
 					for (var i = 0; i < usernameinput.value.length; i++) {
@@ -171,9 +182,12 @@
 					if (char > 0) {
 						p.innerText = "用户名不能包含特殊字符";
 						p.style.color = "red";
+						nameright = false;
+
 					} else {
 						usernameinput.style.border = "1px solid grey";
 						usernameinput.style.outline = "1px solid grey";
+						nameright = true;
 					}
 
 				}
@@ -188,6 +202,8 @@
 					usernameinput.style.backgroundColor = "pink";
 					usernameinput.style.border = "1px solid red";
 					usernameinput.style.outline = "1px solid red";
+					nameright = false;
+
 				} else if (usernameinput.value.length <= 10) {
 					var char = 0;
 					for (var i = 0; i < usernameinput.value.length; i++) {
@@ -209,12 +225,15 @@
 					if (char > 0) {
 						p.innerText = "用户名不能包含特殊字符";
 						p.style.color = "red";
+						nameright = false;
+
 					} else {
 						p.innerText = "4-10个中文，英文及数字组成；不可包含符号等特殊字符";
 						p.style.color = "black";
 						usernameinput.style.backgroundColor = "white";
 						usernameinput.style.border = "1px solid aqua";
 						usernameinput.style.outline = "1px solid aqua";
+						nameright = true;
 					}
 
 				}
@@ -227,9 +246,11 @@
 					/* usernameinput.style.backgroundColor = "aqua"; */
 					passinput.style.border = "2px solid aqua";
 					passinput.style.outline = "2px solid aqua";
+					passright = false;
 				} else if (passinput.value.length <= 16 || usernameinput.value.length > 4) {
 					passinput.style.border = "2px solid aqua";
 					passinput.style.outline = "2px solid aqua";
+					passright = true;
 				}
 
 			}
@@ -243,6 +264,7 @@
 					passinput.style.backgroundColor = "white";
 					passinput.style.border = "1px solid grey";
 					passinput.style.outline = "1px solid grey";
+					passright = false;
 
 				} else if (passinput.value.length > 16 || passinput.value.length < 4) {
 					p.innerText = "密码长度不符合要求：4-16位，必须包含大小写字母及数字";
@@ -250,6 +272,8 @@
 					/* usernameinput.style.backgroundColor="red"; */
 					passinput.style.border = "1px solid red";
 					passinput.style.outline = "1px solid red";
+					passright = false;
+
 				} else {
 					var num = 0;
 					var capchar = 0;
@@ -267,15 +291,22 @@
 					if (num == 0) {
 						p.innerText = "密码必须包含数字";
 						p.style.color = "red";
+						passright = false;
+
 					} else if (capchar == 0) {
 						p.innerText = "密码必须包含大写字母";
 						p.style.color = "red";
+						passright = false;
+
 					} else if (char == 0) {
 						p.innerText = "密码必须包含小写字母";
 						p.style.color = "red";
+						passright = false;
+
 					} else {
 						passinput.style.border = "1px solid grey";
 						passinput.style.outline = "1px solid grey";
+						passright = true;
 					}
 
 				}
@@ -290,14 +321,31 @@
 					passinput.style.backgroundColor = "pink";
 					passinput.style.border = "1px solid red";
 					passinput.style.outline = "1px solid red";
+					passright = false;
+
 				} else if (passinput.value.length <= 16) {
 					p.innerText = "密码6-16个英文字母，数字及大小写字母组成";
 					p.style.color = "black";
 					passinput.style.backgroundColor = "white";
 					passinput.style.border = "1px solid aqua";
 					passinput.style.outline = "1px solid aqua";
+					passright = true;
 				}
 			}
+
+			var btn = document.querySelector("#btn");
+			btn.addEventListener("click", function(e) {
+
+				e.preventDefault();
+				if (nameright && passright) {
+					var form = document.querySelector("form");
+					form.submit();
+				} else {
+					alert("用户名或密码错误");
+				}
+
+
+			})
 		</script>
 	</body>
 </html>
