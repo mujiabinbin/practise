@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class="box">
-			<p>
+			<p id="p1">
 				this is label p in div
 			</p>
 		</div>
@@ -31,14 +31,55 @@
 		console.log(value1);
 		console.log(value2);
 		console.log(div); */
-		var gender=$("[name=gender]");
+		/* var gender=$("[name=gender]");
 		console.log(gender);
 		var value3= gender.attr("checked");
 		var value4=gender.prop("checked");
 		console.log(value3);
-		console.log(value4);
-			
-			
+		console.log(value4); */
+		/* var $div=$(".box"); */
+		/* $("body").on("click",".box",function(e){
+			console.log("onclick");
+		}) */
+		/* $(".box").click(function(e){
+			console.log($(this));
+		}) */
+		/* var $box=$(".box");
+		$box.css({
+			"background-color":"aqua",
+			"border":"1px solid red",
+			});
+		var cssbox=$box.css("background-color");
+		console.log(cssbox); */
+		/* var $div=$("div");
+		$div.append(`<p>
+				it is a new label p in div
+			</p>`);
+		var $p=$("#p1");
+		$p.before(`this is a new first brother label`);
+		$p.after(`this is a new  last brother label`);
+		$p.remove(); */
+		/* var $div=$("div");
+		var divchild=$div.children();
+		var find=$div.find(`p`);
+		var prev=$div.prev();
+		var next=$div.next();
+		var parent=$div.parent();
+		var parents=$div.parents();
+		
+		console.log(divchild);
+		console.log(find);
+		console.log(prev);
+		console.log(next);
+		console.log(parent);
+		console.log(parents); */
+		var $inputs=$("input");
+		/* for(var i=0;i<$inputs.length;i++){
+			var input=$inputs.eq(i);
+			console.log(input);
+		} */
+		console.log($inputs.eq(1));
+		
 		</script>
 	</body>
 </html>
