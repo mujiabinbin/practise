@@ -5,6 +5,13 @@
 		<title></title>
 	</head>
 	<body>
+		<!-- <button onclick="assign()">assign</button>
+		<button onclick="href()">href</button> -->
+		<form action="../success.html">
+			name:<input type="text" name="user">
+			password:<input type="text" name="pass">
+			<button>submit</button>
+		</form>
 		<script>
 			/* console.log(window); */
 			/* window.alert("123");
@@ -14,8 +21,18 @@
 				window.close();
 			} */
 			//window.open("http://www.baidu.com","_blank","width=300,height=300,top=100,left=100")
-			console.log(innerHeight,innerWidth);
-			console.log(outerHeight,outerWidth);
+			/* console.log(innerHeight,innerWidth);
+			console.log(outerHeight,outerWidth); */
+			/* console.log(location.search); */
+			/* console.log(location.assign("http://www.baidu.com")) */
+			
+			/* function assign(){
+				location.assign("http://www.baidu.com");
+			}
+			function href(){
+				location.href="http://www.baidu.com";
+			} */
+			console.log(navigator.userAgent)
 		</script>
 	</body>
 </html>
