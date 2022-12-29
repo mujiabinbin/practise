@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			/* var str="22";
+			var reg=/[0-9]/;
+			console.log(reg.test(str)); */
+			/* 
+			 判断用户输入的字符串是否包含连续三个数字
+			 */
+			/* var str=prompt("please input the string");
+			var reg=/[0-9]{3}/;
+			console.log(reg.test(str)); */
+			/*
+			 判断用户输入的字符串是否最少/最多包含连续三个数字
+			 */
+			/* var str=prompt("please input the string");
+			var reg=/[0-9]{3,}/;//var reg=/[0-9]{,3}
+			console.log(reg.test(str)); */
+			/* 
+			判断输入字符是否包含至少5个小写字母 
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/[a-z]{5,}/;
+			console.log(reg.test(str)); */
+			/* 
+			 判断用户输入字符串是否以数字/字母开头/结尾
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/^[a-z]{2,}/;//var reg=/[a-z]{2,}$/;
+			console.log(reg.test(str)); */
+			/* 
+			 整个字符串是否是大写字母加一个数字
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/^[A-Z][0-9]$/;;
+			console.log(reg.test(str)); */
+			/* 
+			 连续11位数字
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/^[0-9]{11}$/;
+			console.log(reg.test(str)); */
+			/* 
+			  判断是否包含javascript或typescript
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/(java|type)script/;;
+			console.log(reg.test(str)); */
+			/* 
+			 判断是否完全是javascript或typescript
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/^(java|type)script$/;;
+			console.log(reg.test(str)); */
+			/* 
+			 大写字母开头或数字结尾
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/(^[A-Z]|[0-9]$)/;;
+			console.log(reg.test(str)); */
+			/* 
+			 大写字母开头，数字结尾
+			 */
+			/* var str=prompt("please input your content");
+			var reg=/^[A-Z].{0,}[0-9]$/;
+			console.log(reg.test(str)); */
+			/* 
+			 qq号：5-10位数字
+			 手机号：11位数字 1开头 第二位至少为3
+			 邮箱：字母开头 后续根1-10的字母或数字或_，后续根@，@后面字母或数字，后跟.com或cn，或net
+			
+			/* var str=prompt("please input your qq number");
+			var reg=/[0-9]{5,10}/;
+			if(reg.test(str)){
+				alert("right qq number");
+			}else{
+				alert("invalid qq number");
+			} */
+			/* var str=prompt("please input your phone number");
+			var reg=/^1(3|5|7|8)[0-9]{9}/;
+			if(reg.test(str)){
+				alert("right phone number");
+			}else{
+				alert("invalid phone number");
+			} */
+			/* var str = prompt("please input your email");
+			var reg = /^[0-9a-zA-Z][0-9a-zA-Z_]{1,}[@][0-9a-zA-Z]{1,}(.com|.cn|.net)/;
+			if (reg.test(str)) {
+				alert("right email");
+			} else {
+				alert("invalid email");
+			} */
+		</script>
+	</body>
+</html>
