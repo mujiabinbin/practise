@@ -73,29 +73,74 @@
 			/* 
 			 qq号：5-10位数字
 			 手机号：11位数字 1开头 第二位至少为3
-			 邮箱：字母开头 后续根1-10的字母或数字或_，后续根@，@后面字母或数字，后跟.com或cn，或net
+			 邮箱：字母开头 后续根1-10的字母或数字或_，后续根@，@后面字母或数字，后跟.com或cn，或net */
 			
 			/* var str=prompt("please input your qq number");
-			var reg=/[0-9]{5,10}/;
+			var reg=/^[0-9]{5,10}$/;
 			if(reg.test(str)){
 				alert("right qq number");
 			}else{
 				alert("invalid qq number");
 			} */
 			/* var str=prompt("please input your phone number");
-			var reg=/^1(3|5|7|8)[0-9]{9}/;
+			var reg=/^1(3|5|7|8)[0-9]{9}$/;
 			if(reg.test(str)){
 				alert("right phone number");
 			}else{
 				alert("invalid phone number");
 			} */
 			/* var str = prompt("please input your email");
-			var reg = /^[0-9a-zA-Z][0-9a-zA-Z_]{1,}[@][0-9a-zA-Z]{1,}(.com|.cn|.net)/;
+			var reg = /^[0-9a-zA-Z][0-9a-zA-Z_]{1,}[@][0-9a-zA-Z]{1,}(.com|.cn|.net)$/;
 			if (reg.test(str)) {
 				alert("right email");
 			} else {
 				alert("invalid email");
 			} */
+			/* var str=prompt("please input your context");
+			var reg=/^\d\+\d$/;
+			console.log(reg.test(str)); */
+			/* 
+			 匹配15位或18位身份证
+			 */
+			/* var str=prompt("please input your id");
+			var reg=/^\d{15}|\d{18}$/;
+			console.log(reg.test(str)); */
+			/* 
+			 将we are family空格替换成-replaceAll
+			 */
+			/* var str="we are family";
+			var newstr=str.replace(/ /g,"-");
+			console.log(newstr); */
+			/* 
+			 张三@李四$王武#赵六@@@田七&&王八
+			 */
+			/* var str="张三@李四$王武#赵六@@@田七&&王八";
+			var reg=/[@$#&]+/;
+			var arr=str.split(reg);
+			console.log(arr); */
+			/* var str="?name=zhangsan&age=12";
+			var reg=/[&]+/;
+			var newstr=str.slice(1);
+			var arr=newstr.split(reg);
+			console.log(arr); */
+			
+			/* 
+			找到字符串中手机号并返回 
+			 */
+			
+			/* var str="dhddkdkd15811285042fdjksl18618180537jfdsk";
+			var reg=/1[3-9]\d{9}/g;
+			var phone=str.match(reg);
+			console.log(phone); */
+			/* 
+			 找到所有的英文名字
+			 张三 james bond 李四 mary 王武 tony 赵六 jobs
+			 */
+			/* var str="张三 james bond 李四 mary 王武 tony 赵六 jobs";
+			var reg=/\w+[ ]*\w+/g;
+			var arr=str.match(reg);
+			console.log(arr); */
+			
 		</script>
 	</body>
 </html>
