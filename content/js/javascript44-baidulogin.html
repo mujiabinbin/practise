@@ -2,17 +2,295 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			div {
+				/* border: 1px solid red; */
+			}
+
+			.container {
+				width: 500px;
+				height: 500px;
+				border: 1px solid aqua;
+				margin: 50px auto;
+			}
+
+			.header {
+				width: 100%;
+				height: 50px;
+				background-color: aqua;
+				display: flex;
+				justify-content: center;
+				line-height: 50px;
+				color: grey;
+				font-size: 26px;
+			}
+
+			.input {
+				width: 100%;
+				height: 400px;
+				/* display: flex; */
+				/* justify-content: center; */
+				/* line-height: 400px; */
+			}
+
+			.username {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-top: 50px;
+
+
+			}
+
+			.password {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-top: 50px;
+			}
+
+			.qrcode {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				margin-top: 50px;
+			}
+
+			input {
+				width: 300px;
+				height: 50px;
+				color: grey;
+				font-size: 20px;
+				/* border-radius: 5px; */
+				border: 1px solid grey;
+				outline: 1px solid grey;
+				display: inline-block;
+			}
+
+			.btn {
+				width: 100%;
+				height: 50px;
+				/* background-color: aqua; */
+				display: flex;
+				justify-content: center;
+				line-height: 50px;
+				margin-top: 20px;
+			}
+
+			button {
+				width: 200px;
+				border-radius: 10%;
+				background-color: aqua;
+				font-size: 20px;
+				color: grey;
+			}
+
+			.check {
+				width: 100%;
+				margin-left: 100px;
+			}
+
+			p {
+				font-size: 14px;
+				margin-top: 5px;
+			}
+		</style>
 		<title></title>
 	</head>
 	<body>
+		<form action="success.html">
+			<div class="container">
+				<div class="header">登陆</div>
+				<div class="input">
+					<div class="username">
+						<input onfocus="namecheck()" onblur="namecheckover()" type="text" name="user" value="请输入用户名">
+					</div>
+					<div class="check">
+						<p>用户名为已注册的邮箱或手机号</p>
+					</div>
+
+					<div class="password">
+						<input id="pass" onfocus="passcheck()" onblur="passcheckover()" type="text" name="pass"
+							value="请输入密码">
+					</div>
+					<div class="check">
+						<p id="passcheck">大写字母开头，6-16位字母或数字</p>
+					</div>
+					<div class="qrcode">
+						<input id="qrcode" onfocus="qrcheck()" onblur="qrcheckover()" type="text" value="请输入验证码">
+					</div>
+					<div class="check">
+						<p id="qrcheck">请输入正确的验证码</p>
+					</div>
+				</div>
+
+				<div class="btn">
+					<button id="btn">登陆</button>
+				</div>
+			</div>
+		</form>
 		<script>
-		/* 
+			/* 
 		 用户名：手机或邮箱，正则匹配，不满足用红色边框及提示告知
 		 密码：6-16位，大写字母开头，只能包含数字和字母，不满足用红色边框即提示告知
 		 验证码：5位字母或数字，不满足用红色边框即提示告知
 		 只有三个都满足才能登陆，登录后携带数据跳转到check。html进行验证，验证用户名密码是否正确，错误返回登陆也重新登陆
-		 */	
-			
+		 */
+			var nameright = false;
+			var passright = false;
+			var qrright = false;
+
+			function namereg(nameinput) {
+				var namereg1 = /^[0-9a-zA-Z]\w+@[0-9a-zA-Z]+(.com|.cn|.net)$/;
+				var namereg2 = /^1[358]{1}\d{9}$/;
+				if (namereg1.test(nameinput) || namereg2.test(nameinput)) {
+					var regresult = true;
+				} else {
+					regresult = false;
+				}
+				return regresult;
+			}
+
+			function passreg(passinput) {
+				var passreg = /^[A-Z][0-9a-zA-Z]{5,15}$/;
+				if (passreg.test(passinput)) {
+					var regresult = true;
+				} else {
+					regresult = false;
+				}
+				return regresult;
+			}
+
+			function qrreg(qrinput) {
+				var qrreg = /^[a-zA-Z0-9]{5}$/;
+				if (qrreg.test(qrinput)) {
+					var regresult = true;
+				} else {
+					regresult = false;
+				}
+				return regresult;
+			}
+
+			function namecheck() {
+				var usernameinput = document.querySelector("input");
+				if (usernameinput.value == "请输入用户名") {
+					usernameinput.value = "";
+					usernameinput.style.border = "2px solid aqua";
+					usernameinput.style.outline = "2px solid aqua";
+				}
+			}
+
+			function namecheckover() {
+				var usernameinput = document.querySelector("input");
+				var p = document.querySelector("p");
+				if (usernameinput.value == "") {
+					usernameinput.value = "请输入用户名";
+					usernameinput.style.backgroundColor = "white";
+					usernameinput.style.border = "1px solid grey";
+					usernameinput.style.outline = "1px solid grey";
+					nameright = false;
+				} else if (namereg(usernameinput.value) == false) {
+					p.innerText = "请输入合法的邮箱或手机号";
+					p.style.color = "red";
+					usernameinput.style.border = "1px solid red";
+					usernameinput.style.outline = "1px solid red";
+					nameright = false;
+				} else {
+					p.innerText = "邮箱或手机号合法";
+					p.style.color = "black";
+					usernameinput.style.backgroundColor = "white";
+					usernameinput.style.border = "1px solid aqua";
+					usernameinput.style.outline = "1px solid aqua";
+					nameright = true;
+				}
+			}
+
+			function passcheck() {
+				var passinput = document.querySelector("#pass");
+				if (passinput.value == "请输入密码") {
+					passinput.value = "";
+					passinput.style.border = "2px solid aqua";
+					passinput.style.outline = "2px solid aqua";
+				}
+			}
+
+			function passcheckover() {
+				var passinput = document.querySelector("#pass");
+				var p = document.querySelector("#passcheck");
+				if (passinput.value == "") {
+					passinput.value = "请输入密码";
+					passinput.style.backgroundColor = "white";
+					passinput.style.border = "1px solid grey";
+					passinput.style.outline = "1px solid grey";
+					passright = false;
+
+				} else if (passreg(passinput.value) == false) {
+					p.innerText = "密码不符合要求：大写字母开头，6-16位字母或数字";
+					p.style.color = "red";
+					passinput.style.border = "1px solid red";
+					passinput.style.outline = "1px solid red";
+					passright = false;
+
+				} else {
+					p.innerText = "密码符合要求";
+					p.style.color = "black";
+					passinput.style.backgroundColor = "white";
+					passinput.style.border = "1px solid aqua";
+					passinput.style.outline = "1px solid aqua";
+					passright = true;
+				}
+			}
+
+			function qrcheck() {
+				var qrinput = document.querySelector("#qrcode");
+				if (qrinput.value == "请输入验证码") {
+					qrinput.value = "";
+					qrinput.style.border = "2px solid aqua";
+					qrinput.style.outline = "2px solid aqua";
+				}
+			}
+
+			function qrcheckover() {
+				var qrinput = document.querySelector("#qrcode");
+				var p = document.querySelector("#qrcheck");
+				if (qrinput.value == "") {
+					qrinput.value = "请输入验证码";
+					qrinput.style.backgroundColor = "white";
+					qrinput.style.border = "1px solid grey";
+					qrinput.style.outline = "1px solid grey";
+					qrright = false;
+
+				} else if (qrreg(qrinput.value) == false) {
+					p.innerText = "验证不符合要求：5位字母或数字";
+					p.style.color = "red";
+					qrinput.style.border = "1px solid red";
+					qrinput.style.outline = "1px solid red";
+					qrright = false;
+				} else {
+					p.innerText = "验证码符合要求";
+					p.style.color = "black";
+					qrinput.style.backgroundColor = "white";
+					qrinput.style.border = "1px solid aqua";
+					qrinput.style.outline = "1px solid aqua";
+					qrright = true;
+				}
+			}
+
+			var btn = document.querySelector("#btn");
+			btn.addEventListener("click", function(e) {
+				e.preventDefault();
+				if (nameright && passright && qrright) {
+					var form = document.querySelector("form");
+					form.submit();
+				} else {
+					alert("用户名密码或验证码错误");
+				}
+			})
 		</script>
 	</body>
 </html>
