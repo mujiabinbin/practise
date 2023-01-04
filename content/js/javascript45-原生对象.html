@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			/* var student={
+				name:"zhangsan",
+				age:12,
+				gender:"male"
+			}
+			var name=student.name;
+			student.name="lisi";
+			student.age=18;
+			console.log(name); */
+			/* 描述三件商品
+			1 卫龙辣条：价格12，库存1000，销量20
+			2 特斯拉：价格210000，库存100，销量30
+			3 秋裤：价格300 库存100 销量1
+			原生对象来描述，输出三个对象
+			设置每个商品价格原来基础上九折
+			利用销量对商品排序
+			
+			 */
+			var latiao = {
+				price: 12,
+				storage: 1000,
+				sale: 20
+			}
+			var tesla = {
+				price: 210000,
+				storage: 100,
+				sale: 30
+			}
+			var pants = {
+				price: 300,
+				storage: 100,
+				sale: 1
+			}
+			console.log(latiao, tesla, pants);
+			latiao.price = latiao.price * 0.9;
+			tesla.price = tesla.price * 0.9;
+			pants.price = pants.price * 0.9;
+
+			console.log(latiao.price, tesla.price, pants.price);
+			var arr = [latiao, tesla, pants];
+
+			arr.sort(function(latiao, tesla) {
+				return tesla.sale - latiao.sale;
+			});
+			console.log(arr);
+		</script>
+	</body>
+</html>
