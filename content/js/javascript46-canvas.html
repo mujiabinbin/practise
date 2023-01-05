@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas width="1000" height="300" id="demo"></canvas>
+		
+		<script>
+			
+			var canvas=document.querySelector("#demo");
+			var crayon=canvas.getContext("2d");
+			crayon.beginPath();
+			/* crayon.moveTo(200,200); */
+			crayon.arc(100,100,50,0,2*Math.PI);
+			crayon.closePath();
+			crayon.stroke();
+			crayon.moveTo(100,100);
+			crayon.lineTo(100,50);
+			crayon.closePath();
+			crayon.stroke();
+			crayon.moveTo(100,100);
+			crayon.lineTo(140,130);
+			crayon.closePath();
+			crayon.stroke();
+			crayon.moveTo(100,100);
+			crayon.lineTo(60,130);
+			crayon.closePath();
+			crayon.stroke();
+			/* crayon.beginPath();
+			crayon.arc(100,100,50,120*Math.PI/180,240*Math.PI/180);
+			crayon.closePath();
+			crayon.stroke();
+			
+			crayon.beginPath();
+			crayon.arc(100,100,50,240*Math.PI/180,0);
+			crayon.closePath();
+			crayon.stroke();
+			 */
+			/* crayon.strokeStyle="red";
+			crayon.lineWidth=5;
+			crayon.beginPath();
+			crayon.moveTo(0,0);
+			crayon.lineTo(0,44);
+			crayon.lineTo(33,55);
+			crayon.closePath();
+			crayon.fillStyle="blue";
+			crayon.fill();
+			crayon.stroke(); */
+			/* crayon.arc(100,100,50,0,Math.PI/2);
+			crayon.closePath();
+			crayon.stroke(); */
+			
+			/* crayon.beginPath();
+			crayon.arc(100,100,100,0,2*Math.PI);
+			crayon.lineWidth=5;
+			crayon.strokeStyle="blue";
+			crayon.fillStyle="red";
+			crayon.fill();
+			crayon.stroke();
+			crayon.closePath(); */
+		</script>
+	</body>
+</html>
