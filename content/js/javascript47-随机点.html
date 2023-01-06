@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="dotcanvas"></canvas>
+
+		<script>
+			var canvas = document.querySelector("#dotcanvas");
+			var crayon = canvas.getContext(`2d`);
+			var dots = [];
+			canvas.width = innerWidth;
+			canvas.height = innerHeight;
+			/* canvas.setAttribute("width",innerWidth);
+			canvas.setAttribute("height",innerHeight); */
+			
+			for (var i = 0; i < 100; i++) {
+				crayon.beginPath();
+				var x = parseInt(Math.random() * canvas.width);
+				var y = parseInt(Math.random() * canvas.height);
+				var randomarr = [2, -2];
+				var speedx = randomarr[parseInt(Math.random() * 2)];
+				var speedy = randomarr[parseInt(Math.random() * 2)];
+				var randomcolor=["red","green","blue","yellow","black"];
+				var color=randomcolor[parseInt(Math.random()*5)];
+				crayon.arc(x, y, 5, 0, Math.PI * 2);
+				crayon.closePath();
+				crayon.fillStyle = color;
+				crayon.fill();
+				var dot = {
+					dotx: x,
+					doty: y,
+					speedx: speedx,
+					speedy: speedy
+				};
+				dots.push(dot);
+			}
+
+			setInterval(function() {
+				crayon.clearRect(0, 0, canvas.width, canvas.height);
+				for (var i = 0; i < dots.length; i++) {
+					var dot = dots[i];
+					dot.dotx -= dot.speedx;
+					dot.doty -= dot.speedy;
+					crayon.beginPath();
+					crayon.arc(dot.dotx, dot.doty, 5, 0, Math.PI * 2);
+					crayon.closePath();
+					var randomcolor=["red","green","blue","yellow","black"];
+					var color=randomcolor[parseInt(Math.random()*5)];
+					crayon.fillStyle = color;
+					crayon.fill();
+				}
+			}, 1000)
+		</script>
+	</body>
+</html>
