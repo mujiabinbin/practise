@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#box{
+				width: 700px;
+				height: 200px;
+				border: 1px solid red;
+				display: block;
+				margin-bottom: 20px;
+				
+			}
+			.item1{
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				display: inline-block;
+			}
+			.item2{
+				width: 200px;
+				height: 200px;
+				background-color: green;
+				display: inline-block;
+			}
+			.item3{
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				display: inline-block;
+			}
+			.remove{
+				width: 200px;
+				height: 100px;
+				border: 1px solid red;
+				display: block;
+				text-align: center;
+				line-height: 100px;
+				font-size: 20px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="item1" draggable="true" ondragstart="setdata(event)" ondragover="allow(event)" ondrop="drophtml(event)">blue</div>
+			<div class="item2" draggable="true" ondragstart="setdata(event)" ondragover="allow(event)" ondrop="drophtml(event)">green</div>
+			<div class="item3" draggable="true" ondragstart="setdata(event)" ondragover="allow(event)" ondrop="drophtml(event)">yellow</div>
+		</div>
+		<div class="remove" ondragover="allow(event)" ondrop="delhtml(event)">trash</div>
+		
+		<script>
+			function allow(e){
+				e.preventDefault();
+			}
+			function setdata(e){
+				e.dataTransfer.setData(`class`,e.target.getAttribute(`class`));
+			}
+			function drophtml(e){
+				/* alert(`drag`); */
+				var drophtml=e.target;
+				var classname=e.dataTransfer.getData(`class`);
+				var draghtml=document.querySelector(`.${classname}`);
+				
+				//var width=Number(getComputedStyle(drophtml,null).width);
+				//width=width.substr(0,width.length-2);
+				//if(e.offsetX>width/2){
+					var dropnext=drophtml.nextElementSibling;
+					if(dropnext==null){
+						    
+							drophtml.parentElement.appendChild(draghtml);
+						}else{
+							drophtml.parentElement.insertBefore(draghtml,dropnext);
+						}
+					}/* else{
+					drophtml.parentElement.insertBefore(draghtml,drophtml);
+				} */
+				
+				
+			function delhtml(e){
+				var classname=e.dataTransfer.getData(`class`);
+				var draghtml=document.querySelector(`.${classname}`);
+				draghtml.parentElement.removeChild(draghtml);
+			}
+		</script>
+	</body>
+</html>

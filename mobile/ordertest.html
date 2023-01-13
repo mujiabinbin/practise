@@ -4,7 +4,183 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0 user-scalable=no"/> 
 		<title></title>
+		<style>
+			html{
+				font-size: 50px;
+			}
+			body{
+				margin: 0;
+				height: 100vh;
+				background-color: #ddd;
+			}
+			#box{
+				width: 100%;
+				height: auto;
+				background-color: #ddd;
+			}
+			#box #main{
+				width: 100%;
+				height: auto;
+				display: flex;
+				flex-wrap: nowrap;
+				align-content: stretch;
+				overflow: hidden;
+			}
+			#nav{
+				width: 30%;
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				overflow: scroll;
+				background-color: #ddd;
+			}
+			#nav li{
+				height: 1rem;
+				font-size: 0.28rem;
+				line-height: 1rem;
+				text-align: center;
+				border-bottom: 1px dashed #ccc;
+			}
+			.nav-active{
+				color: red;
+				background-color: white;
+			}
+			#content{
+				width: 70%;
+				box-sizing: border-box;
+				background-color: white;
+			}
+			
+			#content .content-item{
+				width: 100%;
+				height: auto;
+				padding: 0.1rem;
+				box-sizing: border-box;
+				border-bottom: 1px solid #ccc;
+				display: block;
+				/* display: flex;
+				flex-wrap: nowrap;
+				justify-content: space-around; */
+			}
+			#content .content-item .content-img{
+				width: 20vw;
+				display: inline-block;
+				padding-left: 0.1rem;
+				padding-top: 0.2rem;
+				/* background-image: url("../img/jq22/2022-07-04-00-14-39.png");
+				background-size: 1.5rem;
+				background-repeat: no-repeat;
+				background-position: 0.1rem; */
+			}
+			.item-card{
+				width: 40%;
+				font-size: 0.28rem;
+				/* padding-left: 1.8rem; */
+				display: inline-block;
+				/* padding-top: 0.85rem; */
+			}
+			.item-card p{
+				margin: 0;
+			}
+			.item-title{
+				font-size: 0.25rem;
+				/* padding: 0.1rem; */
+				
+			}
+			.item-subtitle{
+				font-size: 0.2rem;
+			}
+			.item-price{
+				font-size: 0.25rem;
+				color: red;
+				font-weight: bold;
+			}
+			.item-abs-img{
+				position: absolute;
+				bottom: 0;
+				right: 0.1rem;
+				/* width: 0.4rem; */
+			}
+			#add-button{
+				font-size: 0.25rem;
+				/* margin-left: 4rem; */
+				display: inline-block;
+			}
+			#box #fix-footer{
+				width: 100%;
+				height: 1rem;
+				position: fixed;
+				bottom: 0px;
+				background-color: #fff;
+				display: flex;
+				flex-wrap: nowrap;
+				align-content: stretch;
+			}
+			#fix-footer .fix-left{
+				flex-grow: 1;
+			}
+			#fix-footer .fix-left p{
+				color: red;
+				box-sizing: border-box;
+				padding:0 0.3rem;
+				font-size: 0.3rem;
+			}
+			#fix-footer .fix-right{
+				width: 1.5rem;
+				line-height: 1rem;
+				text-align: center;
+				background-color: #ddd;
+				color: #fff;
+				font-size: 0.4rem;
+			}
+		</style>
+		<script src="resize.js"></script>
+		<script src="../javascritpt/jquery-3.6.1.js"></script>
 	</head>
 	<body>
+		<div id="box">
+			<div id="main">
+				<ul id="nav">
+					<li class="nav-active">营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+					<li>营养套餐</li>
+				</ul>
+				<div id="content">
+					<div class="content-item">
+						<div class="content-img">
+							<img width="100%" src="../img/jq22/2022-07-04-00-14-39.png" alt="">
+						</div>
+						<div class="item-card">
+							<p class="item-title">京酱肉丝</p>
+							<p class="item-subtitle">家常菜</p>
+							<p class="item-price">¥25</p>
+						</div>
+						<p id="add-button">添加</p>
+					</div>
+				</div>
+			</div>
+			<div id="fix-footer">
+				<div class="fix-left">
+					<p>已选：<span id="num">0</span>份         <span>总计：</span>¥<span id="totalmoney">0</span>元</p>
+				</div>
+				<div class="fix-right">结算</div>
+			</div>
+			
+		</div>
+		<script>
+			
+			$(`body`).on(`click`,`#nav li`,function(){
+				$(`.nav-active`).removeClass(`nav-active`);
+				$(this).addClass(`nav-active`)
+			})
+		</script>
 	</body>
 </html>
