@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script>
+			//主食价格staple，饮料价格drinks，顾客有22元，可以有多少种主食加饮料购买方案，主食一种，饮料一种
+			/* var staple = [18, 15, 12, 21, 20];
+			var drinks = [2, 3, 5, 4, 1];
+			var x = 22;
+			var count = 0;
+			var j = drinks.length - 1;
+			staple.sort(function(a, b) {
+				return a - b;
+			});
+			drinks.sort(function(a, b) {
+				return a - b;
+			});
+
+			for (var i = 0; i < staple.length;) {
+				if (staple[i] + drinks[j] <= x) {
+					i++;
+					count += j + 1;
+				} else {
+					if (j > 0) {
+						j--;
+					} else {
+						break;
+					}
+				}
+			}
+			document.write(count); */
+			
+			//求数字动态和，【1，2，3，4】=》【1，1+2，1+2+3，1+2+3+4】
+			/* var arr=[1,2,3,4];
+			var newarr=[];
+			var num=0;
+			for(var i=0;i<arr.length;i++){
+				num+=arr[i];
+				newarr.push(num);
+			}
+			document.write(newarr); */
+			
+			//一个字符串text，用text中字母拼出尽可能多的单词“balloon”，每个字母最多才能使用一次
+			/* var text="loonbalxballpoon";
+			var arr=[0,0,0,0,0];
+			for(var i=0;i<text.length;i++){
+				var s=text[i];
+				switch(s){
+					case "b":arr[0]++;break;
+					case "a":arr[1]++;break;
+					case "l":arr[2]++;break;
+					case "o":arr[3]++;break;
+					case "n":arr[4]++;break;
+				}
+			}
+			arr[2]=parseInt(arr[2]/2);
+			arr[3]=parseInt(arr[3]/2);
+			arr.sort((a,b)=>a-b);
+			document.write(`出现次数为${arr[0]}`); */
+			
+			//旅行路线图，用数组paths表示，path【i】=【cityai，citybi】表示从cityai到citybi，找出旅行终点站，即没有任何通往其他城市线路的城市，题目保证不存在循环的线路，只有一个终点站
+			
+			/* var paths=[["london","newyork"],["lima","sao paulo"],["newyork","lima"]];
+			var starts=[];
+			var ends=[];
+			for(var i=0;i<paths.length;i++){
+				starts.push(paths[i][0]);
+				ends.push(paths[i][1]);
+			}
+			for(var j=0;j<ends.length;j++){
+				if(starts.indexOf(ends[j])==-1){
+					document.write(`终点为${ends[j]}`);
+				}
+			} */
+		</script>
+	</body>
+</html>
