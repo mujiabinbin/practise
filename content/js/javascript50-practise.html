@@ -33,9 +33,28 @@
 				}
 			}
 			document.write(count); */
-			
+			/* var staples=[20,12,18,15,25,30];
+			var drinks=[5,8,3,6,2];
+			var money=30;
+			var num=0;
+			for(var i=0;i<staples.length;i++){
+				for(var j=0;j<drinks.length;j++){
+					if(staples[i]+drinks[j]<=money){
+						num++;
+					}
+				}
+			}
+			document.write(`共有${num}种组合方式`); */
 			//求数字动态和，【1，2，3，4】=》【1，1+2，1+2+3，1+2+3+4】
 			/* var arr=[1,2,3,4];
+			var newarr=[];
+			var num=0;
+			for(var i=0;i<arr.length;i++){
+				num+=arr[i];
+				newarr.push(num);
+			}
+			document.write(newarr); */
+			/* var arr=[2,4,6,8,9];
 			var newarr=[];
 			var num=0;
 			for(var i=0;i<arr.length;i++){
@@ -61,6 +80,28 @@
 			arr[3]=parseInt(arr[3]/2);
 			arr.sort((a,b)=>a-b);
 			document.write(`出现次数为${arr[0]}`); */
+			/* var str="bbbaaalllloooonnnn";
+			var b="b";
+			var a="a";
+			var l="l";
+			var o="o";
+			var n="n";
+			var arr=[b,a,l,o,n];
+			var newarr=[0,0,0,0,0];
+			for(var i=0;i<str.length;i++){
+				var s=str[i];
+				switch(s){
+					case b:newarr[0]++;break;
+					case a:newarr[1]++;break;
+					case l:newarr[2]++;break;
+					case o:newarr[3]++;break;
+					case n:newarr[4]++;break;
+				}
+			}
+			newarr[2]=parseInt(newarr[2]/2);
+			newarr[3]=parseInt(newarr[3]/2);
+			newarr.sort((a,b)=>a-b);
+			document.write(`可以有${newarr[0]}个ballon`) */
 			
 			//旅行路线图，用数组paths表示，path【i】=【cityai，citybi】表示从cityai到citybi，找出旅行终点站，即没有任何通往其他城市线路的城市，题目保证不存在循环的线路，只有一个终点站
 			
@@ -76,6 +117,21 @@
 					document.write(`终点为${ends[j]}`);
 				}
 			} */
+			
+			var paths=[["beijing","shanghai"],["xian","wuhan"],["shanghai","xian"],["wuhan","changsha"],["changsha","haerbin"]];
+			var starts=[];
+			var ends=[];
+			for(var i=0;i<paths.length;i++){
+				starts.push(paths[i][0]);
+				ends.push(paths[i][1]);
+			}
+			console.log(starts,ends);
+			for(var j=0;j<ends.length;j++){
+				if(starts.indexOf(ends[j])==-1){
+					document.write(`terminal is ${ends[j]}`);
+				}
+			}
+			
 		</script>
 	</body>
 </html>
