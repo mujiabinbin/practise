@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>Register</h1>
+		Username:<input type="text" id="regUser">Password:<input type="text" id="regPass"><button onclick="reg()">Register</button>
+		<h1>Login</h1>
+		Username:<input type="text" id="logUser">Password:<input type="text" id="logPass"><button onclick="log()">Login</button>
+		<script>
+			/* var str=JSON.stringify(对象名);
+			var obj=JSON.parse(字符串); */
+			function reg(){
+				var username= document.querySelector("#regUser").value;
+				var userpass= document.querySelector("#regPass").value;
+				var user={
+					"user":username,
+					"pass":userpass
+				}
+				var localstr=localStorage.getItem("user");
+				var users;
+				if(localstr==null){
+					users=[];
+				}else{
+					users=JSON.parse(localstr);
+				}
+				users.push(user);
+				var userstr=JSON.stringify(users);
+				localStorage.setItem("user",userstr);
+			}
+			function log(){
+				var username=document.querySelector("#logUser").value;
+				var userpass=document.querySelector("#logPass").value;
+				var user=localStorage.getItem("user");
+				var userobj=JSON.parse(user);
+				for(var i=0;i<userobj.length;i++){
+					if(username==userobj[i].user&&userpass==userobj[i].pass){
+						alert("login success");
+						break;
+					}else{
+						if(i==userobj.length-1){
+							alert("login failed");
+						}
+						
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

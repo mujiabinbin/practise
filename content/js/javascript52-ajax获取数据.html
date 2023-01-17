@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			td {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>商品列表</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>商品编号</th>
+					<th>商品图片</th>
+					<th>商品名称</th>
+					<th>商品价格</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<td>1</td>
+					<td>
+						<img src="" alt="">
+					</td>
+					<td>
+						告别演出
+					</td>
+					<td>
+						380
+					</td>
+					<th><button>删除</button></th>
+				</tr> -->
+			</tbody>
+            <script src="../../javascritpt/jquery-3.6.1.js"></script>
+			<script>
+				$.ajax({
+									"url":"https://",
+									"success":function(data){
+										var arr=data.goods;
+										for(var i=0;i<arr.length;i++){
+											var good=arr[i];
+											showdata(good);
+										}
+									}
+								})
+                /* var goods=[good1,good2,good3];
+				for(var i=0; i<goods.length;i++){
+					showdata(goods[i]);
+				} */
+				function showdata(good) {
+					var htmlstr = `
+					<tr>
+					<td>${good.id}</td>
+					<td><img src="${good.img_src}" alt="">
+					</td>
+					<td>${good.good_name}</td>
+					<td>${good.price}</td>
+					<th><button>删除</button></th>
+					</tr>
+					`;
+					/* var $tr = $(`<tr>${htmlstr}</tr>`); */
+					$(`tbody`).append(htmlstr);
+				}
+				/* showdata(good1);
+				showdata(good2); */
+			</script>
+		</table>
+	</body>
+</html>
