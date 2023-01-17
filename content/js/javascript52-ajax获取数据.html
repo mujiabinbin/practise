@@ -53,15 +53,17 @@
 				} */
 				function showdata(good) {
 					var htmlstr = `
+					<tr>
 					<td>${good.id}</td>
 					<td><img src="${good.img_src}" alt="">
 					</td>
 					<td>${good.good_name}</td>
 					<td>${good.price}</td>
 					<th><button>删除</button></th>
+					</tr>
 					`;
-					var $tr = $(`<tr>${htmlstr}</tr>`);
-					$(`tbody`).append($tr);
+					/* var $tr = $(`<tr>${htmlstr}</tr>`); */
+					$(`tbody`).append(htmlstr);
 				}
 				/* showdata(good1);
 				showdata(good2); */
