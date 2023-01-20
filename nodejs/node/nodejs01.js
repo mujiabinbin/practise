@@ -33,4 +33,35 @@ response.writeHead(200,{'Content-Type':'text/plain'});
  }).listen(8888);
   // 在终端打印信息：
   console.log("Server running at  http://127.0.0.1:8888/"); */
-  var a=1;
+  /* var a=1;
+  function foo(){
+	  var str="hello world";
+  	  console.log(`hello`);
+	  return str;
+  }
+  let b=100;
+  export default {
+	  a,
+	  foo,
+	  b
+  } */
+  /* export var a=1;
+   export function foo(){
+	   var str="hello world";
+  	  console.log(`hello`);
+	  return str;
+   }
+   export let b=2; */
+  
+ /* var num=100;
+  function foo(){
+	  var str="hello world";
+	  console.log("hello");
+	  return str;
+  } */
+ /* module.exports={
+	  num,
+	  foo
+  } */
+  /* module.exports.num=num;
+   module.exports.foo=foo(); */
