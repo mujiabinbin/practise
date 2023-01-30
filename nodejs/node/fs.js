@@ -1,4 +1,4 @@
-const fs=require("fs");
+const fs = require("fs");
 /* fs.readFile("./nodejs01.js","utf-8",function(err,data){
 	//异步代码：同步代码后执行
 	console.log("err",err);
@@ -106,3 +106,79 @@ console.log("success"); */
 	console.log("failed");
 	console.log(e);
 } */
+//创建文件夹
+/* fs.mkdir("./public/a",function(err){
+	if(err){
+		console.log("failed")
+	}else{
+		console.log("success")
+	}
+}) */
+//fs.mkdirSync("./public1");
+/* try{
+	fs.mkdirSync("./public1");
+}catch(e){
+	//TODO handle the exception
+	console.log("failed");
+	console.log(e);
+} */
+//fs.mkdirSync("./public1");
+/* try{
+	fs.mkdirSync("./public1");
+}catch(e){
+	//TODO handle the exception
+	console.log("failed");
+	console.log(e);
+} */
+//删除文件夹,文件夹下有内容无法删除，rmdir只能删除空文件夹
+/* fs.rmdir("./public1", err => {
+	if (err) {
+		console.log("failed",err)
+	} else {
+		console.log("success")
+	}
+}) */
+//fs.rmdirSync("./public1");
+/* try{
+	fs.rmdirSync("./public1");
+}catch(e){
+	//TODO handle the exception
+	console.log("failed");
+	console.log(e);
+} */
+//读取文件夹内容,只能读取一层内容
+/* fs.readdir("./public",(err,data)=>{
+	if (err) {
+		console.log("failed",err)
+	} else {
+		console.log("success",data)
+	}
+}) */
+//console.log(fs.readdirSync("../node"));
+//判断文件或文件夹是否存在
+/* fs.access("/public",function(err){
+	if (err) {
+		console.log("failed",err)
+	} else {
+		console.log("success",data)
+	}
+}) */
+/* try{
+	fs.accessSync("/public");
+	console.log("exsit");
+}catch(e){
+	//TODO handle the exception
+	console.log("failed");
+	console.log(e);
+} */
+//查看文件或文件夹状态，判断当前路径是文件还是文件夹
+/* fs.stat("./public",function(err,stats){
+	if(err){
+		console.log("failed",err)
+	}else{
+		const isfile=stats.isFile();
+		const isdir=stats.isDirectory()
+		console.log(isfile,isdir);
+	}
+}) */
+/* console.log(fs.statSync("./public").isDirectory()) */
