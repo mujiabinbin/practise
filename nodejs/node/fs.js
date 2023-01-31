@@ -182,3 +182,40 @@ console.log("success"); */
 	}
 }) */
 /* console.log(fs.statSync("./public").isDirectory()) */
+//　删除文件函数
+/* function rmdir(dir){
+	const stats= fs.statSync(dir);
+	if(stats.isFile()){
+		fs.unlinkSync(dir);
+		console.log(`${dir}文件删除成功`);
+	}else{
+		const files= fs.readdirSync(dir);
+		files.forEach(function(item){
+			rmdir(`${dir}/${item}`);
+		});
+		fs.rmdirSync(dir);
+		console.log(`${dir}文件夹删除成功`);
+	}
+}
+rmdir(); */
+
+//移动文件夹
+function movedir(olddir,newdir){
+	try{
+		const isaccess= fs.accessSync(newdir);
+	}catch(e){
+		//TODO handle the exception
+		//console.log(`${newdir}路径不存在，重新输入`);
+		const dirs=newdir.split("/");
+		const result=dirs.reduce(function(sum,item,index){
+			if(index>1){
+				fs.mkdirSync(sum);
+			}
+			return sum+"/"+item;
+		});
+		fs.mkdirSync(result);
+		//fs.mkdirSync(newdir);
+	}
+	fs.renameSync(olddir,`${newdir}/${olddir}`);
+}
+
