@@ -200,7 +200,7 @@ console.log("success"); */
 rmdir(); */
 
 //移动文件夹
-function movedir(olddir,newdir){
+/* function movedir(olddir,newdir){
 	try{
 		const isaccess= fs.accessSync(newdir);
 	}catch(e){
@@ -218,4 +218,16 @@ function movedir(olddir,newdir){
 	}
 	fs.renameSync(olddir,`${newdir}/${olddir}`);
 }
+ */
+const arr=[1,2,3,4,5];
+
+/* arr.forEach((item,index)=>{
+	console.log(index+1);
+}) */
+/* arr.map((value,index,arr)=>{
+	console.log(value,index,arr);
+}) */
+/* arr.reduce((prevalue,curvalue,curindex,arr)=>{
+	console.log(prevalue,curvalue,curindex,arr);
+}) */
 
