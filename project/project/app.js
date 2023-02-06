@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//用于配置ajax请求的一级路径
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -38,4 +39,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+//module.exports = app;
+//更改项目启动命令
+app.listen(3000,()=>{
+	console.log("3000 port start");
+})

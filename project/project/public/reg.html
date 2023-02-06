@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>用户注册</h1>
+		<input type="text" id="username">
+		<input type="text" id="userpass">
+		<button id="regbtn">注册</button>
+		<script src="jquery-3.6.1.js"></script>
+		<script>
+			
+			$("#regbtn").click(function(){
+				const username= $("#username").val();
+				const userpass= $("#userpass").val();
+				$.ajax({
+					url:"users/reg",
+					data:{
+						username,
+						userpass
+					},
+					type:"post",
+					success(msg){
+						console.log(msg);
+					}
+				})
+			})
+		</script>
+	</body>
+</html>
