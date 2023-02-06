@@ -23,7 +23,12 @@
 					},
 					type:"post",
 					success(msg){
-						console.log(msg);
+						if(msg.status){
+							const result= confirm("注册成功");
+							if(result){
+								location.assign("login.html");
+							}
+						}
 					}
 				})
 			})

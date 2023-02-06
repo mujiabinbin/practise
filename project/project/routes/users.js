@@ -26,7 +26,13 @@ router.post('/login', function(req, res, next) {
  
 }); 
 router.post('/reg', function(req, res, next) {
-	console.log("success reg")
+	
+	const objstr=JSON.stringify(req.body);
+	const strobj=JSON.parse(objstr);
+	console.log(strobj);
+	users.push(strobj);
+    console.log(users);
+
 	//后端处理结果响应给前端
   res.send({message:"注册成功",status:1});
 }); 
