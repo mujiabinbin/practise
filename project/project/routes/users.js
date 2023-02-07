@@ -1,8 +1,13 @@
 var express = require('express');
 //后端路由，用于分配ajax请求
 var router = express.Router();
-const users=[
-	{username:"zhangsan",password:"123"},{username:"lisi",password:"123"}]
+const users = [{
+	username: "zhangsan",
+	password: "123"
+}, {
+	username: "lisi",
+	password: "123"
+}]
 
 /* GET users listing. */
 /* router.get('/', function(req, res, next) {
@@ -13,28 +18,49 @@ router.post('/login', function(req, res, next) {
 	//1 接收前端数据
 	//- post:req.body
 	//- get:req.query
-	const result= users.some(function(item,index){
-		return item.username==req.body.username&&item.password==req.body.userpass;
+	const result = users.some(function(item, index) {
+		return item.username == req.body.username && item.password == req.body.userpass;
 	});
-	if(result){
-		 res.send({message:"登陆成功",status:1});
-	}else{
-		 res.send({message:"登陆失败",status:0});
+	if (result) {
+		res.send({
+			message: "登陆成功",
+			status: 1
+		});
+	} else {
+		res.send({
+			message: "登陆失败",
+			status: 0
+		});
 	}
-	
-	//后端处理结果响应给前端
- 
-}); 
-router.post('/reg', function(req, res, next) {
-	
-	const objstr=JSON.stringify(req.body);
-	const strobj=JSON.parse(objstr);
-	console.log(strobj);
-	users.push(strobj);
-    console.log(users);
 
 	//后端处理结果响应给前端
-  res.send({message:"注册成功",status:1});
-}); 
+
+});
+router.post('/reg', function(req, res, next) {
+
+	/* const objstr=JSON.stringify(req.body);
+	const strobj=JSON.parse(objstr); */
+	//console.log(strobj);
+	const isexist = users.some(function(item, index) {
+		return item.username == req.body.username
+	})
+	if (isexist) {
+		res.send({
+			message: "用户名重复",
+			status: 0
+		});
+	} else {
+		res.send({
+			message: "注册成功",
+			status: 1
+		});
+		users.push(req.body);
+	}
+
+	console.log(users);
+
+	//后端处理结果响应给前端
+
+});
 
 module.exports = router;
