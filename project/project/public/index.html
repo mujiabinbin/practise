@@ -44,7 +44,7 @@
 							<td>${item.gender}</td>
 							<td>
 								<button class="editbtn">修改</button>
-								<button class="deletebtn" data-stuid="${item._id}">删除</button>
+								<button class="deletebtn" data-stuid="${item._id}">删除</button><!-- 自定义属性：属性前加“data-” -->
 							</td>
 						</tr>
 						`);
@@ -68,8 +68,8 @@
 			}
 			
 			//事件委托，将动态生成标签的事件绑定在父标签上，父标签为静态标签
-			$("tbody").on("click",".deletebtn",function(){
-				const _id= $(this).data("stuid");//原生js this表示绑定元素，而jquery中this表示事件元素
+			$("tbody").on("click",".deletebtn",function(){//原生js this表示绑定元素，而jquery中this表示事件元素
+				const _id= $(this).data("stuid");//data(“属性名”)：获取原生属性值，属性名会自动过滤“data-”，data(“属性名“，”属性值“)：赋值
 				console.log(_id);
 				$.ajax({
 					url:"/index/delete",
