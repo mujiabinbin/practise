@@ -5,16 +5,49 @@ var router = express.Router();
 /* router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 }); */
-const students=[
-	{name:"张三",age:20,gender:"男"},
-	{name:"李四",age:21,gender:"男"},
-	{name:"王丽",age:22,gender:"女"},
-	{name:"刘宁",age:20,gender:"女"}]
- router.get('/get', function(req, res, next) {
-  res.send({
-	  msg:"获取成功",
-	  status:1,
-	  data:students
-  })
-}); 
+let students = [{
+		_id: 1,
+		name: "张三",
+		age: 20,
+		gender: "男"
+	},
+	{
+		_id: 2,
+		name: "李四",
+		age: 21,
+		gender: "男"
+	},
+	{
+		_id: 3,
+		name: "王丽",
+		age: 22,
+		gender: "女"
+	},
+	{
+		_id: 4,
+		name: "刘宁",
+		age: 20,
+		gender: "女"
+	}
+]
+//获取数据
+router.get('/get', function(req, res, next) {
+	res.send({
+		msg: "获取成功",
+		status: 1,
+		data: students
+	})
+});
+//删除数据
+router.post('/delete', function(req, res, next) {
+	students = students.filter(function(item, index) {
+		return req.body._id != item._id; //filter return 过滤条件，根据过滤过滤条件返回新数组
+	})
+	res.send({
+		msg: "删除成功",
+		status: 1,
+		data: students
+	})
+});
+
 module.exports = router;

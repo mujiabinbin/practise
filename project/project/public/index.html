@@ -24,52 +24,66 @@
 				</tr>
 			</thead>
 			<tbody id="tb">
-				<tr>
-					<td>张三</td>
-					<td>20</td>
-					<td>男</td>
-					<td>
-						<button>修改</button>
-						<button>删除</button>
-					</td>
-				</tr>
 				
 			</tbody>
 		</table>
 		<script src="jquery-3.6.1.js"></script>
 		<script>
 			
-			$.ajax({
-				url:"/index/get",
-				type:"get",
-				success:function({msg,status,data}){
-					let str=data.map(item=>`
-					<tr>
-						<td>${item.name}</td>
-						<td>${item.age}</td>
-						<td>${item.gender}</td>
-						<td>
-							<button>修改</button>
-							<button>删除</button>
-						</td>
-					</tr>
-					`);
-					$("tbody").append(str);
-					console.log(str);
-					/* msg.data.forEach(function(item){
-						$("tbody").append(`
+			studelete();
+			
+			function studelete(){
+				$.ajax({
+					url:"/index/get",
+					type:"get",
+					success:function({msg,status,data}){
+						let str=data.map(item=>`
 						<tr>
 							<td>${item.name}</td>
 							<td>${item.age}</td>
 							<td>${item.gender}</td>
 							<td>
-								<button>修改</button>
-								<button>删除</button>
+								<button class="editbtn">修改</button>
+								<button class="deletebtn" data-stuid="${item._id}">删除</button>
 							</td>
-						</tr>`
-						);
-					})	 */
-				}
+						</tr>
+						`);
+						$("tbody").html(str);
+						//console.log(str);
+						/* msg.data.forEach(function(item){
+							$("tbody").append(`
+							<tr>
+								<td>${item.name}</td>
+								<td>${item.age}</td>
+								<td>${item.gender}</td>
+								<td>
+									<button>修改</button>
+									<button>删除</button>
+								</td>
+							</tr>`
+							);
+						})	 */
+					}
+				})
+			}
+			
+			//事件委托，将动态生成标签的事件绑定在父标签上，父标签为静态标签
+			$("tbody").on("click",".deletebtn",function(){
+				const _id= $(this).data("stuid");//原生js this表示绑定元素，而jquery中this表示事件元素
+				console.log(_id);
+				$.ajax({
+					url:"/index/delete",
+					data:{
+						_id
+					},
+					type:"post",
+					success(msg){
+						if(msg.status){
+							alert("删除成功");
+							studelete();
+						};
+					}
+				})
 			})
 		</script>
 	</body>
