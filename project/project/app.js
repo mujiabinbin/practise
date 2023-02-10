@@ -3,17 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
 
+require(`./dao/database`);
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 
 var app = express();
-mongoose.connect('mongodb://localhost/myDB');
-mongoose.connection.on(`connected`,function(){
-	console.log(`数据库连接成功`)
-});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
