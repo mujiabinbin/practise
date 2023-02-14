@@ -8,12 +8,12 @@
 	<script src="js/index.js"></script>
 	<body>
 		<h1>添加数据</h1>
-		姓名：<input type="text">
-		年龄：<input type="text">
-		性别：<input type="text">
-		<button>提交</button>
-		
-		<h1>获取数据</h1>
+		姓名：<input id="addname" type="text">
+		年龄：<input id="addage" type="text">
+		性别：<input id="addgender" type="text">
+		<button onclick="adddata()">提交</button>
+
+		<h1>学生数据</h1>
 		<table>
 			<thead>
 				<tr>
@@ -24,67 +24,116 @@
 				</tr>
 			</thead>
 			<tbody id="tb">
-				
+
 			</tbody>
 		</table>
+		<h1>查找数据</h1>
+		输入姓名：<input type="text">
+		输入年龄：<input type="text">
+		输入性别：<input type="text">
+		<button id="searchbtn">查找</button>
+		<table>
+			<thead>
+
+			</thead>
+			<!-- <tbody>
+
+			</tbody> -->
+		</table>
+
 		<script src="jquery-3.6.1.js"></script>
 		<script>
-			
 			studelete();
-			
-			function studelete(){
+
+			function studelete() {
 				$.ajax({
-					url:"/index/get",
-					type:"get",
-					success:function({msg,status,data}){
-						let str=data.map(item=>`
+					url: "/index/get",
+					type: "get",
+					success: function({
+						msg,
+						status,
+						data
+					}) {
+						let str = data.map(item => `
 						<tr>
-							<td>${item.name}</td>
-							<td>${item.age}</td>
-							<td>${item.gender}</td>
+							<td>${item.username}</td>
+							<td>${item.userage}</td>
+							<td>${item.usergender}</td>
 							<td>
 								<button class="editbtn">修改</button>
-								<button class="deletebtn" data-stuid="${item._id}">删除</button><!-- 自定义属性：属性前加“data-” -->
+								
 							</td>
 						</tr>
-						`);
+						`)
 						$("tbody").html(str);
-						//console.log(str);
-						/* msg.data.forEach(function(item){
-							$("tbody").append(`
-							<tr>
-								<td>${item.name}</td>
-								<td>${item.age}</td>
-								<td>${item.gender}</td>
-								<td>
-									<button>修改</button>
-									<button>删除</button>
-								</td>
-							</tr>`
-							);
-						})	 */
 					}
 				})
+
 			}
-			
+			//console.log(str);
+			/* msg.data.forEach(function(item){
+				$("tbody").append(`
+				<tr>
+					<td>${item.name}</td>
+					<td>${item.age}</td>
+					<td>${item.gender}</td>
+					<td>
+						<button>修改</button>
+						<button>删除</button>
+					</td>
+				</tr>`
+				);
+			})	
+			}
+			})
+			} */
+
 			//事件委托，将动态生成标签的事件绑定在父标签上，父标签为静态标签
-			$("tbody").on("click",".deletebtn",function(){//原生js this表示绑定元素，而jquery中this表示事件元素
-				const _id= $(this).data("stuid");//data(“属性名”)：获取原生属性值，属性名会自动过滤“data-”，data(“属性名“，”属性值“)：赋值
+			/* $("tbody").on("click", ".deletebtn", function() { //原生js this表示绑定元素，而jquery中this表示事件元素
+				const _id = $(this).data("stuid"); //data(“属性名”)：获取原生属性值，属性名会自动过滤“data-”，data(“属性名“，”属性值“)：赋值
 				console.log(_id);
 				$.ajax({
-					url:"/index/delete",
-					data:{
+					url: "/index/delete",
+					data: {
 						_id
 					},
-					type:"post",
-					success(msg){
-						if(msg.status){
+					type: "post",
+					success(msg) {
+						if (msg.status) {
 							alert("删除成功");
 							studelete();
 						};
 					}
 				})
-			})
+			}) */
+
+			function adddata() {
+				const username = $(`#addname`).val();
+				const userage = $(`#addage`).val();
+				const usergender = $(`#addgender`).val();
+				$.ajax({
+					url: `/index/add`,
+					type: "post",
+					data: {
+						username,
+						userage,
+						usergender
+					},
+					success(msg) {
+						$("tbody").append(`
+						<tr>
+							<td>${msg.username}</td>
+							<td>${msg.userage}</td>
+							<td>${msg.usergender}</td>
+							<td>
+								<button class="editbtn">修改</button>
+								
+							</td>
+						</tr>`);
+					}
+				})
+
+			}
 		</script>
 	</body>
 </html>
