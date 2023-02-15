@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 const {
 	add,
-	stu
+	stu,
+	del,
+	edit,
+	search
 } = require(`../service/stuService`);
 
 /* GET home page. */
@@ -44,23 +47,51 @@ router.get('/get', async function(req, res, next) {
 	})
 });
 //删除数据
-/* router.post('/delete', function(req, res, next) {
-	students = students.filter(function(item, index) {
+router.post('/delete', async function(req, res, next) {
+	/* students = students.filter(function(item, index) {
 		return req.body._id != item._id; //filter return 过滤条件，根据过滤过滤条件返回新数组
-	})
+	}) */
+	const _id = req.body;
+	const data = await del(_id);
+
 	res.send({
 		msg: "删除成功",
 		status: 1,
-		data: students
+		data: data
 	})
-}); */
+});
+//添加数据
 router.post('/add', async function(req, res, next) {
 	const stu = req.body;
 	//console.log(stu);
 	const data = await add(stu);
 	res.send(data);
-	console.log(data);
 
 });
+//搜素数据
+router.post('/search', async function(req, res, next) {
+
+	const searchedata = req.body;
+	const data = await search(searchedata);
+	console.log(`index`, searchedata);
+
+	res.send({
+		msg: "搜索成功",
+		status: 1,
+		data: data
+	})
+});
+//编辑数据
+/* router.post('/edit', async function(req, res, next) {
+	
+	const _id = req.body;
+	const data = await edit(_id);
+
+	res.send({
+		msg: "删除成功",
+		status: 1,
+		data: data
+	})
+}); */
 
 module.exports = router;
