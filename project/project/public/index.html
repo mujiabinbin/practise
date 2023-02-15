@@ -17,6 +17,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th>编号</th>
 					<th>姓名</th>
 					<th>年龄</th>
 					<th>性别</th>
@@ -28,17 +29,17 @@
 			</tbody>
 		</table>
 		<h1>查找数据</h1>
-		输入姓名：<input type="text">
-		输入年龄：<input type="text">
-		输入性别：<input type="text">
-		<button id="searchbtn">查找</button>
+		输入姓名：<input id="searchname" type="text">
+		输入年龄：<input id="searchage" type="text">
+		输入性别：<input id="searchgender" type="text">
+		<button id="searchbtn" onclick="search()">查找</button>
 		<table>
 			<thead>
 
 			</thead>
-			<!-- <tbody>
+			<tbody id="search">
 
-			</tbody> -->
+			</tbody>
 		</table>
 
 		<script src="jquery-3.6.1.js"></script>
@@ -56,16 +57,17 @@
 					}) {
 						let str = data.map(item => `
 						<tr>
+						    <td>${item._id}</td>
 							<td>${item.username}</td>
 							<td>${item.userage}</td>
 							<td>${item.usergender}</td>
 							<td>
-								<button class="editbtn">修改</button>
-								
+								<button class="editbtn" data-editstu=${item._id}>修改</button>
+								<button class="delbtn" data-stuid=${item._id}>删除</button>
 							</td>
 						</tr>
 						`)
-						$("tbody").html(str);
+						$("#tb").html(str);
 					}
 				})
 
@@ -89,7 +91,7 @@
 			} */
 
 			//事件委托，将动态生成标签的事件绑定在父标签上，父标签为静态标签
-			/* $("tbody").on("click", ".deletebtn", function() { //原生js this表示绑定元素，而jquery中this表示事件元素
+			$("tbody").on("click", ".delbtn", function() { //原生js this表示绑定元素，而jquery中this表示事件元素
 				const _id = $(this).data("stuid"); //data(“属性名”)：获取原生属性值，属性名会自动过滤“data-”，data(“属性名“，”属性值“)：赋值
 				console.log(_id);
 				$.ajax({
@@ -99,13 +101,11 @@
 					},
 					type: "post",
 					success(msg) {
-						if (msg.status) {
-							alert("删除成功");
-							studelete();
-						};
+						alert(`删除成功`);
+						studelete();
 					}
 				})
-			}) */
+			})
 
 			function adddata() {
 				const username = $(`#addname`).val();
@@ -120,20 +120,77 @@
 						usergender
 					},
 					success(msg) {
-						$("tbody").append(`
+						$("#tb").append(`
 						<tr>
+						    <td>${msg._id}</td>
 							<td>${msg.username}</td>
 							<td>${msg.userage}</td>
 							<td>${msg.usergender}</td>
 							<td>
-								<button class="editbtn">修改</button>
-								
+								<button class="editbtn" data-editstu=${item._id}>修改</button>
+								<button class="delbtn" data-stuid=${item._id}>删除</button>
 							</td>
 						</tr>`);
 					}
+
+				})
+				studelete();
+			}
+			//搜索
+			function search(data) {
+				const username = $("#searchname").val();
+				const userage = $("#searchage").val();
+				const usergender = $("#searchgender").val();
+				$.ajax({
+					url: "/index/search",
+					type: "post",
+					data: {
+						username,
+						userage,
+						usergender
+					},
+					success: function({
+						msg,
+						status,
+						data
+					}) {
+						let str = data.map(item => `
+						<tr>
+						    <td>${item._id}</td>
+							<td>${item.username}</td>
+							<td>${item.userage}</td>
+							<td>${item.usergender}</td>
+							<td>
+								<button class="editbtn" data-editstu=${item._id}>修改</button>
+								<button class="delbtn" data-stuid=${item._id}>删除</button>
+							</td>
+						</tr>
+						`)
+						$("#search").html(str);
+					}
+
 				})
 
 			}
+			/* $("tbody").on("click", ".editbtn", function() { 
+				const _id = $(this).data("editstu");
+				const username = $(`#addname`).val();
+				const userage = $(`#addage`).val();
+				const usergender = $(`#addgender`).val();
+				
+				console.log(_id);
+				$.ajax({
+					url: "/index/edit",
+					data: {
+						_id
+					},
+					type: "post",
+					success(msg) {
+						alert(`删除成功`);
+						studelete();
+					}
+				})
+			}) */
 		</script>
 	</body>
 </html>
