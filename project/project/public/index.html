@@ -28,6 +28,12 @@
 
 			</tbody>
 		</table>
+		<h1>修改数据</h1>
+		<p id="updateid">id</p>
+		修改姓名：<input id="editname" type="text">
+		修改年龄：<input id="editage" type="text">
+		修改性别：<input id="editgender" type="text">
+		<button id="editsummit" onclick="update()">修改</button>
 		<h1>查找数据</h1>
 		输入姓名：<input id="searchname" type="text">
 		输入年龄：<input id="searchage" type="text">
@@ -172,13 +178,8 @@
 				})
 
 			}
-			/* $("tbody").on("click", ".editbtn", function() { 
+			$("tbody").on("click", ".editbtn", function() {
 				const _id = $(this).data("editstu");
-				const username = $(`#addname`).val();
-				const userage = $(`#addage`).val();
-				const usergender = $(`#addgender`).val();
-				
-				console.log(_id);
 				$.ajax({
 					url: "/index/edit",
 					data: {
@@ -186,11 +187,36 @@
 					},
 					type: "post",
 					success(msg) {
-						alert(`删除成功`);
+						$(`#editname`).val(msg.data[0].username);
+						$(`#editage`).val(msg.data[0].userage);
+						$(`#editgender`).val(msg.data[0].usergender);
+						$(`#updateid`).text(msg.data[0]._id)
+					}
+				})
+			})
+
+
+			function update() {
+				const _id = $(`#updateid`).text();
+				const username = $(`#editname`).val();
+				const userage = $(`#editage`).val();
+				const usergender = $(`#editgender`).val();
+				var update = {
+					_id,
+					username,
+					userage,
+					usergender
+				};
+				//console.log(update)
+				$.ajax({
+					url: "/index/update",
+					data: update,
+					type: "post",
+					success(msg) {
 						studelete();
 					}
 				})
-			}) */
+			}
 		</script>
 	</body>
 </html>

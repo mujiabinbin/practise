@@ -20,3 +20,16 @@ module.exports.search = async function(searchedata) {
 	const data = await stumodel.find(searchedata);
 	return data;
 }
+module.exports.edit = async function(_id) {
+	const data = await stumodel.find({
+		"_id": _id
+	});
+	return data;
+}
+module.exports.stuupdate = async function(update) {
+	const data = await stumodel.updateOne({
+		"_id": update._id
+	}, update);
+	//console.log(update._id, update.username);
+	return update;
+}
