@@ -5,7 +5,8 @@ const {
 	stu,
 	del,
 	edit,
-	search
+	search,
+	stuupdate
 } = require(`../service/stuService`);
 
 /* GET home page. */
@@ -82,16 +83,32 @@ router.post('/search', async function(req, res, next) {
 	})
 });
 //编辑数据
-/* router.post('/edit', async function(req, res, next) {
-	
+router.post('/edit', async function(req, res, next) {
+
 	const _id = req.body;
 	const data = await edit(_id);
+	//console.log(_id)
 
 	res.send({
-		msg: "删除成功",
+		msg: "",
 		status: 1,
-		data: data
+		data: data,
 	})
-}); */
+	//console.log(data);
+});
+router.post('/update', async function(req, res, next) {
+
+	//const _id = req.body._id;
+	const update = req.body;
+	const data = await stuupdate(update);
+	//console.log(req.body);
+
+	res.send({
+		msg: "编辑成功",
+		status: 1,
+		data: data,
+	})
+});
+
 
 module.exports = router;
