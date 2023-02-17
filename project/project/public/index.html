@@ -28,12 +28,14 @@
 
 			</tbody>
 		</table>
+
 		<h1>修改数据</h1>
 		<p id="updateid">id</p>
-		修改姓名：<input id="editname" type="text">
+		修改姓名：<input onblur="editcheck()" id="editname" type="text">
 		修改年龄：<input id="editage" type="text">
 		修改性别：<input id="editgender" type="text">
 		<button id="editsummit" onclick="update()">修改</button>
+
 		<h1>查找数据</h1>
 		输入姓名：<input id="searchname" type="text">
 		输入年龄：<input id="searchage" type="text">
@@ -52,6 +54,7 @@
 		<script>
 			studelete();
 
+			//获取列表
 			function studelete() {
 				$.ajax({
 					url: "/index/get",
@@ -78,7 +81,7 @@
 				})
 
 			}
-			//console.log(str);
+			//foreach获取列表，性能不及字符串拼接后一次性渲染
 			/* msg.data.forEach(function(item){
 				$("tbody").append(`
 				<tr>
@@ -92,10 +95,9 @@
 				</tr>`
 				);
 			})	
-			}
-			})
-			} */
+			 */
 
+			//删除数据
 			//事件委托，将动态生成标签的事件绑定在父标签上，父标签为静态标签
 			$("tbody").on("click", ".delbtn", function() { //原生js this表示绑定元素，而jquery中this表示事件元素
 				const _id = $(this).data("stuid"); //data(“属性名”)：获取原生属性值，属性名会自动过滤“data-”，data(“属性名“，”属性值“)：赋值
@@ -113,15 +115,14 @@
 				})
 			})
 
-			function isexsit(name) {
+			//校验姓名
+			function isexsit() {
 				const username = $(`#addname`).val();
-				const editname = $(`#editname`).val();
 				$.ajax({
 					url: "/index/isexsit",
 					type: "post",
 					data: {
 						username,
-						editname
 					},
 					success(msg) {
 						if (!msg.status) {
@@ -137,6 +138,7 @@
 				})
 			}
 
+			//添加数据
 			function adddata() {
 				const username = $(`#addname`).val();
 				const userage = $(`#addage`).val();
@@ -162,10 +164,10 @@
 							</td>
 						</tr>`);
 					}
-
 				})
 				studelete();
 			}
+
 			//搜索
 			function search(data) {
 				const username = $("#searchname").val();
@@ -198,10 +200,11 @@
 						`)
 						$("#search").html(str);
 					}
-
 				})
 
 			}
+
+			//修改数据-点击数据修改按钮赋值给修改输入框
 			$("tbody").on("click", ".editbtn", function() {
 				const _id = $(this).data("editstu");
 				$.ajax({
@@ -219,27 +222,67 @@
 				})
 			})
 
-
+			//修改数据-校验姓名并更新内容至数据库
 			function update() {
 				const _id = $(`#updateid`).text();
 				const username = $(`#editname`).val();
 				const userage = $(`#editage`).val();
 				const usergender = $(`#editgender`).val();
-				var update = {
-					_id,
-					username,
-					userage,
-					usergender
-				};
-				//console.log(update)
 				$.ajax({
-					url: "/index/update",
-					data: update,
+					url: "/index/isexsit",
 					type: "post",
+					data: {
+						username,
+					},
 					success(msg) {
-						studelete();
+						if (!msg.status) {
+							const result = confirm(`姓名已存在，是否继续修改`);
+							if (!result) {
+								$(`#editsummit`).attr(`disabled`, true);
+								alert(`请重新输入姓名`);
+							} else {
+								$(`#editsummit`).attr(`disabled`, false);
+								var update = {
+									_id,
+									username,
+									userage,
+									usergender
+								};
+								$.ajax({
+									url: "/index/update",
+									data: update,
+									type: "post",
+									success(msg) {
+										studelete();
+									}
+								})
+								alert(`修改成功`);
+							}
+						} else {
+							var update = {
+								_id,
+								username,
+								userage,
+								usergender
+							};
+							$.ajax({
+								url: "/index/update",
+								data: update,
+								type: "post",
+								success(msg) {
+									studelete();
+								}
+							})
+							alert(`修改成功`);
+						}
 					}
 				})
+			}
+
+			//修改校验数据若姓名重复按钮会至灰，重新输入姓名鼠标离开后按钮恢复可用
+
+			function editcheck() {
+				$(`#editsummit`).attr(`disabled`, false);
 			}
 		</script>
 	</body>
