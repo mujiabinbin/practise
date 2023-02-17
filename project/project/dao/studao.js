@@ -5,7 +5,14 @@ module.exports.add = async function(stu) {
 	await stumodel.create(stu);
 	return stu;
 }
-
+module.exports.isexsit = async function(username) {
+	const data = await stumodel.find({
+		"username": {
+			$in: [username.username, username.editname]
+		}
+	});
+	return data;
+}
 module.exports.stu = async function() {
 	const data = await stumodel.find();
 	return data;

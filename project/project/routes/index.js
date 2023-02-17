@@ -6,38 +6,15 @@ const {
 	del,
 	edit,
 	search,
-	stuupdate
+	stuupdate,
+	isexsit
 } = require(`../service/stuService`);
 
 /* GET home page. */
 /* router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 }); */
-/* let students = [{
-		_id: 1,
-		name: "张三",
-		age: 20,
-		gender: "男"
-	},
-	{
-		_id: 2,
-		name: "李四",
-		age: 21,
-		gender: "男"
-	},
-	{
-		_id: 3,
-		name: "王丽",
-		age: 22,
-		gender: "女"
-	},
-	{
-		_id: 4,
-		name: "刘宁",
-		age: 20,
-		gender: "女"
-	}
-] */
+
 //获取数据
 router.get('/get', async function(req, res, next) {
 	const data = await stu();
@@ -60,6 +37,14 @@ router.post('/delete', async function(req, res, next) {
 		status: 1,
 		data: data
 	})
+});
+// 判断用户是否存在
+router.post('/isexsit', async function(req, res, next) {
+	const username = req.body;
+	//console.log(stu);
+	const data = await isexsit(username);
+	res.send(data);
+
 });
 //添加数据
 router.post('/add', async function(req, res, next) {
