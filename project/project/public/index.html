@@ -8,10 +8,10 @@
 	<script src="js/index.js"></script>
 	<body>
 		<h1>添加数据</h1>
-		姓名：<input id="addname" type="text">
+		姓名：<input onblur="isexsit()" id="addname" type="text">
 		年龄：<input id="addage" type="text">
 		性别：<input id="addgender" type="text">
-		<button onclick="adddata()">提交</button>
+		<button id="add-button" onclick="adddata()">提交</button>
 
 		<h1>学生数据</h1>
 		<table>
@@ -113,6 +113,30 @@
 				})
 			})
 
+			function isexsit(name) {
+				const username = $(`#addname`).val();
+				const editname = $(`#editname`).val();
+				$.ajax({
+					url: "/index/isexsit",
+					type: "post",
+					data: {
+						username,
+						editname
+					},
+					success(msg) {
+						if (!msg.status) {
+							const result = confirm(`姓名已存在，是否继续添加`);
+							if (!result) {
+								$(`#add-button`).attr(`disabled`, true);
+							}
+						} else {
+							$(`#add-button`).attr(`disabled`, false);
+						}
+
+					}
+				})
+			}
+
 			function adddata() {
 				const username = $(`#addname`).val();
 				const userage = $(`#addage`).val();
@@ -133,8 +157,8 @@
 							<td>${msg.userage}</td>
 							<td>${msg.usergender}</td>
 							<td>
-								<button class="editbtn" data-editstu=${item._id}>修改</button>
-								<button class="delbtn" data-stuid=${item._id}>删除</button>
+								<button class="editbtn" data-editstu=${msg._id}>修改</button>
+								<button class="delbtn" data-stuid=${msg._id}>删除</button>
 							</td>
 						</tr>`);
 					}
