@@ -17,8 +17,8 @@ module.exports.isexsit = async function(username) {
 	return data;
 }
 
-module.exports.stu = async function() {
-	const data = await stumodel.find();
+module.exports.stu = async function(searchedata) {
+	const data = await stumodel.find(searchedata);
 	return data;
 }
 
@@ -30,17 +30,20 @@ module.exports.del = async function(_id) {
 }
 
 module.exports.search = async function(searchedata) {
-	const data = await stumodel.find({
-		$or: [{
-				username: searchedata.username
-			}, {
-				userage: searchedata.userage
-			},
-			{
-				usergender: searchedata.usergender
-			}
-		]
-	});
+	const data = await stumodel.find(searchedata
+		/* {
+				$or: [{
+						username: searchedata.username
+					}, {
+						userage: searchedata.userage
+					},
+					{
+						usergender: searchedata.usergender
+					}
+				],
+				//模糊查询：{name:{$regex:`李`,$options:`$i`}}，name属性中包含“李”的的所有数据,$options:`$i`不区分大小写，$regex:``空字符串匹配所有内容
+			} */
+	);
 	return data;
 }
 
