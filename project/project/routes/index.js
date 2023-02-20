@@ -8,7 +8,7 @@ const {
 	stu,
 	del,
 	edit,
-	search,
+	//search,
 	stuupdate,
 	isexsit
 } = require(`../service/stuService`);
@@ -18,10 +18,9 @@ const {
   res.render('index', { title: 'Express' });
 }); */
 
-//获取数据
+//获取及检索数据
 router.get('/get', async function(req, res, next) {
 	const searchdata = req.query;
-	console.log(searchdata);
 	const data = await stu(searchdata);
 	res.send({
 		msg: "获取成功",
@@ -59,7 +58,7 @@ router.post('/add', async function(req, res, next) {
 });
 
 //搜素数据
-router.post('/search', async function(req, res, next) {
+/* router.post('/search', async function(req, res, next) {
 	const searchedata = req.body;
 	const data = await search(searchedata);
 	res.send({
@@ -67,7 +66,7 @@ router.post('/search', async function(req, res, next) {
 		status: 1,
 		data: data
 	})
-});
+}); */
 
 //编辑数据
 router.post('/edit', async function(req, res, next) {

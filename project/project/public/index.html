@@ -13,13 +13,20 @@
 		性别：<input id="addgender" type="text">
 		<button id="add-button" onclick="adddata()">提交</button>
 
+		<h1>修改数据</h1>
+		<p id="updateid">id</p>
+		修改姓名：<input onblur="editcheck()" id="editname" type="text">
+		修改年龄：<input id="editage" type="text">
+		修改性别：<input id="editgender" type="text">
+		<button id="editsummit" onclick="update()">修改</button>
+
 		<h1>学生数据</h1>
 		<!-- 输入姓名：<input id="searchname" type="text">
 		输入年龄：<input id="searchage" type="text">
 		输入性别：<input id="searchgender" type="text"> -->
 		<label>检索</label>
 		<select name="searchtype">
-			<option value="username">姓名</option>
+			<option id="searchdefault" value="username">姓名</option>
 			<option value="userage">年龄</option>
 			<option value="usergender">性别</option>
 		</select>
@@ -40,13 +47,6 @@
 			</tbody>
 		</table>
 
-		<h1>修改数据</h1>
-		<p id="updateid">id</p>
-		修改姓名：<input onblur="editcheck()" id="editname" type="text">
-		修改年龄：<input id="editage" type="text">
-		修改性别：<input id="editgender" type="text">
-		<button id="editsummit" onclick="update()">修改</button>
-
 		<!-- <h1>查找数据</h1>
 		
 		<table>
@@ -60,7 +60,11 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
-			var searchdata = {};
+			var searchdefaultname = $(`#searchdefault`).val();
+			var searchdata = {
+				searchtype: searchdefaultname,
+				searchname: ""
+			};
 			studelete();
 			//获取列表
 			function studelete() {
@@ -182,7 +186,8 @@
 				const searchtype = $("select option:selected").val();
 				const searchname = $("#searchinput").val();
 				searchdata = {
-					[searchtype]: searchname
+					searchtype,
+					searchname
 				}
 				studelete(searchdata);
 				/* const username = $("#searchname").val();
