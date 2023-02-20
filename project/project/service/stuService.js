@@ -28,8 +28,8 @@ module.exports.isexsit = async function(username) {
 	}
 }
 
-module.exports.stu = async function() {
-	const data = await stu();
+module.exports.stu = async function(searchedata) {
+	const data = await stu(searchedata);
 	return data;
 }
 

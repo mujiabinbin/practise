@@ -1,3 +1,6 @@
+const {
+	query
+} = require('express');
 var express = require('express');
 var router = express.Router();
 const {
@@ -17,7 +20,9 @@ const {
 
 //获取数据
 router.get('/get', async function(req, res, next) {
-	const data = await stu();
+	const searchdata = req.query;
+	console.log(searchdata);
+	const data = await stu(searchdata);
 	res.send({
 		msg: "获取成功",
 		status: 1,
