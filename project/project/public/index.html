@@ -7,45 +7,62 @@
 	<link rel="stylesheet" href="css/index.css">
 	<script src="js/index.js"></script>
 	<body>
-		<h1>添加数据</h1>
-		姓名：<input onblur="isexsit()" id="addname" type="text">
-		年龄：<input id="addage" type="text">
-		性别：<input id="addgender" type="text">
-		<button id="add-button" onclick="adddata()">提交</button>
+		<div id="stublock">
+			<div>
+				<h1>添加数据</h1>
+				姓名：<input onblur="isexsit()" id="addname" type="text">
+				年龄：<input id="addage" type="text">
+				性别：<input id="addgender" type="text">
+				班级：<select name="" id="addclass">
 
-		<h1>修改数据</h1>
-		<p id="updateid">id</p>
-		修改姓名：<input onblur="editcheck()" id="editname" type="text">
-		修改年龄：<input id="editage" type="text">
-		修改性别：<input id="editgender" type="text">
-		<button id="editsummit" onclick="update()">修改</button>
+				</select>
+				<button id="add-button" onclick="adddata()">提交</button>
 
-		<h1>学生数据</h1>
-		<!-- 输入姓名：<input id="searchname" type="text">
-		输入年龄：<input id="searchage" type="text">
-		输入性别：<input id="searchgender" type="text"> -->
-		<label>检索</label>
-		<select name="searchtype">
-			<option id="searchdefault" value="username">姓名</option>
-			<option value="userage">年龄</option>
-			<option value="usergender">性别</option>
-		</select>
-		<input id="searchinput" type="text">
-		<button id="searchbtn" onclick="search()">查找</button>
-		<table>
-			<thead>
-				<tr>
-					<th>编号</th>
-					<th>姓名</th>
-					<th>年龄</th>
-					<th>性别</th>
-					<th>操作</th>
-				</tr>
-			</thead>
-			<tbody id="tb">
+				<h1>修改数据</h1>
+				<input type="hidden" id="updateid">
+				修改姓名：<input onblur="editcheck()" id="editname" type="text">
+				修改年龄：<input id="editage" type="text">
+				修改性别：<input id="editgender" type="text">
+				修改班级：<select name="" id="editclass">
 
-			</tbody>
-		</table>
+				</select>
+				<button id="editsummit" onclick="update()">修改</button>
+				<h1>学生数据</h1>
+				<!-- 输入姓名：<input id="searchname" type="text">
+					输入年龄：<input id="searchage" type="text">
+					输入性别：<input id="searchgender" type="text"> -->
+				<label>检索</label>
+				<select id="searchtype">
+					<option id="searchdefault" value="username">姓名</option>
+					<option value="userage">年龄</option>
+					<option value="usergender">性别</option>
+				</select>
+				<input id="searchinput" type="text">
+				<button id="searchbtn" onclick="search()">查找</button>
+				<table>
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>姓名</th>
+							<th>年龄</th>
+							<th>性别</th>
+							<th>班级</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="tb">
+
+					</tbody>
+				</table>
+			</div>
+			<div id="classblock">
+				<h1>添加班级</h1>
+				<input id="claaddstr" type="text">
+				<button id="claaddbtn">添加</button>
+			</div>
+		</div>
+
+
 
 		<!-- <h1>查找数据</h1>
 		
@@ -66,12 +83,14 @@
 				searchname: ""
 			};
 			studelete();
+			claget()
 			//获取列表
 			function studelete() {
 				$.ajax({
 					url: "/index/get",
 					type: "get",
 					data: searchdata,
+					//traditional:true;当ajax data传递数据有数组时，需要加上此属性解决数组格式问题
 					success: function({
 						msg,
 						status,
@@ -83,6 +102,7 @@
 							<td>${item.username}</td>
 							<td>${item.userage}</td>
 							<td>${item.usergender}</td>
+							<td>${item.classid.classname}</td>
 							<td>
 								<button class="editbtn" data-editstu=${item._id}>修改</button>
 								<button class="delbtn" data-stuid=${item._id}>删除</button>
@@ -94,6 +114,9 @@
 				})
 
 			}
+			/* [...$(`#xxx>input[type=checkbox]:checked`)].map(function(item,index){
+				
+			}) */ //其中标签选择器筛选出的是一个伪数组,需要扩展[...伪数组]为一个真数组再 map() 遍历
 			//foreach获取列表，性能不及字符串拼接后一次性渲染
 			/* msg.data.forEach(function(item){
 				$("tbody").append(`
@@ -156,21 +179,25 @@
 				const username = $(`#addname`).val();
 				const userage = $(`#addage`).val();
 				const usergender = $(`#addgender`).val();
+				const classid = $("#addclass option:selected").val();
 				$.ajax({
 					url: `/index/add`,
 					type: "post",
 					data: {
 						username,
 						userage,
-						usergender
+						usergender,
+						classid
 					},
 					success(msg) {
+						console.log(msg)
 						$("#tb").append(`
 						<tr>
 						    <td>${msg._id}</td>
 							<td>${msg.username}</td>
 							<td>${msg.userage}</td>
 							<td>${msg.usergender}</td>
+							<td>${msg.classid.classname}</td>
 							<td>
 								<button class="editbtn" data-editstu=${msg._id}>修改</button>
 								<button class="delbtn" data-stuid=${msg._id}>删除</button>
@@ -183,7 +210,7 @@
 
 			//搜索
 			function search() {
-				const searchtype = $("select option:selected").val();
+				const searchtype = $("#searchtype option:selected").val();
 				const searchname = $("#searchinput").val();
 				searchdata = {
 					searchtype,
@@ -237,14 +264,19 @@
 						$(`#editname`).val(msg.data[0].username);
 						$(`#editage`).val(msg.data[0].userage);
 						$(`#editgender`).val(msg.data[0].usergender);
-						$(`#updateid`).text(msg.data[0]._id)
+						$(`#updateid`).val(msg.data[0]._id)
+						claget();
+						/* $("#editclass option[value=${msg.data[0].classid.classid}]").prop("selected",
+							true); */
+						//$(`#editclass`).val(msg.data[0].classid.classid);
+
 					}
 				})
 			})
 
 			//修改数据-校验姓名并更新内容至数据库
 			function update() {
-				const _id = $(`#updateid`).text();
+				const _id = $(`#updateid`).val();
 				const username = $(`#editname`).val();
 				const userage = $(`#editage`).val();
 				const usergender = $(`#editgender`).val();
@@ -304,6 +336,50 @@
 			function editcheck() {
 				$(`#editsummit`).attr(`disabled`, false);
 			}
+
+			$(`#claaddbtn`).click(function() {
+				const classname = $(`#claaddstr`).val();
+				$.ajax({
+					url: `/class/add`,
+					type: `post`,
+					data: {
+						classname
+					},
+					success(msg) {
+						console.log(msg);
+					}
+				})
+				claget();
+			})
+
+			function claget() {
+				$.ajax({
+					url: `/class/get`,
+					type: `get`,
+					success(msg) {
+						let str = msg.map(item => `<option value="${item._id}">${item.classname}</option>`);
+						$(`#addclass`).html(str);
+						$(`#editclass`).html(str);
+					}
+				})
+				//studelete();
+			}
+
+			/* function claedit() {
+				const classname = $(`#claaddstr`).val();
+				$.ajax({
+					url: `/class/edit`,
+					type: `post`,
+					data: {
+						classname
+					},
+					success(msg) {
+						let str = msg.map(item => `<option value="${item._id}">${item.classname}</option>`);
+						$(`#editclass`).html(str);
+					}
+				})
+				//studelete();
+			} */
 		</script>
 	</body>
 </html>
