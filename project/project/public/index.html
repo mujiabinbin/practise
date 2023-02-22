@@ -36,6 +36,7 @@
 					<option id="searchdefault" value="username">姓名</option>
 					<option value="userage">年龄</option>
 					<option value="usergender">性别</option>
+					<option value="class_id">班级</option>
 				</select>
 				<input id="searchinput" type="text">
 				<button id="searchbtn" onclick="search()">查找</button>
@@ -210,8 +211,24 @@
 
 			//搜索
 			function search() {
-				const searchtype = $("#searchtype option:selected").val();
-				const searchname = $("#searchinput").val();
+				var searchtype = $("#searchtype option:selected").val();
+				var searchname = $("#searchinput").val();
+				console.log(searchtype);
+
+				/* if (searchtype == "classid") {
+					$.ajax({
+						url: `/class/search`,
+						type: `post`,
+						data: {
+							classname: searchname
+						},
+						success(msg) {
+							searchname = msg.data[0]._id;
+							console.log(msg);
+
+						}
+					})
+				} */
 				searchdata = {
 					searchtype,
 					searchname
@@ -265,11 +282,32 @@
 						$(`#editage`).val(msg.data[0].userage);
 						$(`#editgender`).val(msg.data[0].usergender);
 						$(`#updateid`).val(msg.data[0]._id)
-						claget();
+						const aa = msg.data[0].classid._id;
+						$.ajax({
+							url: `/class/get`,
+							type: `get`,
+							success(msg) {
+								$(`#editclass`).html(``);
+								let str = msg.forEach(function(item) {
+									if (item._id === aa) {
+										//`<option value="${item._id}" selected="true">${item.classname}</option>`
+										$(`#editclass`).append(
+											`<option value="${item._id}" selected="true">${item.classname}</option>`
+										)
+									} else {
+										//`<option value="${item._id}">${item.classname}</option>`
+
+										$(`#editclass`).append(
+											`<option value="${item._id}">${item.classname}</option>`
+										)
+									}
+								});
+								$(`#editclass`).html(str);
+							}
+						});
 						/* $("#editclass option[value=${msg.data[0].classid.classid}]").prop("selected",
 							true); */
 						//$(`#editclass`).val(msg.data[0].classid.classid);
-
 					}
 				})
 			})
@@ -280,6 +318,7 @@
 				const username = $(`#editname`).val();
 				const userage = $(`#editage`).val();
 				const usergender = $(`#editgender`).val();
+				const classid = $("#editclass option:selected").val();
 				$.ajax({
 					url: "/index/isexsit",
 					type: "post",
@@ -298,7 +337,8 @@
 									_id,
 									username,
 									userage,
-									usergender
+									usergender,
+									classid
 								};
 								$.ajax({
 									url: "/index/update",
@@ -359,27 +399,11 @@
 					success(msg) {
 						let str = msg.map(item => `<option value="${item._id}">${item.classname}</option>`);
 						$(`#addclass`).html(str);
-						$(`#editclass`).html(str);
+						//$(`#editclass`).html(str);
 					}
 				})
 				//studelete();
 			}
-
-			/* function claedit() {
-				const classname = $(`#claaddstr`).val();
-				$.ajax({
-					url: `/class/edit`,
-					type: `post`,
-					data: {
-						classname
-					},
-					success(msg) {
-						let str = msg.map(item => `<option value="${item._id}">${item.classname}</option>`);
-						$(`#editclass`).html(str);
-					}
-				})
-				//studelete();
-			} */
 		</script>
 	</body>
 </html>
