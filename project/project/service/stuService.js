@@ -38,11 +38,6 @@ module.exports.del = async function(_id) {
 	return data;
 }
 
-/* module.exports.search = async function(searchedata) {
-	const data = await search(searchedata);
-	return data;
-} */
-
 module.exports.edit = async function(_id) {
 	const data = await edit(_id);
 	return data;

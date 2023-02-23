@@ -18,18 +18,20 @@ module.exports.isexsit = async function(username) {
 }
 
 module.exports.stu = async function(searchedata) {
-	const data = await stumodel.find( //searchedata
-		{
-			[searchedata.searchtype]: {
-				$regex: searchedata.searchname,
-				$options: `$i`
-			}
+	const data = await stumodel.find(searchedata).populate({
+		path: `classid`,
+		populate: {
+			path: `teaid`
+		}
+	});
+	/* [searchedata.searchtype]: {
+		$regex: searchedata.searchname,
+		$options: `$i`
+	} */
 
-		}).populate(`classid`);
-
-	//console.log(data);
-	//const data = await stumodel.find().populate(`classid`)populate关联查询，参数为关联的key，返回的是find（）全部内容，其中classid对应属性值为以对象形式保存的另一张表的整条数据 ，如果学生同时关联班级和老师，find().populate(`classid`).populate(`teachesid`)
-	/* 多层嵌套
+	//1.const data = await stumodel.find().populate(`classid`)populate关联查询，参数为关联的key，返回的是find（）全部内容，其中classid对应属性值为以对象形式保存的另一张表的整条数据
+	//2.如果学生同时关联班级和老师，find().populate(`classid`).populate(`teachesid`)
+	/*3.多层嵌套
 	 const data = await stumodel.find().populate({
 		 path:`classid`,//学生关联classid
 		 populate:{
@@ -71,7 +73,6 @@ module.exports.edit = async function(_id) {
 	const data = await stumodel.find({
 		"_id": _id
 	}).populate(`classid`);
-	//console.log(data);
 	return data;
 }
 

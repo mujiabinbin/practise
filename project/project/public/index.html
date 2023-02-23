@@ -36,7 +36,7 @@
 					<option id="searchdefault" value="username">姓名</option>
 					<option value="userage">年龄</option>
 					<option value="usergender">性别</option>
-					<option value="class_id">班级</option>
+					<option value="classid">班级</option>
 				</select>
 				<input id="searchinput" type="text">
 				<button id="searchbtn" onclick="search()">查找</button>
@@ -48,6 +48,7 @@
 							<th>年龄</th>
 							<th>性别</th>
 							<th>班级</th>
+							<th>老师</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -60,6 +61,19 @@
 				<h1>添加班级</h1>
 				<input id="claaddstr" type="text">
 				<button id="claaddbtn">添加</button>
+				<div id="teacherlist">
+					<!-- <input type="checkbox" name="teacher li" value="li"><label for="">li</label>
+					<input type="checkbox" name="teacher wang" value="wang"><label for="">wang</label>
+					<input type="checkbox" name="teacher zhang" value="zhang"><label for="">zhang</label>
+					<input type="checkbox" name="teacher zhao" value="zhao"><label for="">zhao</label> -->
+				</div>
+			</div>
+			<div>
+				<div>
+					<h1>添加老师</h1>
+					<input id="teaaddstr" type="text">
+					<button id="teaaddbtn" onclick="addtea()">添加</button>
+				</div>
 			</div>
 		</div>
 
@@ -78,20 +92,22 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
+			//设置搜索默认值
 			var searchdefaultname = $(`#searchdefault`).val();
 			var searchdata = {
-				searchtype: searchdefaultname,
-				searchname: ""
+				searchdefaultname: ""
 			};
+			//调用获取学生列表和班级列表函数获取响应数据展示
 			studelete();
-			claget()
+			claget();
+			teaget();
 			//获取列表
 			function studelete() {
 				$.ajax({
 					url: "/index/get",
 					type: "get",
 					data: searchdata,
-					//traditional:true;当ajax data传递数据有数组时，需要加上此属性解决数组格式问题
+					traditional: true, //当ajax data传递数据有数组时，需要加上此属性解决数组格式问题
 					success: function({
 						msg,
 						status,
@@ -104,6 +120,9 @@
 							<td>${item.userage}</td>
 							<td>${item.usergender}</td>
 							<td>${item.classid.classname}</td>
+							<td>${item.classid.teaid.map(function(para){
+								 return para.teachername
+							}).join(",")}</td>
 							<td>
 								<button class="editbtn" data-editstu=${item._id}>修改</button>
 								<button class="delbtn" data-stuid=${item._id}>删除</button>
@@ -213,9 +232,7 @@
 			function search() {
 				var searchtype = $("#searchtype option:selected").val();
 				var searchname = $("#searchinput").val();
-				console.log(searchtype);
-
-				/* if (searchtype == "classid") {
+				if (searchtype == "classid") {
 					$.ajax({
 						url: `/class/search`,
 						type: `post`,
@@ -223,49 +240,20 @@
 							classname: searchname
 						},
 						success(msg) {
-							searchname = msg.data[0]._id;
-							console.log(msg);
-
+							var objid = msg[0]._id;
+							//var objid = `ObjectId(${objidstr})`;
+							searchdata = {
+								[searchtype]: objid
+							}
+							studelete(searchdata);
 						}
 					})
-				} */
-				searchdata = {
-					searchtype,
-					searchname
-				}
-				studelete(searchdata);
-				/* const username = $("#searchname").val();
-				const userage = $("#searchage").val();
-				const usergender = $("#searchgender").val();
-				$.ajax({
-					url: "/index/search",
-					type: "post",
-					data: {
-						username,
-						userage,
-						usergender
-					},
-					success: function({
-						msg,
-						status,
-						data
-					}) {
-						let str = data.map(item => `
-						<tr>
-						    <td>${item._id}</td>
-							<td>${item.username}</td>
-							<td>${item.userage}</td>
-							<td>${item.usergender}</td>
-							<td>
-								<button class="editbtn" data-editstu=${item._id}>修改</button>
-								<button class="delbtn" data-stuid=${item._id}>删除</button>
-							</td>
-						</tr>
-						`)
-						$("#search").html(str);
+				} else {
+					searchdata = {
+						[searchtype]: searchname
 					}
-				}) */
-
+					studelete(searchdata);
+				}
 			}
 
 			//修改数据-点击数据修改按钮赋值给修改输入框
@@ -295,8 +283,6 @@
 											`<option value="${item._id}" selected="true">${item.classname}</option>`
 										)
 									} else {
-										//`<option value="${item._id}">${item.classname}</option>`
-
 										$(`#editclass`).append(
 											`<option value="${item._id}">${item.classname}</option>`
 										)
@@ -355,7 +341,8 @@
 								_id,
 								username,
 								userage,
-								usergender
+								usergender,
+								classid
 							};
 							$.ajax({
 								url: "/index/update",
@@ -372,19 +359,25 @@
 			}
 
 			//修改校验数据若姓名重复按钮会至灰，重新输入姓名鼠标离开后按钮恢复可用
-
 			function editcheck() {
 				$(`#editsummit`).attr(`disabled`, false);
 			}
 
+			//添加班级
 			$(`#claaddbtn`).click(function() {
 				const classname = $(`#claaddstr`).val();
+				const teaid = [...$(`#teacherlist > input:checked`)].map(function(item) {
+					return item.value;
+				});
+				console.log(teaid);
 				$.ajax({
 					url: `/class/add`,
 					type: `post`,
 					data: {
-						classname
+						classname,
+						teaid
 					},
+					traditional: true, //ajax传递数据为数组是，增加traditional: true属性，保证数据格式正确
 					success(msg) {
 						console.log(msg);
 					}
@@ -392,6 +385,7 @@
 				claget();
 			})
 
+			//获取班级列表
 			function claget() {
 				$.ajax({
 					url: `/class/get`,
@@ -399,10 +393,38 @@
 					success(msg) {
 						let str = msg.map(item => `<option value="${item._id}">${item.classname}</option>`);
 						$(`#addclass`).html(str);
-						//$(`#editclass`).html(str);
 					}
 				})
-				//studelete();
+			}
+
+			//添加老师
+			function addtea() {
+				const teachername = $(`#teaaddstr`).val();
+				$.ajax({
+					url: `/teachers/add`,
+					type: `post`,
+					data: {
+						teachername
+					},
+					success(msg) {
+						console.log(msg)
+					}
+				})
+				teaget();
+			}
+
+			//获取老师列表
+			function teaget() {
+				$.ajax({
+					url: `/teachers/get`,
+					type: `get`,
+					success(msg) {
+						let str = msg.map(item =>
+							`<input type="checkbox" value="${item._id}"><label for="">${item.teachername}</label>
+							`)
+						$(`#teacherlist`).html(str);
+					}
+				})
 			}
 		</script>
 	</body>
