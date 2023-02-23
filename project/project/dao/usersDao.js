@@ -5,7 +5,6 @@ const {
 
 module.exports.login3dao = async function(user) {
 	const data = await usermodel.find(user); //查询数据库通过data接收
-	//console.log("333",data);
 	return data; //将结果返回第二层
 }
 
@@ -14,7 +13,6 @@ module.exports.reg3 = async function(user) {
 		username: user.username
 	});
 	return data;
-	console.log(data);
 }
 
 /* module.exports.insert=async function(user){

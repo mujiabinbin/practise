@@ -6,15 +6,11 @@ module.exports.claget = async () => {
 }
 module.exports.claadd = async classname => {
 	const data = await clamodel.create(classname);
+	console.log(classname);
 	return data;
 }
 module.exports.clasearch = async (searchdata) => {
 	const data = await clamodel.find(searchdata);
-	console.log(data);
+	//console.log(data);
 	return data;
 }
-/* module.exports.claedit = async classname => {
-	const data = await clamodel.find(classname);
-	return data;
-	console.log(data);
-} */
