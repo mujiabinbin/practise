@@ -44,11 +44,22 @@
 			<img onclick="redborder(2)" src="../../img/jq22/2022-07-14-13-38-32.png" alt="">
 			<img onclick="redborder(3)" src="../../img/jq22/2022-07-15-00-17-46.png" alt="">
 			<img onclick="redborder(4)" src="../../img/jq22/2022-07-15-00-33-07.png" alt="">
+			<select name="" id="test">
+				<option value="1">"1"</option>
+				<option value="2">"2"</option>
+			</select>
+			<button onclick="select()">222</button>
+
 
 		</div>
 		<!-- <button class="btn" onclick="btnclick()">切换图片</button>
 		<input class="input" type=""> <button class="btn" onclick="changebtn()" id="changebtn">更改图片</button> -->
 		<script>
+			function select() {
+				document.querySelector(`#test>[value="2"]`).setAttribute(`selected`, true);
+
+			}
+
 			/* var pic=["../../img/jq22/2022-07-04-01-21-01.png",
 			"../../img/jq22/2022-07-04-01-21-01.png",
 			"../../img/jq22/2022-07-14-13-38-32.png",

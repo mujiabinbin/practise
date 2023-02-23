@@ -3,7 +3,7 @@ const {
 	model
 } = require("mongoose");
 const claschema = new Schema({
-	classname: String,
+	classname: String
 })
 module.exports = {
 	clamodel: model("clamodel", claschema)

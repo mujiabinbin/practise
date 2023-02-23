@@ -1,7 +1,8 @@
 const {
 	claget,
 	claadd,
-	claedit
+	claedit,
+	clasearch
 } = require(`../dao/cladao`);
 
 module.exports.claget = async () => {
@@ -22,7 +23,9 @@ module.exports.claadd = async classname => {
 	}
 
 }
-module.exports.claedit = async classname => {
+module.exports.clasearch = async searchdata => await clasearch(searchdata);
+
+/* module.exports.claedit = async classname => {
 	const data = await claedit(classname);
 
-}
+} */
