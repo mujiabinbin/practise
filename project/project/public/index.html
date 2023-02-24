@@ -56,6 +56,17 @@
 
 					</tbody>
 				</table>
+				每页显示<select name="" id="pagesize">
+					<option value="">5</option>
+					<option value="">10</option>
+					<option value="">20</option>
+				</select>
+				条数据
+				<button onclick="firstpage()">首页</button>
+				<button onclick="nextpage()">下一页</button>
+				<button onclick="prevpage()">上一页</button>
+				<button onclick="lastpage()">尾页</button>
+
 			</div>
 			<div id="classblock">
 				<h1>添加班级</h1>
@@ -92,10 +103,14 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
+			var page = {
+				currentpage: 1,
+				pagesize: $(`#pagesize option:selected`)
+			}
 			//设置搜索默认值
 			var searchdefaultname = $(`#searchdefault`).val();
 			var searchdata = {
-				searchdefaultname: ""
+				searchdefaultname: "",
 			};
 			//调用获取学生列表和班级列表函数获取响应数据展示
 			studelete();
@@ -106,7 +121,18 @@
 				$.ajax({
 					url: "/index/get",
 					type: "get",
-					data: searchdata,
+					data: searchdata
+						/* {
+												...searchdata,
+												currentpage: page.currentpage,
+												pagesize: page.pagesize
+											} */
+						,
+					/* data:{
+						...searchdata,//保留searchdata原本数据
+						pagesize:5,
+						currentsize:1
+					} */
 					traditional: true, //当ajax data传递数据有数组时，需要加上此属性解决数组格式问题
 					success: function({
 						msg,
@@ -134,6 +160,33 @@
 				})
 
 			}
+
+			/* function firstpage() {
+				searchdata = {
+					searchdefaultname: "",
+				};
+				page = {
+					currentpage: 1,
+					pagesize: $(`#pagesize option:selected`)
+				}
+				studelete();
+			}
+
+			function nextpage() {
+				page.currentpage++;
+				searchdata = {
+					searchdefaultname: "",
+				};
+				studelete();
+			}
+
+			function prevpage() {
+				page.currentpage--;
+				searchdata = {
+					searchdefaultname: "",
+				};
+				studelete();
+			} */
 			/* [...$(`#xxx>input[type=checkbox]:checked`)].map(function(item,index){
 				
 			}) */ //其中标签选择器筛选出的是一个伪数组,需要扩展[...伪数组]为一个真数组再 map() 遍历

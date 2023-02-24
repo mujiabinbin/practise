@@ -18,12 +18,16 @@ module.exports.isexsit = async function(username) {
 }
 
 module.exports.stu = async function(searchedata) {
+	//const total=await stumodel.countDocuments()获取stumodel数据总条数
+	//const pages=Math.ceil(total/pagesize)//向上取整，floor（向下取整）
+	//console.log(searchedata.pagesize, searchedata.currentpage, searchedata.searchedata)
 	const data = await stumodel.find(searchedata).populate({
 		path: `classid`,
 		populate: {
 			path: `teaid`
 		}
-	});
+	}) //.limit(searchedata.pagesize - 0).skip((searchedata.currentpage - 1) * searchedata.pagesize)
+	//.limit(pagesize-0//字符串转数字).skip((currentsize-1)*pagesize); //limit限制返回条数,skip跳过多少条数据
 	/* [searchedata.searchtype]: {
 		$regex: searchedata.searchname,
 		$options: `$i`
