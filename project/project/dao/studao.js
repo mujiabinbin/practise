@@ -17,16 +17,26 @@ module.exports.isexsit = async function(username) {
 	return data;
 }
 
-module.exports.stu = async function(searchedata) {
-	//const total=await stumodel.countDocuments()获取stumodel数据总条数
-	//const pages=Math.ceil(total/pagesize)//向上取整，floor（向下取整）
-	//console.log(searchedata.pagesize, searchedata.currentpage, searchedata.searchedata)
-	const data = await stumodel.find(searchedata).populate({
+module.exports.stu = async function({
+	searchtype,
+	searchname,
+	currentpage,
+	pagesize,
+	totalnum,
+	totalpage
+}) {
+	const total = await stumodel.countDocuments() // 获取stumodel数据总条数
+	const pages = Math.ceil(total / pagesize) //向上取整，floor（向下取整）
+	console.log(`typeofsearchname`, typeof(searchname));
+	const data = await stumodel.find({
+		[searchtype]: searchname
+	}).populate({
 		path: `classid`,
 		populate: {
 			path: `teaid`
 		}
-	}) //.limit(searchedata.pagesize - 0).skip((searchedata.currentpage - 1) * searchedata.pagesize)
+	}).limit(pagesize - 0).skip((currentpage - 1) * pagesize);
+	console.log(`daodata`, data);
 	//.limit(pagesize-0//字符串转数字).skip((currentsize-1)*pagesize); //limit限制返回条数,skip跳过多少条数据
 	/* [searchedata.searchtype]: {
 		$regex: searchedata.searchname,
@@ -43,7 +53,11 @@ module.exports.stu = async function(searchedata) {
 		 }
 	 })
 	 */
-	return data;
+	return {
+		data,
+		total,
+		pages
+	};
 }
 
 module.exports.del = async function({
