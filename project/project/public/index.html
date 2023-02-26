@@ -61,7 +61,7 @@
 					<option value="">10</option>
 					<option value="">20</option>
 				</select>
-				条数据
+				条数据,共<label for="" id="totalstu"></label>条数据
 				<label for="" id="total"></label>
 				<button onclick="firstpage()">首页</button>
 				<button onclick="nextpage()">下一页</button>
@@ -150,7 +150,8 @@
 					}) {
 						searchdata.totalnum = data.total;
 						searchdata.totalpage = data.pages;
-						$(`#total`).text(`共${data.pages}页，当前第${searchdata.currentpage}页`)
+						$(`#total`).text(`共${data.pages}页，当前第${searchdata.currentpage}页`);
+						$(`#totalstu`).text(searchdata.totalnum);
 						let str = data.data.map(item => `
 						<tr>
 						    <td>${item._id}</td>
