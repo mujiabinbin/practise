@@ -6,6 +6,7 @@ const stuschema = new Schema({
 	username: String,
 	userage: String,
 	usergender: String,
+	picname: String,
 	classid: {
 		type: Schema.Types.ObjectId,
 		ref: `clamodel` //要关联的集合模型名称

@@ -16,7 +16,6 @@
 				班级：<select name="" id="addclass">
 
 				</select>
-				<button id="add-button" onclick="adddata()">提交</button>
 				<div>
 					<label for="">上传图片</label>
 					<input type="file" id="uploadpic"><!-- 上传文件 -->
@@ -24,6 +23,8 @@
 
 					</div>
 				</div>
+				<button id="add-button" onclick="adddata()">提交</button>
+
 
 
 				<h1>修改数据</h1>
@@ -57,6 +58,7 @@
 							<th>性别</th>
 							<th>班级</th>
 							<th>老师</th>
+							<th>头像</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -112,6 +114,7 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
+			var picname = ``;
 			//设置搜索默认值
 			var searchdefaultname = ``; //$(`#searchdefault`).val();
 			var searchdata = {
@@ -163,6 +166,7 @@
 							<td>${item.classid.teaid.map(function(para){
 								 return para.teachername
 							}).join(",")}</td>
+							<td><img width="50px" src="./img/${item.picname || `default.JPG`}" alt=""></td>
 							<td>
 								<button class="editbtn" data-editstu=${item._id}>修改</button>
 								<button class="delbtn" data-stuid=${item._id}>删除</button>
@@ -277,7 +281,8 @@
 						username,
 						userage,
 						usergender,
-						classid
+						classid,
+						picname
 					},
 					success(msg) {
 						console.log(msg)
@@ -524,7 +529,12 @@
 					contentType: false, //数据编码格式不使用jquery方式
 					processData: false, //图片不需要数据转换称其他格式，因为前后端传递数据默认都会转换成字符串，json格式
 					success(msg) {
-						console.log(msg)
+						console.log(msg);
+						$(`.img-box`).html(``);
+						$(`.img-box`).append(`
+						<img id="profilepic" src="./temp/${msg.data}" alt="">
+						`);
+						picname = msg.data;
 					}
 				})
 			})
