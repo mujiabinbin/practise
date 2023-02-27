@@ -11,6 +11,10 @@ const {
 	stuupdate,
 	isexsit
 } = require(`../service/stuService`);
+const {
+	movefiles,
+	removefiles,
+} = require(`../utils/handlefiles`)
 
 /* GET home page. */
 /* router.get('/', function(req, res, next) {
@@ -52,7 +56,16 @@ router.post('/isexsit', async function(req, res, next) {
 //添加数据
 router.post('/add', async function(req, res, next) {
 	const stu = req.body;
+	//console.log(stu);
 	const data = await add(stu);
+	movefiles({
+		frompath: `./public/temp`,
+		topath: `./public/img`,
+		filename: stu.picname
+	})
+	removefiles(
+		`./public/temp`
+	)
 	res.send(data);
 });
 

@@ -25,7 +25,7 @@ function uploadfiles(options = {}) {
 				fs.accessSync(path)
 			} catch (e) {
 				//TODO handle the exception
-				fs.mkdir(path)
+				fs.mkdirSync(path)
 			}
 			cb(null, path);
 		},
@@ -52,10 +52,11 @@ function uploadfiles(options = {}) {
 
 /* 
 复制文件
- 接收一个option对象作为参数，包含三个属性
- frompath：源文件路径
- topath：复制过去新路径
- filename：文件名
+接收一个option对象作为参数，包含三个属性
+参数说明：
+frompath：源文件路径
+topath：复制过去新路径
+filename：文件名
  */
 
 function copyfiles(options = {}) {
@@ -74,7 +75,8 @@ function copyfiles(options = {}) {
 
 /* 
 移动文件
- 接收一个option对象作为参数，包含三个属性
+接收一个option对象作为参数，包含三个属性
+参数说明：
  frompath：源文件路径
  topath：复制过去新路径
  filename：文件名
@@ -100,8 +102,10 @@ function movefiles(options = {}) {
 }
 
 /* 
+接收一个字符串
 参数说明：
  filepath：要删除文件的路径
+ 例子：removefiles(`./public/temp`)
  */
 function removefiles(filepath = `./public/temp`) { //filepath要删除的文件路径
 	let stats = fs.statSync(filepath);
