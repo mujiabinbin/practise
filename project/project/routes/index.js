@@ -20,7 +20,6 @@ const {
 //获取及检索数据
 router.get('/get', async function(req, res, next) {
 	const searchdata = req.query;
-	console.log(searchdata);
 	const data = await stu(searchdata);
 	res.send({
 		msg: "获取成功",
