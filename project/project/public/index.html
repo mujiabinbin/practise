@@ -17,6 +17,14 @@
 
 				</select>
 				<button id="add-button" onclick="adddata()">提交</button>
+				<div>
+					<label for="">上传图片</label>
+					<input type="file" id="uploadpic"><!-- 上传文件 -->
+					<div class="img-box">
+
+					</div>
+				</div>
+
 
 				<h1>修改数据</h1>
 				<input type="hidden" id="updateid">
@@ -104,13 +112,6 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
-			/* var page = {
-				currentpage: 1,
-				pagesize: $(`#pagesize option:selected`).text(),
-				totalnum: 0,
-				totalpage: 0
-			} */
-
 			//设置搜索默认值
 			var searchdefaultname = ``; //$(`#searchdefault`).val();
 			var searchdata = {
@@ -505,6 +506,28 @@
 					}
 				})
 			}
+
+			//上传图片
+			$(`#uploadpic`).change(function(event) { //找到上传图片标签添加change事件
+				//event.target等同与this
+				const files = this.files; //1.拿到图片，为一个数组，分别为每一张图片，想要对每一张操作files[i]
+				//2将图片添加到表单对象
+				const formdata = new FormData(); //通过构造函数创建一个表单对象
+				formdata.append(`file`, files[0]); //第一个参数为此条数据取个名字，第二个参数为真正要传的数据
+				//3 将表单对象通过ajax发送到服务器
+				$.ajax({
+					url: "/pics/upload",
+					type: "post",
+					data: formdata,
+					//下面三个属性都是保证图片数据完整传递到后端，不做转换
+					cache: false, //不读取缓存结果
+					contentType: false, //数据编码格式不使用jquery方式
+					processData: false, //图片不需要数据转换称其他格式，因为前后端传递数据默认都会转换成字符串，json格式
+					success(msg) {
+						console.log(msg)
+					}
+				})
+			})
 		</script>
 	</body>
 </html>
