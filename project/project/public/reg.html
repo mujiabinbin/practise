@@ -11,25 +11,24 @@
 		<button id="regbtn">注册</button>
 		<script src="jquery-3.6.1.js"></script>
 		<script>
-			
-			$("#regbtn").click(function(){
-				const username= $("#username").val();
-				const userpass= $("#userpass").val();
+			$("#regbtn").click(function() {
+				const username = $("#username").val();
+				const userpass = $("#userpass").val();
 				$.ajax({
-					url:"users/reg",
-					data:{
-						username:username,
-						password:userpass
+					url: "users/reg",
+					data: {
+						username,
+						password: userpass
 					},
-					type:"post",
-					success(msg){
-						if(msg.status){
-							const result= confirm("注册成功");
-							if(result){
+					type: "post",
+					success(msg) {
+						if (msg.status) {
+							const result = confirm("注册成功");
+							if (result) {
 								location.assign("login.html");
 							}
-						}else{
-							alert(msg.message);
+						} else {
+							alert(msg.msg);
 						}
 					}
 				})

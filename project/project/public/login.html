@@ -11,25 +11,23 @@
 		<button id="loginbtn">登陆</button>
 		<script src="jquery-3.6.1.js"></script>
 		<script>
-			
-			$("#loginbtn").click(function(){
-				const username=$("#username").val();
-				const userpass=$("#userpass").val();
+			$("#loginbtn").click(function() {
+				const username = $("#username").val();
+				const userpass = $("#userpass").val();
 				$.ajax({
 					//设置前后端连接接口
-					url:"/users/login",
-					//设置前端发送给后端数据
-					data:{
-						username:username,
-						password:userpass
+					url: "/users/login",
+					data: {
+						username,
+						password: userpass
 					},
-					//请求类型：post get （put delete）
-					type:"post",
-					//请求成功后触发success方法，msg用于接收后端响应回来结果
-					success:function(msg){
-						if(msg.status){
+					type: "post",
+					success: function(msg) {
+						if (msg.status) {
 							alert("login success");
-						}else{
+							localStorage.setItem(`token`, msg.token)
+							//localStorage.token= msg.token
+						} else {
 							alert("login failed");
 						}
 					}

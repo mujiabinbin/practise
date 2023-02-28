@@ -1,29 +1,25 @@
-//const { login } = require("../service/usersService");
 const {
 	usermodel1: usermodel
 } = require(`./models/usersModel`);
 
 module.exports.login3dao = async function(user) {
-	const data = await usermodel.find(user); //查询数据库通过data接收
-	return data; //将结果返回第二层
-}
-
-module.exports.reg3 = async function(user) {
-	const data = await usermodel.find({
-		username: user.username
-	});
+	const data = await usermodel.find(user);
+	console.log(user, data);
 	return data;
 }
 
-/* module.exports.insert=async function(user){
-	await usermodel.create({username:user.username,password:user.password});
-} */
-module.exports.insert = function(user) {
-	usermodel.create(user, function(err, data) {
-		if (!err) {
-			console.log(`add success`)
-		} else {
-			console.log(err)
+module.exports.reg3 = async function(user) {
+	try {
+		const data = await usermodel.create(user);
+		return {
+			msg: `注册成功`,
+			status: 1,
+			data
 		}
-	})
+	} catch (e) {
+		return {
+			msg: `注册失败`,
+			status: 0
+		}
+	}
 }

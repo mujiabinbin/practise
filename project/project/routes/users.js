@@ -1,130 +1,67 @@
 var express = require('express');
-const { insert } = require('../dao/usersDao');
-//后端路由，用于分配ajax请求
 var router = express.Router();
-/* const {Schema, model}=require("mongoose");
-const userschema= new Schema({
-	username:String,
-	password:String,
-})
-//2 定义数据集合的模型,将结构schema和数据库的集合关联起来
-//model("模型名称"，userschema，“数据库中集合名称”)
-const usermodel= model("usermodel",userschema,"users"); */
-/* usermodel.create({
-	username:"zhangsan",
-	password:"123"
-},function(err,data){
-	if(!err){
-		console.log(`add success`)
-	}else{
-		console.log(err)
-	}
-}) */
-/* usermodel.find(function(err,data){
-	console.log(data);
-	//return data;
-}) */
+const bcrypt = require(`bcrypt`);
+const {
+	getMd5
+} = require(`../utils/crypto`);
+const jwt = require(`jsonwebtoken`);
 
-//console.log(users);
-/* const users = [{
-	username: "zhangsan",
-	password: "123"
-}, {
-	username: "lisi",
-	password: "123"
-}] */
-
-/* GET users listing. */
-/* router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-}); */
-const {login2, reg2}= require(`../service/usersService`);//引入usersService暴露的对象并解构
+const {
+	login2,
+	reg2
+} = require(`../service/usersService`); //引入usersService暴露的对象并解构
 router.post('/login', async function(req, res, next) {
-	const user=req.body;
-	const data= await login2(user);//将user传给usersService层,并接收第二层返回的数据
-	res.send(data);
-	/* usermodel.find(function(err,data){
-		const result=data.some(function(item,index){
-			return item.username == req.body.username && item.password == req.body.password;
-		})
+	const {
+		username,
+		password
+	} = req.body;
+	//const newpassword = getMd5(password, `abcdefghijklmn`);//通过md5加密密码并存储数据库
+	const data = await login2({
+		username
+	});
+	if (data.status) {
+		const result = bcrypt.compareSync(password, data.data[0].password) //将用户输入密码与数据库存储的密码做比较
 		if (result) {
+			const token = jwt.sign({
+					username
+				}, //要保存的信息
+				`abcd`, //密钥，混淆用
+				{
+					expiresIn: 60000
+				} //token有效期，单位默认为秒，
+			)
 			res.send({
-				message: "登陆成功",
-				status: 1
-			});
+				msg: `登陆成功`,
+				status: 1,
+				token
+			})
 		} else {
 			res.send({
-				message: "登陆失败",
-				status: 0
-			});
+				msg: `登陆失败`,
+				status: 0,
+			})
 		}
-	}); */
-	//console.log("success login")
-	//1 接收前端数据
-	//- post:req.body
-	//- get:req.query
-	/* const result = users.some(function(item, index) {
-		return item.username == req.body.username && item.password == req.body.userpass;
-	}); */
-	/* var result=usermodel.find(req.body.username);
-	console.log(result);
-	if (result) {
-		res.send({
-			message: "登陆成功",
-			status: 1
-		});
 	} else {
 		res.send({
-			message: "登陆失败",
-			status: 0
-		});
+			msg: `登陆失败`,
+			status: 0,
+		})
 	}
- */
-	//后端处理结果响应给前端
-
+	/*  */
 });
-router.post('/reg',async function(req, res, next) {
-	//const username= req.body.username;
-	const user=req.body;
-	//await insert(user);
-	const data= await reg2(user);
+router.post('/reg', async function(req, res, next) {
+	const {
+		username,
+		password
+	} = req.body;
+	//const newpassword = getMd5(password, `abcdefghijklmn`); //后面参数为自定义密钥，用于混淆
+	const newpassword = bcrypt.hashSync(password,
+		10) //第一个参数为要加密的字符串，第二个参数为加密强度，10为适中，数字越大强度越大，但加密过程会耗时长
+	const data = await reg2({
+		username,
+		password: newpassword
+	});
 	res.send(data);
-    /* usermodel.find({username:req.body.username},function(err,data){
-		if(data.length>0){
-			res.send({
-				message: "用户名重复",
-				status: 0
-			}); 
-		}else{
-			res.send({
-				message: "注册成功",
-				status: 1
-			});
-			usermodel.create({username:req.body.username,password:req.body.password},function(err,data){
-				if(!err){
-					console.log(`register success`)
-				}else{
-					console.log(err);
-				}
-			});
-		};
-		}); */
-	})
-	/* const objstr=JSON.stringify(req.body);
-	const strobj=JSON.parse(objstr); */
-	//console.log(strobj);
-	/* const isexist = users.some(function(item, index) {
-		return item.username == req.body.username
-	}) */
-
-	//console.log(users);
-
-	//后端处理结果响应给前端
-	
-	/* async function a(){
-		const p=await usermodel.find();
-		console.log(p);
-	}
-	a(); */
+})
 
 module.exports = router;
