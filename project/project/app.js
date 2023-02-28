@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const jwtAuth = require(`./utils/jwt`);
 require(`./dao/database`);
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -25,7 +25,8 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//一级路径前验证token
+app.use(jwtAuth);
 //用于配置ajax请求的一级路径
 app.use('/index', indexRouter);
 app.use('/users', usersRouter);

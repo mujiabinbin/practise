@@ -114,6 +114,29 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
+			/* 
+			 请求四部分组成：
+			 请求头，
+			 请求行，
+			 空行，
+			 请求体
+			 */
+			islogin();
+
+			function islogin() {
+				$.ajax({
+					url: `users/islogin`,
+					type: `get`,
+					//请求头，
+					headers: {
+						authorization: `bearer ` + localStorage.token //express-jwt要求格式，bearer后面一个空格，不要忽略
+					},
+					success(msg) {
+						console.log(msg);
+					}
+				})
+			}
+
 			var picname = ``;
 			//设置搜索默认值
 			var searchdefaultname = ``; //$(`#searchdefault`).val();
