@@ -114,6 +114,22 @@
  -->
 		<script src="jquery-3.6.1.js"></script>
 		<script>
+			//全局设置ajax请求头
+			/* $.ajaxSettings.beforeSend = function(xhr, request) {
+				xhr.setRequestHeader(`authorization`, `bearer ` + localStorage.token)
+			} */
+			//全局设置ajax
+			$.ajaxSetup({
+				headers: {
+					authorization: `bearer ` + localStorage.token
+				},
+				error(err) {
+					if (err.status == 401) {
+						alert(`还未登陆，请先登陆`);
+						location.href = `./login.html`
+					}
+				}
+			})
 			/* 
 			 请求四部分组成：
 			 请求头，
@@ -127,13 +143,24 @@
 				$.ajax({
 					url: `users/islogin`,
 					type: `get`,
-					//请求头，
-					headers: {
+					//请求头，可以批量设置ajax请求，设置后此处删除
+					/* headers: {
 						authorization: `bearer ` + localStorage.token //express-jwt要求格式，bearer后面一个空格，不要忽略
-					},
+					}, */
 					success(msg) {
-						console.log(msg);
-					}
+						alert(`欢迎${msg.data}`);
+						studelete();
+						claget();
+						teaget();
+
+					},
+					//ajax统一设置错误提示
+					/* error(err) {
+						if (err.status == 401) {
+							alert(`还未登陆，请先登陆`);
+							location.href = `./login.html`
+						}
+					} */
 				})
 			}
 
@@ -149,9 +176,10 @@
 				totalpage: 0
 			};
 			//调用获取学生列表和班级列表函数获取响应数据展示
-			studelete();
+			// 调整到islogin处，身份认证登陆成功后再调用
+			/* studelete();
 			claget();
-			teaget();
+			teaget(); */
 			//获取列表
 			function studelete() {
 				$.ajax({
@@ -298,8 +326,8 @@
 				const usergender = $(`#addgender`).val();
 				const classid = $("#addclass option:selected").val();
 				$.ajax({
-					url: `/index/add`,
-					type: "post",
+					url: `/index`,
+					type: "add",
 					data: {
 						username,
 						userage,

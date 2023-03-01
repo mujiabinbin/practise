@@ -2,11 +2,17 @@ const {
 	Schema,
 	model
 } = require("mongoose");
+const moment = require(`moment`);
 const stuschema = new Schema({
 	username: String,
 	userage: String,
 	usergender: String,
 	picname: String,
+	time: {
+		type: String, //也可用Date属性，但mongo Date类型不是我们想要的效果
+		//default: `2023-09-18 11:00` //如果前端未传数据，就是用这个
+		default: moment().format(`YYYY-MM-DD HH:mm`) //或YYYY年MM月DD日
+	},
 	classid: {
 		type: Schema.Types.ObjectId,
 		ref: `clamodel` //要关联的集合模型名称

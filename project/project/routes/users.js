@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require(`bcrypt`);
 const {
+	TOKEN_KEY
+} = require(`../utils/const`);
+const {
 	getMd5
 } = require(`../utils/crypto`);
 const jwt = require(`jsonwebtoken`);
@@ -25,7 +28,7 @@ router.post('/login', async function(req, res, next) {
 			const token = jwt.sign({
 					username
 				}, //要保存的信息
-				`abcd`, //密钥，混淆用
+				TOKEN_KEY, //密钥，混淆用
 				{
 					expiresIn: 60000
 				} //token有效期，单位默认为秒，
@@ -63,5 +66,20 @@ router.post('/reg', async function(req, res, next) {
 	});
 	res.send(data);
 })
+
+router.get('/islogin', async function(req, res, next) {
+	//获取token，拿到用户信息
+	const headerstoken = req.get(`authorization`);
+	const token = headerstoken.split(" ")[1];
+	const {
+		username
+	} = jwt.verify(token, TOKEN_KEY); //abcd解码密钥,解码出为一个对象
+
+	res.send({
+		msg: "身份认证成功",
+		status: 1,
+		data: username
+	})
+});
 
 module.exports = router;

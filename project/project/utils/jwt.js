@@ -1,7 +1,10 @@
 const expressJWT = require(`express-jwt`);
+const {
+	TOKEN_KEY
+} = require(`./const`);
 
 const jwtAuth = expressJWT({
-	secret: `abcd`, //token生成密钥一致
+	secret: TOKEN_KEY, //token生成密钥一致
 	algorithms: [`HS256`], //设置jwt算法为hs256
 	credentialsRequired: false //无token请求是否解析
 }).unless({

@@ -25,7 +25,8 @@
 					success: function(msg) {
 						if (msg.status) {
 							alert("login success");
-							localStorage.setItem(`token`, msg.token)
+							localStorage.setItem(`token`, msg.token);
+							location.href = `./index.html`;
 							//localStorage.token= msg.token
 						} else {
 							alert("login failed");
