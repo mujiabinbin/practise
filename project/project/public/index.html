@@ -144,23 +144,16 @@
 					url: `users/islogin`,
 					type: `get`,
 					//请求头，可以批量设置ajax请求，设置后此处删除
-					/* headers: {
+					headers: {
 						authorization: `bearer ` + localStorage.token //express-jwt要求格式，bearer后面一个空格，不要忽略
-					}, */
+					},
 					success(msg) {
 						alert(`欢迎${msg.data}`);
 						studelete();
 						claget();
 						teaget();
 
-					},
-					//ajax统一设置错误提示
-					/* error(err) {
-						if (err.status == 401) {
-							alert(`还未登陆，请先登陆`);
-							location.href = `./login.html`
-						}
-					} */
+					}
 				})
 			}
 
@@ -183,6 +176,8 @@
 			//获取列表
 			function studelete() {
 				$.ajax({
+					/* url:`http://192.168.1.14:3000/getstu`,
+					dataType:`jsonp`, */ //jsonp跨域解决
 					url: "/index/get",
 					type: "get",
 					data: searchdata

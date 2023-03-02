@@ -30,6 +30,7 @@ router.get('/get', async function(req, res, next) {
 		status: 1,
 		data: data
 	})
+	//res.jsonp(data);jsonp跨域解决
 });
 
 //删除数据
