@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/index.js"></script>
+	<body>
+		<div id="stublock">
+			<div>
+				<h1>添加数据</h1>
+				姓名：<input onblur="isexsit()" id="addname" type="text">
+				年龄：<input id="addage" type="text">
+				性别：<input id="addgender" type="text">
+				班级：<select name="" id="addclass">
+
+				</select>
+				<div>
+					<label for="">上传图片</label>
+					<input type="file" id="uploadpic"><!-- 上传文件 -->
+					<div class="img-box">
+
+					</div>
+				</div>
+				<button id="add-button" onclick="adddata()">提交</button>
+
+
+
+				<h1>修改数据</h1>
+				<input type="hidden" id="updateid">
+				修改姓名：<input onblur="editcheck()" id="editname" type="text">
+				修改年龄：<input id="editage" type="text">
+				修改性别：<input id="editgender" type="text">
+				修改班级：<select name="" id="editclass">
+
+				</select>
+				<button id="editsummit" onclick="update()">修改</button>
+				<h1>学生数据</h1>
+				<!-- 输入姓名：<input id="searchname" type="text">
+					输入年龄：<input id="searchage" type="text">
+					输入性别：<input id="searchgender" type="text"> -->
+				<label>检索</label>
+				<select id="searchtype">
+					<option id="searchdefault" value="username">姓名</option>
+					<option value="userage">年龄</option>
+					<option value="usergender">性别</option>
+					<option value="classid">班级</option>
+				</select>
+				<input id="searchinput" type="text">
+				<button id="searchbtn" onclick="search()">查找</button>
+				<table>
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>姓名</th>
+							<th>年龄</th>
+							<th>性别</th>
+							<th>班级</th>
+							<th>老师</th>
+							<th>头像</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="tb">
+
+					</tbody>
+				</table>
+				每页显示<select name="" id="pagesize">
+					<option value="">5</option>
+					<option value="">10</option>
+					<option value="">20</option>
+				</select>
+				条数据,共<label for="" id="totalstu"></label>条数据
+				<label for="" id="total"></label>
+				<button onclick="firstpage()">首页</button>
+				<button onclick="nextpage()">下一页</button>
+				<button onclick="prevpage()">上一页</button>
+				<button onclick="lastpage()">尾页</button>
+
+			</div>
+			<div id="classblock">
+				<h1>添加班级</h1>
+				<input id="claaddstr" type="text">
+				<button id="claaddbtn">添加</button>
+				<div id="teacherlist">
+					<!-- <input type="checkbox" name="teacher li" value="li"><label for="">li</label>
+					<input type="checkbox" name="teacher wang" value="wang"><label for="">wang</label>
+					<input type="checkbox" name="teacher zhang" value="zhang"><label for="">zhang</label>
+					<input type="checkbox" name="teacher zhao" value="zhao"><label for="">zhao</label> -->
+				</div>
+			</div>
+			<div>
+				<div>
+					<h1>添加老师</h1>
+					<input id="teaaddstr" type="text">
+					<button id="teaaddbtn" onclick="addtea()">添加</button>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- <h1>查找数据</h1>
+		
+		<table>
+			<thead>
+
+			</thead>
+			<tbody id="search">
+
+			</tbody>
+		</table>
+ -->
+		<script src="jquery-3.6.1.js"></script>
+		<script>
+			//全局设置ajax请求头
+			/* $.ajaxSettings.beforeSend = function(xhr, request) {
+				xhr.setRequestHeader(`authorization`, `bearer ` + localStorage.token)
+			} */
+			//全局设置ajax
+			$.ajaxSetup({
+				headers: {
+					authorization: `bearer ` + localStorage.token
+				},
+				error(err) {
+					if (err.status == 401) {
+						alert(`还未登陆，请先登陆`);
+						location.href = `./login.html`
+					}
+				}
+			})
+			/* 
+			 请求四部分组成：
+			 请求头，
+			 请求行，
+			 空行，
+			 请求体
+			 */
+			islogin();
+
+			function islogin() {
+				$.ajax({
+					url: `/api/users/islogin`,
+					type: `get`,
+					//请求头，可以批量设置ajax请求，设置后此处删除
+					headers: {
+						authorization: `bearer ` + localStorage.token //express-jwt要求格式，bearer后面一个空格，不要忽略
+					},
+					success(msg) {
+						alert(`欢迎${msg.data}`);
+						studelete();
+						claget();
+						teaget();
+
+					}
+				})
+			}
+
+			var picname = ``;
+			//设置搜索默认值
+			var searchdefaultname = ``; //$(`#searchdefault`).val();
+			var searchdata = {
+				searchtype: searchdefaultname,
+				searchname: ``,
+				currentpage: 1,
+				pagesize: $(`#pagesize option:selected`).text(),
+				totalnum: 0,
+				totalpage: 0
+			};
+			//调用获取学生列表和班级列表函数获取响应数据展示
+			// 调整到islogin处，身份认证登陆成功后再调用
+			/* studelete();
+			claget();
+			teaget(); */
+			//获取列表
+			function studelete() {
+				$.ajax({
+					/* url:`http://192.168.1.14:3000/getstu`,
+					dataType:`jsonp`, */ //jsonp跨域解决
+					url: "/api/index/get",
+					type: "get",
+					data: searchdata
+						/* {
+							...searchdata,
+							currentpage: page.currentpage,
+							pagesize: page.pagesize
+						} */
+						,
+					/* data:{
+						...searchdata,//保留searchdata原本数据
+						pagesize:5,
+						currentsize:1
+					} */
+					traditional: true, //当ajax data传递数据有数组时，需要加上此属性解决数组格式问题
+					success: function({
+						msg,
+						status,
+						data
+					}) {
+						searchdata.totalnum = data.total;
+						searchdata.totalpage = data.pages;
+						$(`#total`).text(`共${data.pages}页，当前第${searchdata.currentpage}页`);
+						$(`#totalstu`).text(searchdata.totalnum);
+						let str = data.data.map(item => `
+						<tr>
+						    <td>${item._id}</td>
+							<td>${item.username}</td>
+							<td>${item.userage}</td>
+							<td>${item.usergender}</td>
+							<td>${item.classid.classname}</td>
+							<td>${item.classid.teaid.map(function(para){
+								 return para.teachername
+							}).join(",")}</td>
+							<td><img width="50px" src="./img/${item.picname || `default.JPG`}" alt=""></td>
+							<td>
+								<button class="editbtn" data-editstu=${item._id}>修改</button>
+								<button class="delbtn" data-stuid=${item._id}>删除</button>
+							</td>
+						</tr>
+						`)
+						$("#tb").html(str);
+					}
+				})
+
+			}
+
+			function firstpage() {
+				searchdata.currentpage = 1;
+				searchdata.pagesize = $(`#pagesize option:selected`).text();
+				studelete();
+			}
+
+			function nextpage() {
+				if (searchdata.currentpage < searchdata.totalpage) {
+					searchdata.currentpage++;
+				};
+				studelete();
+			}
+
+			function prevpage() {
+				if (searchdata.currentpage > 1) {
+					searchdata.currentpage--;
+				}
+				studelete();
+			}
+
+			function lastpage() {
+				searchdata.currentpage = searchdata.totalpage;
+				studelete();
+			}
+
+			$(`#pagesize`).change(function() {
+				searchdata.pagesize = $(`#pagesize option:selected`).text()
+				studelete();
+			})
+			/* [...$(`#xxx>input[type=checkbox]:checked`)].map(function(item,index){
+				
+			}) */ //其中标签选择器筛选出的是一个伪数组,需要扩展[...伪数组]为一个真数组再 map() 遍历
+			//foreach获取列表，性能不及字符串拼接后一次性渲染
+			/* msg.data.forEach(function(item){
+				$("tbody").append(`
+				<tr>
+					<td>${item.name}</td>
+					<td>${item.age}</td>
+					<td>${item.gender}</td>
+					<td>
+						<button>修改</button>
+						<button>删除</button>
+					</td>
+				</tr>`
+				);
+			})	
+			 */
+
+			//删除数据
+			//事件委托，将动态生成标签的事件绑定在父标签上，父标签为静态标签
+			$("tbody").on("click", ".delbtn", function() { //原生js this表示绑定元素，而jquery中this表示事件元素
+				const _id = $(this).data("stuid"); //data(“属性名”)：获取原生属性值，属性名会自动过滤“data-”，data(“属性名“，”属性值“)：赋值
+				console.log(_id);
+				$.ajax({
+					url: "/api/index/delete",
+					data: {
+						_id
+					},
+					type: "post",
+					success(msg) {
+						alert(`删除成功`);
+						studelete();
+					}
+				})
+			})
+
+			//校验姓名
+			function isexsit() {
+				const username = $(`#addname`).val();
+				$.ajax({
+					url: "/api/index/isexsit",
+					type: "post",
+					data: {
+						username,
+					},
+					success(msg) {
+						if (!msg.status) {
+							const result = confirm(`姓名已存在，是否继续添加`);
+							if (!result) {
+								$(`#add-button`).attr(`disabled`, true);
+							}
+						} else {
+							$(`#add-button`).attr(`disabled`, false);
+						}
+
+					}
+				})
+			}
+
+			//添加数据
+			function adddata() {
+				const username = $(`#addname`).val();
+				const userage = $(`#addage`).val();
+				const usergender = $(`#addgender`).val();
+				const classid = $("#addclass option:selected").val();
+				$.ajax({
+					url: `/api/index/`,
+					type: "add",
+					data: {
+						username,
+						userage,
+						usergender,
+						classid,
+						picname
+					},
+					success(msg) {
+						console.log(msg)
+						$("#tb").append(`
+						<tr>
+						    <td>${msg._id}</td>
+							<td>${msg.username}</td>
+							<td>${msg.userage}</td>
+							<td>${msg.usergender}</td>
+							<td>${msg.classid.classname}</td>
+							<td>
+								<button class="editbtn" data-editstu=${msg._id}>修改</button>
+								<button class="delbtn" data-stuid=${msg._id}>删除</button>
+							</td>
+						</tr>`);
+					}
+				})
+				studelete();
+			}
+
+			//搜索
+			function search() {
+				var searchtype = $("#searchtype option:selected").val();
+				var searchname = $("#searchinput").val();
+				if (searchtype == "classid") {
+					$.ajax({
+						url: `/api/class/search`,
+						type: `post`,
+						data: {
+							classname: searchname
+						},
+						success(msg) {
+							var objid = msg[0]._id;
+							//var objid = `ObjectId(${objidstr})`;
+							searchdata = {
+								searchtype,
+								searchname: objid,
+								currentpage: 1,
+								pagesize: $(`#pagesize option:selected`).text(),
+								totalnum: 0,
+								totalpage: 0
+							}
+							studelete(searchdata);
+						}
+					})
+				} else {
+					searchdata = {
+						searchtype,
+						searchname,
+						currentpage: 1,
+						pagesize: $(`#pagesize option:selected`).text(),
+						totalnum: 0,
+						totalpage: 0
+					}
+					studelete(searchdata);
+				}
+			}
+
+			//修改数据-点击数据修改按钮赋值给修改输入框
+			$("tbody").on("click", ".editbtn", function() {
+				const _id = $(this).data("editstu");
+				$.ajax({
+					url: "/api/index/edit",
+					data: {
+						_id
+					},
+					type: "post",
+					success(msg) {
+						$(`#editname`).val(msg.data[0].username);
+						$(`#editage`).val(msg.data[0].userage);
+						$(`#editgender`).val(msg.data[0].usergender);
+						$(`#updateid`).val(msg.data[0]._id)
+						const aa = msg.data[0].classid._id;
+						$.ajax({
+							url: `/api/class/get`,
+							type: `get`,
+							success(msg) {
+								$(`#editclass`).html(``);
+								let str = msg.forEach(function(item) {
+									if (item._id === aa) {
+										//`<option value="${item._id}" selected="true">${item.classname}</option>`
+										$(`#editclass`).append(
+											`<option value="${item._id}" selected="true">${item.classname}</option>`
+										)
+									} else {
+										$(`#editclass`).append(
+											`<option value="${item._id}">${item.classname}</option>`
+										)
+									}
+								});
+								$(`#editclass`).html(str);
+							}
+						});
+						/* $("#editclass option[value=${msg.data[0].classid.classid}]").prop("selected",
+							true); */
+						//$(`#editclass`).val(msg.data[0].classid.classid);
+					}
+				})
+			})
+
+			//修改数据-校验姓名并更新内容至数据库
+			function update() {
+				const _id = $(`#updateid`).val();
+				const username = $(`#editname`).val();
+				const userage = $(`#editage`).val();
+				const usergender = $(`#editgender`).val();
+				const classid = $("#editclass option:selected").val();
+				$.ajax({
+					url: "/api/index/isexsit",
+					type: "post",
+					data: {
+						username,
+					},
+					success(msg) {
+						if (!msg.status) {
+							const result = confirm(`姓名已存在，是否继续修改`);
+							if (!result) {
+								$(`#editsummit`).attr(`disabled`, true);
+								alert(`请重新输入姓名`);
+							} else {
+								$(`#editsummit`).attr(`disabled`, false);
+								var update = {
+									_id,
+									username,
+									userage,
+									usergender,
+									classid
+								};
+								$.ajax({
+									url: "/api/index/update",
+									data: update,
+									type: "post",
+									success(msg) {
+										studelete();
+									}
+								})
+								alert(`修改成功`);
+							}
+						} else {
+							var update = {
+								_id,
+								username,
+								userage,
+								usergender,
+								classid
+							};
+							$.ajax({
+								url: "/api/index/update",
+								data: update,
+								type: "post",
+								success(msg) {
+									studelete();
+								}
+							})
+							alert(`修改成功`);
+						}
+					}
+				})
+			}
+
+			//修改校验数据若姓名重复按钮会至灰，重新输入姓名鼠标离开后按钮恢复可用
+			function editcheck() {
+				$(`#editsummit`).attr(`disabled`, false);
+			}
+
+			//添加班级
+			$(`#claaddbtn`).click(function() {
+				const classname = $(`#claaddstr`).val();
+				const teaid = [...$(`#teacherlist > input:checked`)].map(function(item) {
+					return item.value;
+				});
+				console.log(teaid);
+				$.ajax({
+					url: `/api/class/add`,
+					type: `post`,
+					data: {
+						classname,
+						teaid
+					},
+					traditional: true, //ajax传递数据为数组是，增加traditional: true属性，保证数据格式正确
+					success(msg) {
+						console.log(msg);
+					}
+				})
+				claget();
+			})
+
+			//获取班级列表
+			function claget() {
+				$.ajax({
+					url: `/api/class/get`,
+					type: `get`,
+					success(msg) {
+						let str = msg.map(item => `<option value="${item._id}">${item.classname}</option>`);
+						$(`#addclass`).html(str);
+					}
+				})
+			}
+
+			//添加老师
+			function addtea() {
+				const teachername = $(`#teaaddstr`).val();
+				$.ajax({
+					url: `/api/teachers/add`,
+					type: `post`,
+					data: {
+						teachername
+					},
+					success(msg) {
+						console.log(msg)
+					}
+				})
+				teaget();
+			}
+
+			//获取老师列表
+			function teaget() {
+				$.ajax({
+					url: `/api/teachers/get`,
+					type: `get`,
+					success(msg) {
+						let str = msg.map(item =>
+							`<input type="checkbox" value="${item._id}"><label for="">${item.teachername}</label>
+							`)
+						$(`#teacherlist`).html(str);
+					}
+				})
+			}
+
+			//上传图片
+			$(`#uploadpic`).change(function(event) { //找到上传图片标签添加change事件
+				//event.target等同与this
+				const files = this.files; //1.拿到图片，为一个数组，分别为每一张图片，想要对每一张操作files[i]
+				//2将图片添加到表单对象
+				const formdata = new FormData(); //通过构造函数创建一个表单对象
+				formdata.append(`file`, files[0]); //第一个参数为此条数据取个名字，第二个参数为真正要传的数据
+				//3 将表单对象通过ajax发送到服务器
+				$.ajax({
+					url: "/api/pics/upload",
+					type: "post",
+					data: formdata,
+					//下面三个属性都是保证图片数据完整传递到后端，不做转换
+					cache: false, //不读取缓存结果
+					contentType: false, //数据编码格式不使用jquery方式
+					processData: false, //图片不需要数据转换称其他格式，因为前后端传递数据默认都会转换成字符串，json格式
+					success(msg) {
+						console.log(msg);
+						$(`.img-box`).html(``);
+						$(`.img-box`).append(`
+						<img id="profilepic" src="./temp/${msg.data}" alt="">
+						`);
+						picname = msg.data;
+					}
+				})
+			})
+		</script>
+	</body>
+</html>
