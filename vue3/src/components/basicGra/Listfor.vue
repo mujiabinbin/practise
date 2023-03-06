@@ -6,10 +6,12 @@
 		<tr>
 			<td>编号</td>
 			<td>姓名</td>
+			<td>index</td>
 		</tr>
-		<tr v-for="(item,index) in friends">
+		<tr v-for="(item,index) in friends" v-bind:key="item.fid">
 			<td>{{item.fid}}</td>
 			<td>{{item.name}}</td>
+			<td>{{index}}</td>
 		</tr>
 
 	</div>

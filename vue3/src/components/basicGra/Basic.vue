@@ -1,5 +1,6 @@
 <template>
-	<h1>hello,{{name}},今年{{age+1}}岁,性别{{gender}}</h1>
+<div>
+<h1>hello,{{name}},今年{{age+1}}岁,性别{{gender}}</h1>
 	<p>my friends are {{
 		friends.map(function(item){
 			return item
@@ -9,7 +10,7 @@
 	<button v-on:click="age++">加年龄</button>
 	<!-- 标签中reg属性，设置一个自定义标签，而通过“$refs.自定义标签”可以获得这个节点（$refs会获得一个对象） -->
 	<input type="text" ref="newnumber" v-on:blur="age=$refs.newnumber.value">
-
+</div>
 </template>
 
 <script>
