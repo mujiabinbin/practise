@@ -1,11 +1,12 @@
 <template>
 	<div>
 		<!-- //template只接收一个子组件，所以最佳方式是用一个div包裹所有组件 -->
-		<h1>App.vue</h1>
-		<Test1></Test1><!-- //3 渲染子组件 -->
-		<Basic></Basic>
+		<!-- <h1>App.vue</h1>
+		<Test1></Test1> --><!-- //3 渲染子组件 -->
+		<!-- <Basic></Basic>
 		<Listfor></Listfor>
-		<If></If>
+		<If></If> -->
+		<shoppingcart></shoppingcart>
 		<a href="../public/login.html"></a>
 	</div>
 </template>
@@ -16,13 +17,15 @@
 	import Basic from './components/basicGra/Basic.vue';
 	import Listfor from './components/basicGra/Listfor';
 	import If from './components/basicGra/If';
+	import Shoppingcart from './components/basicGra/Shoppingcart.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
 			Test1,
 			Basic,
 			Listfor,
-			If
+			If,
+			Shoppingcart
 		}
 	}
 </script>
