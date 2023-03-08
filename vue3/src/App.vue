@@ -7,7 +7,8 @@
 		<Listfor></Listfor>
 		<If></If> -->
 		<shoppingcart></shoppingcart>
-		<a href="../public/login.html"></a>
+		<!-- <Movielist></Movielist> -->
+		<Directive></Directive>
 	</div>
 </template>
 
@@ -18,6 +19,8 @@
 	import Listfor from './components/basicGra/Listfor';
 	import If from './components/basicGra/If';
 	import Shoppingcart from './components/basicGra/Shoppingcart.vue';
+	import Movielist from './components/basicGra/Movielist.vue';
+	import Directive from './components/basicGra/Directive.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -25,7 +28,9 @@
 			Basic,
 			Listfor,
 			If,
-			Shoppingcart
+			Shoppingcart,
+			Movielist,
+			Directive
 		}
 	}
 </script>
