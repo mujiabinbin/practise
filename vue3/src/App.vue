@@ -6,9 +6,10 @@
 		<!-- <Basic></Basic>
 		<Listfor></Listfor>
 		<If></If> -->
-		<shoppingcart></shoppingcart>
-		<!-- <Movielist></Movielist> -->
-		<Directive></Directive>
+		<!-- <shoppingcart></shoppingcart> -->
+		<Movielist></Movielist>
+		<!-- <Directive></Directive> -->
+		<!-- <Basic-style></Basic-style> -->
 	</div>
 </template>
 
@@ -21,6 +22,7 @@
 	import Shoppingcart from './components/basicGra/Shoppingcart.vue';
 	import Movielist from './components/basicGra/Movielist.vue';
 	import Directive from './components/basicGra/Directive.vue';
+	import BasicStyle from './components/style/BasicStyle.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -30,7 +32,8 @@
 			If,
 			Shoppingcart,
 			Movielist,
-			Directive
+			Directive,
+			BasicStyle
 		}
 	}
 </script>

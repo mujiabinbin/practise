@@ -1,7 +1,7 @@
 <template>
   <div>
    <ul v-for="item in style" v-bind:key="item.id">
-    <li v-if="item.id==selected"><strong>{{item.name}}</strong></li>
+    <li v-if="item.id==selected" :class="{bgcolor}"><strong>{{item.name}}</strong></li>
     <li v-else v-on:click="selected=item.id"><label>{{item.name}}</label></li>
    </ul>
   </div>
@@ -17,7 +17,8 @@ export default {
                 {id:`03`,name:`科幻`},
                 {id:`04`,name:`动画`},
                 ],
-            selected:`01`    
+            selected:`01`,
+            bgcolor:true
         }
         
     }
@@ -32,5 +33,9 @@ ul{
 }
 li{
     margin: 5px;
+}
+.bgcolor{
+  background-color: red;
+  color: white;
 }
 </style>
