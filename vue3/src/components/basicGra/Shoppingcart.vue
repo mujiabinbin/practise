@@ -2,6 +2,7 @@
   <table>
     <thead>
         <td>商品编号</td>
+        <td>商品图片</td>
         <td>商品名称</td>
         <td>商品单价</td>
         <td>商品数量</td>
@@ -10,8 +11,10 @@
     </thead>
     <tbody>
         <template v-for="item in product">
-          <tr v-if="item.num>0" v-bind:key="item.id">
+          <tr v-if="item.num>0" :key="item.id">
             <td>{{item.id}}</td>
+            <td v-if="item.pic"><img :src="require(`../../assets/`+item.pic)" alt=""></td>
+            <td v-else><img src="../../assets/logo.png" alt=""></td>
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.num}}</td>
@@ -32,9 +35,9 @@ export default {
     data() {
         return {
             product:
-            [{id:`01`,name:`精品牛奶`,price:10,num:1},
+            [{id:`01`,name:`精品牛奶`,price:10,num:1,pic:`logo.png`},
             {id:`02`,name:`新鲜鸡蛋`,price:15,num:1},
-            {id:`03`,name:`特价猪肉`,price:30,num:1},
+            {id:`03`,name:`特价猪肉`,price:30,num:1,pic:`logo.png`},
             ],
             total:0
         }
@@ -56,5 +59,8 @@ thead{
 tbody{
     width: 100%;
     border: 1px solid gray;
+}
+img{
+    width: 50px;
 }
 </style>
