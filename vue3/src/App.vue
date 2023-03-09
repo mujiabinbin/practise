@@ -6,10 +6,12 @@
 		<!-- <Basic></Basic>
 		<Listfor></Listfor>
 		<If></If> -->
-		<!-- <shoppingcart></shoppingcart> -->
-		<Movielist></Movielist>
+		<shoppingcart></shoppingcart>
+		<!-- <Movielist></Movielist> -->
 		<!-- <Directive></Directive> -->
 		<!-- <Basic-style></Basic-style> -->
+		<!-- <Event></Event> -->
+		<!-- <Computed></Computed> -->
 	</div>
 </template>
 
@@ -22,7 +24,9 @@
 	import Shoppingcart from './components/basicGra/Shoppingcart.vue';
 	import Movielist from './components/basicGra/Movielist.vue';
 	import Directive from './components/basicGra/Directive.vue';
+	import Event from './components/basicGra/Event.vue';
 	import BasicStyle from './components/style/BasicStyle.vue';
+	import Computed from './components/computed/Computed.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -33,7 +37,9 @@
 			Shoppingcart,
 			Movielist,
 			Directive,
-			BasicStyle
+			BasicStyle,
+			Event,
+			Computed
 		}
 	}
 </script>

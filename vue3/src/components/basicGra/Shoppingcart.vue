@@ -38,8 +38,20 @@ export default {
             [{id:`01`,name:`精品牛奶`,price:10,num:1,pic:`logo.png`},
             {id:`02`,name:`新鲜鸡蛋`,price:15,num:1},
             {id:`03`,name:`特价猪肉`,price:30,num:1,pic:`logo.png`},
-            ],
-            total:0
+            ]
+        }
+    },
+    computed:{
+        
+        total(){
+           var newarr= this.product.map(element => {
+              return element.price*element.num;
+            });
+           var num=0;
+           var newnum= newarr.forEach(item=>{
+                num+=item;
+            })
+            return num
         }
     }
 
