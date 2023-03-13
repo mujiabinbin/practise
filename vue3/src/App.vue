@@ -13,8 +13,9 @@
 		<!-- <Event></Event> -->
 		<!-- <Computed></Computed> -->
 		<!-- <Todolist></Todolist> -->
-		<Model></Model>
-		<Watch></Watch>
+		<!-- <Model></Model>
+		<Watch></Watch> -->
+		<Datachange></Datachange>
 	</div>
 </template>
 
@@ -33,6 +34,7 @@
 	import Todolist from './components/basicGra/Todolist.vue';
 	import Model from './components/basicGra/Model.vue';
 	import Watch from './components/watch/Watch.vue';
+	import Datachange from './components/basicGra/Datachange.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -48,7 +50,8 @@
 			Computed,
 			Watch,
 			Todolist,
-			Model
+			Model,
+			Datachange
 		}
 	}
 </script>
