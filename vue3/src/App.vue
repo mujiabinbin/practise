@@ -14,6 +14,7 @@
 		<!-- <Computed></Computed> -->
 		<!-- <Todolist></Todolist> -->
 		<Model></Model>
+		<Watch></Watch>
 	</div>
 </template>
 
@@ -31,6 +32,7 @@
 	import Computed from './components/computed/Computed.vue';
 	import Todolist from './components/basicGra/Todolist.vue';
 	import Model from './components/basicGra/Model.vue';
+	import Watch from './components/watch/Watch.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -44,6 +46,7 @@
 			BasicStyle,
 			Event,
 			Computed,
+			Watch,
 			Todolist,
 			Model
 		}
