@@ -6,12 +6,13 @@
 		<!-- <Basic></Basic>
 		<Listfor></Listfor>
 		<If></If> -->
-		<shoppingcart></shoppingcart>
+		<!-- <shoppingcart></shoppingcart> -->
 		<!-- <Movielist></Movielist> -->
 		<!-- <Directive></Directive> -->
 		<!-- <Basic-style></Basic-style> -->
 		<!-- <Event></Event> -->
 		<!-- <Computed></Computed> -->
+		<Watch></Watch>
 	</div>
 </template>
 
@@ -27,6 +28,7 @@
 	import Event from './components/basicGra/Event.vue';
 	import BasicStyle from './components/style/BasicStyle.vue';
 	import Computed from './components/computed/Computed.vue';
+	import Watch from './components/watch/Watch.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -39,7 +41,8 @@
 			Directive,
 			BasicStyle,
 			Event,
-			Computed
+			Computed,
+			Watch
 		}
 	}
 </script>
