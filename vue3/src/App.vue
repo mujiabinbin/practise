@@ -12,7 +12,8 @@
 		<!-- <Basic-style></Basic-style> -->
 		<!-- <Event></Event> -->
 		<!-- <Computed></Computed> -->
-		<Todolist></Todolist>
+		<!-- <Todolist></Todolist> -->
+		<Model></Model>
 	</div>
 </template>
 
@@ -29,6 +30,7 @@
 	import BasicStyle from './components/style/BasicStyle.vue';
 	import Computed from './components/computed/Computed.vue';
 	import Todolist from './components/basicGra/Todolist.vue';
+	import Model from './components/basicGra/Model.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -42,7 +44,8 @@
 			BasicStyle,
 			Event,
 			Computed,
-			Todolist
+			Todolist,
+			Model
 		}
 	}
 </script>
