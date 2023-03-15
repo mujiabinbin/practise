@@ -15,7 +15,11 @@
 		<!-- <Todolist></Todolist> -->
 		<!-- <Model></Model>
 		<Watch></Watch> -->
-		<Datachange></Datachange>
+		<!-- <Datachange></Datachange> -->
+		<!-- <Students></Students> -->
+		<!-- <Lifecircle></Lifecircle> -->
+		<Father></Father>
+		
 	</div>
 </template>
 
@@ -35,6 +39,9 @@
 	import Model from './components/basicGra/Model.vue';
 	import Watch from './components/watch/Watch.vue';
 	import Datachange from './components/basicGra/Datachange.vue';
+	import Students from './components/test/Students';
+	import Lifecircle from './components/advCom/Lifecircle.vue';
+	import Father from './components/advCom/Father.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -51,7 +58,10 @@
 			Watch,
 			Todolist,
 			Model,
-			Datachange
+			Datachange,
+			Students,
+			Lifecircle,
+			Father
 		}
 	}
 </script>
