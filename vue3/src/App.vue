@@ -17,7 +17,8 @@
 		<Watch></Watch> -->
 		<!-- <Datachange></Datachange> -->
 		<!-- <Students></Students> -->
-		<Lifecircle></Lifecircle>
+		<!-- <Lifecircle></Lifecircle> -->
+		<Father></Father>
 		
 	</div>
 </template>
@@ -40,6 +41,7 @@
 	import Datachange from './components/basicGra/Datachange.vue';
 	import Students from './components/test/Students';
 	import Lifecircle from './components/advCom/Lifecircle.vue';
+	import Father from './components/advCom/Father.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -59,6 +61,7 @@
 			Datachange,
 			Students,
 			Lifecircle,
+			Father
 		}
 	}
 </script>
