@@ -18,7 +18,7 @@
 		<!-- <Datachange></Datachange> -->
 		<!-- <Students></Students> -->
 		<!-- <Lifecircle></Lifecircle> -->
-		<Father></Father>
+		<!-- <Father></Father> -->
 		
 	</div>
 </template>
@@ -61,7 +61,7 @@
 			Datachange,
 			Students,
 			Lifecircle,
-			Father
+			Father,
 		}
 	}
 </script>
