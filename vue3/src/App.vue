@@ -19,8 +19,8 @@
 		<!-- <Students></Students> -->
 		<!-- <Lifecircle></Lifecircle> -->
 		<!-- <Father></Father> -->
-		<Fctest></Fctest>
-		
+		<!-- <Fctest></Fctest> -->
+		<Stu></Stu>
 	</div>
 </template>
 
@@ -44,6 +44,7 @@
 	import Lifecircle from './components/advCom/Lifecircle.vue';
 	import Father from './components/advCom/Father.vue';
 	import Fctest from './components/test/Fctest.vue';
+	import Stu from './components/test/Stu';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -64,7 +65,8 @@
 			Students,
 			Lifecircle,
 			Father,
-			Fctest
+			Fctest,
+			Stu
 		}
 	}
 </script>
