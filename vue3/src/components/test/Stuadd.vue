@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-        id:6,
+        id:12,
         addname:'',
         addage:'',
         addgender:'', 
