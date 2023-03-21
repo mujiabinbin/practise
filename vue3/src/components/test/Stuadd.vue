@@ -5,22 +5,39 @@
   </div>
   
   <div class="content">
- <span>姓名：</span><input type="text">
+ <span>姓名：</span><input type="text" v-model="addname">
   </div>
- <div class="content">
-<span>年龄：</span><input type="text">
+ <div class="content" >
+<span>年龄：</span><input type="text" v-model="addage">
  </div>
   <div class="content">
-<span>性别：</span><input type="radio">男<input type="radio">女
+<span>性别：</span><input type="radio" v-model="addgender" value="男">男<input type="radio" v-model="addgender" value="女">女
   </div>
-  <div class="btn">确认添加</div>
+  <div class="btn" @click="addstu">确认添加</div>
   
  </div>
    
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+        id:6,
+        addname:'',
+        addage:'',
+        addgender:'', 
+      }
+    },
+  methods: {
+    addstu(){
+      this.id++;
+      this.$emit(`addstu`,{id:this.id,name:this.addname,
+        age:this.addage,
+        gender:this.addgender,isshow:true});
+    }
+  },
+};
 </script>
 
 <style scoped>

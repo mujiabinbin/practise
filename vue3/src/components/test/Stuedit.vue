@@ -5,22 +5,26 @@
   </div>
   
   <div class="content">
- <span>姓名：</span><input type="text">
+ <span>姓名：</span><input type="text" v-model.lazy="editstudata.name">
   </div>
  <div class="content">
-<span>年龄：</span><input type="text">
+<span>年龄：</span><input type="text" v-model.lazy="editstudata.age">
  </div>
   <div class="content">
-<span>性别：</span><input type="radio">男<input type="radio">女
+<span>性别：</span><input type="radio" v-model.lazy="editstudata.gender" value="男">男<input type="radio" v-model="editstudata.gender" value="女">女
   </div>
  <div class="btn">确认修改</div>
-  
- </div>
    
+ </div>
+  
 </template>
 
 <script>
-export default {};
+export default {
+  props:{
+    editstudata:Object
+  },
+};
 </script>
 
 <style scoped>

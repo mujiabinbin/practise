@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Stuadd></Stuadd>
-    <Stuedit></Stuedit>
+    <Stuadd @addstu='addstu' ></Stuadd>
+    <Stuedit :editstudata='editstudata'></Stuedit>
     <Stusearch></Stusearch>
   </div>
 </template>
@@ -15,7 +15,24 @@ export default {
         Stuadd,
         Stuedit,
         Stusearch
-    }
+    },
+    props:{
+       editstudata:Object
+    },
+    data() {
+      return {
+        stu1:{}
+      }
+    },
+    methods: {
+      addstu(stu){
+        this.stu1 = stu;
+        this.gestu1();
+      },
+      gestu1(){
+        this.$emit('getstu1',this.stu1)
+      },
+    },
 
 }
 </script>
