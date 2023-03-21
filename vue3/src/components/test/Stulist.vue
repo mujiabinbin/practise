@@ -24,7 +24,13 @@
     
   </tbody>
  </table>
- <p>共{{totalstu}}条学生数据 <button>首页</button><button>上一页</button><button>下一页</button><button>尾页</button> 共1页，当前第1页</p>
+ <p>共{{totalstu}}条学生数据 
+  <button @click="firstpage">首页</button>
+  <button @click="frontpage">上一页</button>
+  <button @click="nextpage">下一页</button>
+  <button @click="lastpage">尾页</button> 
+  共{{totalpage}}页，当前第{{currentpage}}页
+  </p>
   </div>
 </template>
 
@@ -32,7 +38,10 @@
 
 export default {
   props:{
-     stu:Array
+     stu:Array,
+     currentpage:[Number,String],
+     totalpage:[Number,String],
+     stutotal:Array
   },
   data() {
     return {
@@ -46,11 +55,25 @@ export default {
     },
     editstu(item){
       this.$emit('editstu',item)
-    }
+    },
+    firstpage(){
+      this.$emit('firstpage')
+    },
+    nextpage(){
+      this.$emit('nextpage');
+      console.log(`nextpage click`)
+    },
+    frontpage(){
+      this.$emit('frontpage')
+    },
+    lastpage(){
+      this.$emit('lastpage')
+    },
+
   },
   computed:{
     totalstu(){
-   const total= this.stu.filter(item=>{
+   const total= this.stutotal.filter(item=>{
       return item.isshow
     }).length;
     return total

@@ -2,7 +2,7 @@
   <div>
     <Stuadd @addstu='addstu' ></Stuadd>
     <Stuedit :editstudata='editstudata'></Stuedit>
-    <Stusearch></Stusearch>
+    <Stusearch @searchstu='searchstu'></Stusearch>
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
     },
     data() {
       return {
-        stu1:{}
+        stu1:{},
+        searchstudata:{}
       }
     },
     methods: {
@@ -32,6 +33,11 @@ export default {
       gestu1(){
         this.$emit('getstu1',this.stu1)
       },
+      searchstu(stu){
+        this.searchstudata=stu;
+        this.$emit('searchstu',this.searchstudata)
+      },
+
     },
 
 }

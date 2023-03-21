@@ -5,15 +5,15 @@
   </div>
   
  <div class="content">
-  <select>
+  <select v-model="property">
     <option value="name" selected>姓名</option>
     <option value="age">年龄</option>
     <option value="gender">性别</option>
   </select>  
-   <input type="text">
+   <input type="text" v-model="keywords">
  </div>
  
-  <div class="btn">搜索
+  <div class="btn" @click="searchstu">搜索
   </div>
   
  </div>
@@ -21,7 +21,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      property:'',
+      keywords:''
+    }
+  },
+  methods: {
+    searchstu(){
+    this.$emit('searchstu',{property:this.property,keywords:this.keywords});
+    }
+  },
+};
 </script>
 
 <style scoped>
