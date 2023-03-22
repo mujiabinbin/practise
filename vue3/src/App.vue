@@ -20,7 +20,8 @@
 		<!-- <Lifecircle></Lifecircle> -->
 		<!-- <Father></Father> -->
 		<!-- <Fctest></Fctest> -->
-		<Stu></Stu>
+		<!-- <Stu></Stu> -->
+		<Tabfather></Tabfather>
 	</div>
 </template>
 
@@ -45,6 +46,7 @@
 	import Father from './components/advCom/Father.vue';
 	import Fctest from './components/test/Fctest.vue';
 	import Stu from './components/test/Stu';
+	import Tabfather from './components/keepalive/Father.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -66,7 +68,8 @@
 			Lifecircle,
 			Father,
 			Fctest,
-			Stu
+			Stu,
+			Tabfather
 		}
 	}
 </script>
