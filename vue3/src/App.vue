@@ -22,8 +22,9 @@
 		<!-- <Fctest></Fctest> -->
 		<!-- <Stu></Stu> -->
 		<!-- <Tabfather></Tabfather> -->
-		<Busemit></Busemit>
-		<Buson></Buson>
+		<!-- <Busemit></Busemit>
+		<Buson></Buson> -->
+		<Fatherslot></Fatherslot>
 	</div>
 </template>
 
@@ -51,6 +52,7 @@
 	import Tabfather from './components/keepalive/Father.vue';
 	import Busemit from './components/bus/Busemit.vue';
 	import Buson from './components/bus/Buson.vue';
+	import Fatherslot from './components/slot/Fatherslot.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -75,7 +77,8 @@
 			Stu,
 			Tabfather,
 			Busemit,
-			Buson
+			Buson,
+			Fatherslot
 		}
 	}
 </script>
