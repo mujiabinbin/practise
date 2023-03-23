@@ -3,11 +3,10 @@ import {
 } from 'vue';
 import App from './App.vue';
 
-createApp(App).mount('#app');
-/* import mitt from 'mitt'
-App.config.globalProperties.$bus = new mitt();
- 
-App.use(Vue3DraggableResizable); */
+const app= createApp(App);
+/* import mitt from 'mitt';
+app.config.globalProperties.$bus = new mitt(); */
+app.mount('#app')
 
 /* import Vue from(`vue`);
 import App from(`./App.vue`); */
