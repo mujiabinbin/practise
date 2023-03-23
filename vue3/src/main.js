@@ -2,7 +2,8 @@ import {
 	createApp
 } from 'vue';
 import App from './App.vue';
-
+import axios from 'axios';
+//axios.defaults.baseURL=''
 const app= createApp(App);
 /* import mitt from 'mitt';
 app.config.globalProperties.$bus = new mitt(); */
