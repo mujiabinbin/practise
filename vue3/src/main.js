@@ -3,8 +3,10 @@ import {
 } from 'vue';
 import App from './App.vue';
 import axios from 'axios';
-//axios.defaults.baseURL=''
+import api from './http/api';
 const app= createApp(App);
+app.config.globalProperties.$api = api;
+axios.defaults.baseURL='http://localhost:3000';
 /* import mitt from 'mitt';
 app.config.globalProperties.$bus = new mitt(); */
 app.mount('#app')

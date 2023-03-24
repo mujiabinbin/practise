@@ -5,16 +5,23 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import api from '../../../src/http/api';
 export default {
 created() {
-    axios({
-        url:'http://localhost:3000/index/get',
+  this.getindexdata()
+},
+methods: {
+  async getindexdata(){
+      const res= this.$api.index.get();
+      console.log(res);
+  }
+},
+    /* axios({
+        url:'/index/get',
         method:'GET',
     }).then((res=>{
         console.log(res);
-    }))
-},
+    })) */
 }
 </script>
 
