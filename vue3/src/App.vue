@@ -24,7 +24,8 @@
 		<!-- <Tabfather></Tabfather> -->
 		<!-- <Busemit></Busemit>
 		<Buson></Buson> -->
-		<Fatherslot></Fatherslot>
+		<!-- <Fatherslot></Fatherslot> -->
+		<Axios></Axios>
 	</div>
 </template>
 
@@ -53,6 +54,7 @@
 	import Busemit from './components/bus/Busemit.vue';
 	import Buson from './components/bus/Buson.vue';
 	import Fatherslot from './components/slot/Fatherslot.vue';
+	import Axios from './components/axios/Axios.vue';
 	//2 配置注册子组件
 	export default {
 		components: {
@@ -78,7 +80,8 @@
 			Tabfather,
 			Busemit,
 			Buson,
-			Fatherslot
+			Fatherslot,
+			Axios
 		}
 	}
 </script>
