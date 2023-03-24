@@ -11,13 +11,14 @@ var moviesRouter = require('./routes/movies');
 var classRouter = require('./routes/class');
 var teachersRouter = require('./routes/teachers');
 var picsRouter = require('./routes/pics');
+var cors=require('cors');
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
