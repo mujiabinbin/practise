@@ -1,9 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<div>
+  <!--路由出口：当前路由组件渲染位置  -->
+  <router-view>
+  </router-view>
+</div>
+ <!--  <nav>
+    <router-link to="/">首页</router-link> |
+    <router-link to="/login">登陆</router-link>
+     <router-link to="/reg">注册</router-link>
+  </nav> -->
+  
 </template>
 
 <style lang="scss">
