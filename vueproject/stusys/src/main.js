@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+//引入路由实例对象
+import router from './router'//完整写法：import router from './router/index.js'
 import store from './store'
-
+//后续在组件中通过this.$router获取此实例对象
 createApp(App).use(store).use(router).mount('#app')
