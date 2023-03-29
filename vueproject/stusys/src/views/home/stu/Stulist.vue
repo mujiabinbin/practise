@@ -16,7 +16,7 @@
             <td>{{item.username}}</td>
             <td>{{item.userage}}</td>
             <td>{{item.usergender}}</td>
-            <td><button>编辑</button><button>删除</button></td>
+            <td><button>编辑</button><button @click="delstu(item._id)">删除</button></td>
         </tr>
     </tbody>
   </div>
@@ -26,7 +26,7 @@
 export default {
     data() {
         return {
-            stulist:[]
+            stulist:[],
         }
     },
 mounted() {
@@ -37,6 +37,12 @@ methods: {
         const data = await this.$api.stuapi.get();
         this.stulist=data.data.data.data
     },
+    async delstu(_id){
+        const data = await this.$api.stuapi.delstu({_id:_id});
+        alert(data.data.msg);
+         this.getstulist();
+        console.log(data);
+    }
     
 },
 }
