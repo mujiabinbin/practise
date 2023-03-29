@@ -3,18 +3,31 @@ import Home from '../views/home/Home';
 import Reg from '../views/reg/Reg';
 const login = () => import('../views/login/Login');//箭头函数，依然是懒加载
 const err = () => import('../views/err/Err');
+import Stuadd from '../views/home/stu/Stuadd';
+import Stulist from '../views/home/stu/Stulist';
 
 
 const routes = [
   {
     //域名重定向，浏览器访问url会被重定向到redirect地址
-    path: '/home',
-    redirect: '/'
+    path: '/',
+    redirect: '/home'
   },
   {
     //路由信息对象
-    path: '/',
-    component: Home
+    path: '/home',
+    component: Home,
+    children:[
+      {
+        path:'stulist',
+        component:Stulist
+      },
+      {
+        //子路由路径不需要“/”
+        path:'stuadd',
+        component:Stuadd
+      },
+    ]
   },
   {
     path: '/login',
