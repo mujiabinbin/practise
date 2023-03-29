@@ -59,14 +59,14 @@ router.post('/', async function(req, res, next) {
 	const stu = req.body;
 	//console.log(stu);
 	const data = await add(stu);
-	movefiles({
+	/* movefiles({
 		frompath: `./public/temp`,
 		topath: `./public/img`,
 		filename: stu.picname
 	})
 	removefiles(
 		`./public/temp`
-	)
+	) */
 	res.send(data);
 });
 
