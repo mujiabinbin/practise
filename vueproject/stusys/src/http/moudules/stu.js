@@ -19,6 +19,13 @@ const stuapi={
             method:'Post',
             data:id
         })
+    },
+    editstu(id){
+        return axios({
+            url:'/index/edit',
+            method:'Post',
+            data:id
+        })
     }
 }
 export default stuapi;
