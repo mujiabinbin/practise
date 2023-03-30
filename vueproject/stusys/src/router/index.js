@@ -5,6 +5,7 @@ const login = () => import('../views/login/Login');//箭头函数，依然是懒
 const err = () => import('../views/err/Err');
 import Stuadd from '../views/home/stu/Stuadd';
 import Stulist from '../views/home/stu/Stulist';
+import Stuedit from '../views/home/stu/Stuedit';
 
 
 const routes = [
@@ -26,6 +27,12 @@ const routes = [
         //子路由路径不需要“/”
         path:'stuadd',
         component:Stuadd
+      },
+      {
+        //:id为动态路由，匹配动态部分
+        path:'stuedit/:id',
+        component:Stuedit,
+        props:true
       },
     ]
   },
