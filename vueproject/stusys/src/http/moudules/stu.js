@@ -1,9 +1,10 @@
 import axios from 'axios';
 const stuapi={
-    get(){
+    get(pagedata){
         return axios({
             url:'/index/get',
-            method:'GET'
+            method:'GET',
+            params:pagedata
         })
     },
     addstu(stu){
@@ -26,6 +27,14 @@ const stuapi={
             method:'Post',
             data:id
         })
-    }
+    },
+    updatestu(stu){
+        return axios({
+            url:'/index/update',
+            method:'Post',
+            data:stu
+        })
+    },
+
 }
 export default stuapi;
