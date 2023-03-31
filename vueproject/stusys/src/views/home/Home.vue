@@ -5,8 +5,8 @@
       <aside>
         <dl>
           <dt>学生管理</dt>
-          <dd><router-link to='/home/stuadd'>新增学生</router-link></dd>
-          <dd><router-link to='/home/stulist'>学生列表</router-link></dd>
+          <dd><router-link active-class="active" to='/home/stuadd' :replace="true">新增学生</router-link></dd>
+          <dd><router-link active-class="active" to='/home/stulist'>学生列表</router-link></dd>
         </dl>
          <dl>
           <dt>班级管理</dt>
@@ -32,6 +32,11 @@ main{
   display: flex;
   aside{
     width: 180px;
+    .active{
+      color: green;
+      font-display: none;
+      font-weight: bold;
+    }
   }
 }
 </style>

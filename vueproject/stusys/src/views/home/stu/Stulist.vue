@@ -15,8 +15,8 @@
             <td>{{item._id}}</td>
             <td>{{item.username}}</td>
             <td>{{item.userage}}</td>
-            <td>{{item.usergender}}</td>
-            <td><router-link :to='"/home/stuedit/"+item._id'>编辑</router-link><button @click="delstu(item._id)">删除</button></td>
+            <td>{{item.usergender=='男' ? item.usergender : item.usergender='女' }}</td>
+            <td><router-link tag="button" :to='"/home/stuedit/"+item._id'>编辑</router-link><button @click="delstu(item._id)">删除</button></td>
         </tr>
     </tbody>
     <div>
