@@ -21,18 +21,27 @@ const routes = [
     children:[
       {
         path:'stulist',
-        component:Stulist
+        component:Stulist,
+        meta:{
+          iskeepalive:false
+        }
       },
       {
         //子路由路径不需要“/”
         path:'stuadd',
-        component:Stuadd
+        component:Stuadd,
+        meta:{
+          iskeepalive:true
+        }
       },
       {
         //:id为动态路由，匹配动态部分
         path:'stuedit/:id',
         component:Stuedit,
-        props:true
+        props:true,
+        meta:{
+          iskeepalive:true
+        }
       },
     ]
   },

@@ -15,7 +15,7 @@
         </dl>
       </aside>
       <section>
-        <router-view></router-view>
+         <router-view></router-view>
       </section>
     </main>
   </div>
@@ -23,7 +23,9 @@
 
 <script>
 export default {
-    
+   created() {
+   console.log(this.$route);
+   },
 }
 </script>
 
