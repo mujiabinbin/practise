@@ -9,6 +9,8 @@
 </template>
 
 <script>
+
+
 export default {
     data() {
         return {
@@ -21,6 +23,14 @@ export default {
 created() {
     this.geteditstudata()
 },
+/* beforeRouteLeave(){
+    if(Object.keys(this.data).length>0){
+        const isleave=confirm('确定离开吗？');
+        if(isleave){
+          next()
+        }
+    }
+}, */
 methods: {
     async geteditstudata(){
       const data=  await this.$api.stuapi.editstu({_id:this.id});

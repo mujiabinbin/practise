@@ -18,21 +18,37 @@ const routes = [
     //路由信息对象
     path: '/home',
     component: Home,
-    children:[
+    beforeEnter: (to, from, next) => {
+      if (localStorage.token) {
+        next()
+      } else {
+        next('/login')
+      }
+    },
+    children: [
       {
-        path:'stulist',
-        component:Stulist
+        path: 'stulist',
+        component: Stulist,
+        meta: {
+          iskeepalive: false
+        }
       },
       {
         //子路由路径不需要“/”
-        path:'stuadd',
-        component:Stuadd
+        path: 'stuadd',
+        component: Stuadd,
+        meta: {
+          iskeepalive: true
+        }
       },
       {
         //:id为动态路由，匹配动态部分
-        path:'stuedit/:id',
-        component:Stuedit,
-        props:true
+        path: 'stuedit/:id',
+        component: Stuedit,
+        props: true,
+        meta: {
+          iskeepalive: true
+        }
       },
     ]
   },
@@ -58,6 +74,18 @@ const router = createRouter({
   //路由配置
   routes: routes,
   //mode:'history'
-})
+});
+/* router.beforeEach((to,from,next)=>{
+  if(to.path.includes('home')){
+    if(localStorage.token){
+      next()
+    }else{
+      next('/login')
+    }
+  }else{
+     next()
+  }
+ 
+}) */
 //main.js引入此方法
 export default router
