@@ -1,3 +1,6 @@
 import stuapi from './moudules/stu';
-const api={stuapi};
+import subapi from './moudules/sub';
+import claapi from './moudules/cla';
+
+const api={stuapi,subapi,claapi};
 export default api;

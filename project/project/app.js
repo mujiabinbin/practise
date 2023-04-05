@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 var classRouter = require('./routes/class');
+var subjectsRouter = require('./routes/subjects');
 var teachersRouter = require('./routes/teachers');
 var picsRouter = require('./routes/pics');
 var cors=require('cors');
@@ -33,6 +34,7 @@ app.use('/index', indexRouter);
 app.use('/users', usersRouter);
 app.use('/movies', moviesRouter);
 app.use('/class', classRouter);
+app.use('/subjects', subjectsRouter);
 app.use('/teachers', teachersRouter);
 app.use('/pics', picsRouter);
 

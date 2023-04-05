@@ -6,6 +6,9 @@ const err = () => import('../views/err/Err');
 import Stuadd from '../views/home/stu/Stuadd';
 import Stulist from '../views/home/stu/Stulist';
 import Stuedit from '../views/home/stu/Stuedit';
+import Sublist from '../views/home/sub/Sublist';
+import Clalist from '../views/home/cla/Clalist';
+import Claadd from '../views/home/cla/Claadd';
 
 
 const routes = [
@@ -49,6 +52,18 @@ const routes = [
         meta: {
           iskeepalive: true
         }
+      },
+      {
+        path: 'sublist',
+        component: Sublist,
+      },
+      {
+        path: 'clalist',
+        component: Clalist,
+      },
+      {
+        path: 'claadd',
+        component: Claadd,
       },
     ]
   },

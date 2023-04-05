@@ -8,10 +8,13 @@
           <dd><router-link active-class="active" to='/home/stuadd' :replace="true">新增学生</router-link></dd>
           <dd><router-link active-class="active" to='/home/stulist'>学生列表</router-link></dd>
         </dl>
+        <dl>
+          <dt><router-link to='/home/sublist'>专业列表</router-link></dt>
+        </dl>
          <dl>
           <dt>班级管理</dt>
-          <dd>新增班级</dd>
-          <dd>班级列表</dd>
+          <dd><router-link to='/home/claadd'>添加班级</router-link></dd>
+          <dd><router-link to='/home/clalist'>班级列表</router-link></dd>
         </dl>
       </aside>
       <section>

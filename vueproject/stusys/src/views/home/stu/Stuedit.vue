@@ -23,23 +23,23 @@ export default {
 created() {
     this.geteditstudata()
 },
-/* beforeRouteLeave(){
-    if(Object.keys(this.data).length>0){
+beforeRouteLeave(){
+    if(this.username!=''){
         const isleave=confirm('确定离开吗？');
         if(isleave){
           next()
         }
     }
-}, */
+},
 methods: {
     async geteditstudata(){
-      const data=  await this.$api.stuapi.editstu({_id:this.id});
+      const data=  await this.api.stuapi.editstu({_id:this.id});
       this.username=data.data.data[0].username;
       this.userage=data.data.data[0].userage;
       this.usergender=data.data.data[0].usergender;
     },
     async updatestu(){
-      const data=  await this.$api.stuapi.updatestu({_id:this.id,username:this.username,userage:this.userage,usergender:this.usergender});
+      const data=  await this.api.stuapi.updatestu({_id:this.id,username:this.username,userage:this.userage,usergender:this.usergender});
       if(data.data.status==1){
         alert("编辑成功")
       }
