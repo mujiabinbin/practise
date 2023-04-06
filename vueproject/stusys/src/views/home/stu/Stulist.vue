@@ -48,6 +48,7 @@ export default {
     },
 mounted() {
     this.getstulist();
+    console.log(this.$router);
 },
 watch:{
 pagedata:{
@@ -59,13 +60,13 @@ pagedata:{
 },
 methods: {
     async getstulist(){
-        const data = await this.$api.stuapi.get(this.pagedata);
+        const data = await this.api.stuapi.get(this.pagedata);
         this.stulist=data.data.data.data;
         this.total=data.data.data.total;
         this.pages=data.data.data.pages;
     },
     async delstu(_id){
-        const data = await this.$api.stuapi.delstu({_id:_id});
+        const data = await this.api.stuapi.delstu({_id:_id});
         alert(data.data.msg);
          this.getstulist();
     }
