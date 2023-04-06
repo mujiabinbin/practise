@@ -16,6 +16,10 @@
           <dd><router-link to='/home/claadd'>添加班级</router-link></dd>
           <dd><router-link to='/home/clalist'>班级列表</router-link></dd>
         </dl>
+        <dl>
+          <dt>其他功能</dt>
+          <dd><router-link to='/home/counter'>计数器</router-link></dd>
+        </dl>
       </aside>
       <section>
          <router-view></router-view>

@@ -9,6 +9,7 @@ import Stuedit from '../views/home/stu/Stuedit';
 import Sublist from '../views/home/sub/Sublist';
 import Clalist from '../views/home/cla/Clalist';
 import Claadd from '../views/home/cla/Claadd';
+import Counter from '../components/Counter'
 
 
 const routes = [
@@ -64,6 +65,10 @@ const routes = [
       {
         path: 'claadd',
         component: Claadd,
+      },
+      {
+        path: 'counter',
+        component: Counter,
       },
     ]
   },
