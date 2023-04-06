@@ -7,6 +7,8 @@ const stuschema = new Schema({
 	username: String,
 	userage: String,
 	usergender: String,
+	usersubname: String,
+	userclaname: String,
 	picname: String,
 	time: {
 		type: String, //也可用Date属性，但mongo Date类型不是我们想要的效果

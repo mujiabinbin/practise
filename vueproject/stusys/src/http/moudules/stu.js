@@ -35,6 +35,13 @@ const stuapi={
             data:stu
         })
     },
+    uploadpic(fd){
+        return axios({
+            url:'/pics/upload',
+            method:'Post',
+            data:fd
+        })
+    },
 
 }
 export default stuapi;
