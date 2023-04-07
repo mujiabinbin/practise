@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -14,8 +15,12 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['addclaAsync']),
         async addcla(claadd){
-            const data = await this.api.claapi.addcla(claadd)
+            //const data = await this.api.claapi.addcla(claadd)
+            const data= await this.addclaAsync(this.claadd);
+            this.$router.push('/home/clalist')
+            console.log(data)
         }
     },
 

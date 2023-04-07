@@ -16,19 +16,24 @@
 
 <script>
 export default {
-   data() {
+   /* data() {
     return {
-        cladata:[]
+        cladata:this.$store.state.cladata
+    }
+   }, */
+   mounted() {
+    this.$store.dispatch('getclalistAsync')
+   },
+   computed:{
+    cladata(){
+        return this.$store.state.cladata
     }
    },
-   mounted() {
-    this.getclalist()
-   },
    methods: {
-    async getclalist(){
+   /*  async getclalist(){
         const data = await this.api.claapi.claget();
         this.cladata=data.data;
-    },
+    }, */
    },
 }
 </script>
