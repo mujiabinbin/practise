@@ -82,7 +82,6 @@ export default {
             this.stulist = data.data.data.data;
             this.total = data.data.data.total;
             this.pages = data.data.data.pages;
-            console.log(data.data.data.data);
         },
         async delstu(_id) {
             const data = await this.api.stuapi.delstu({ _id: _id });

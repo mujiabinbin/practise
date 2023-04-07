@@ -5,7 +5,7 @@
       <input type="text" v-model="subadddata.subname">
       <label>请选择关联班级:</label>
       <div v-for="item in cladata" :key="item._id" >
-        <input type="checkbox" v-model="subadddata.claname" :value="item.classname"><label for="">{{item.classname}}</label>
+        <input type="checkbox" v-model="subadddata.claid" :value="item._id"><label for="">{{item.classname}}</label>
       </div>
       
       
@@ -27,10 +27,9 @@
   export default {
      data() {
         return {
-            cladata:[],
             subadddata:{
               subname:'',
-              claname:[]
+              claid:[]
             },
             subdata:[]
         }
@@ -54,7 +53,6 @@
     async getsublist(){
         const data = await this.api.subapi.subget();
         this.subdata=data.data;
-        
     },
    },
      
