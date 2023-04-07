@@ -10,7 +10,7 @@
     </select>
     <span>班级</span>
     <select v-model="userclaname">
-      <option  v-for="item in cladata" :key="item" :value="item">{{ item }}</option>
+      <option  v-for="item in cladata" :key="item._id" :value="item.classname">{{ item.classname }}</option>
     </select>
     <label>上传图片</label>
     <input type="file" @change="uploadimg($event)">
@@ -53,7 +53,7 @@ methods: {
     },
     async searchsub(subid){
         const data = await this.api.subapi.searchsub(subid);
-        this.cladata=data.data[0].claname;
+        this.cladata=data.data[0].claid;
         this.usersubname=data.data[0].subname
     },
   async uploadimg(event){

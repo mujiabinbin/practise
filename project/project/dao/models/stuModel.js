@@ -18,7 +18,7 @@ const stuschema = new Schema({
 	classid: {
 		type: Schema.Types.ObjectId,
 		ref: `clamodel` //要关联的集合模型名称
-	} //一对一
+	} ,//一对一
 	/* classid:【 {
 		type: Schema.Types.ObjectId,
 		ref: `` //要关联的集合模型名称

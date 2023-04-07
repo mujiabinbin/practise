@@ -4,8 +4,8 @@ const {
 } = require("mongoose");
 const subschema = new Schema({
 	subname: String,
-	claname: [{
-		type: Schema.Types.String,
+	claid: [{
+		type: Schema.Types.ObjectId,
 		ref: `clamodel`
 	}]
 })
