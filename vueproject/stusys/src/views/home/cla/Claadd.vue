@@ -7,7 +7,11 @@
 </template>
 
 <script>
+//非模块化
 import { mapActions } from 'vuex'
+//模块化
+/* import { createNamespacedHelpers } from 'vuex';
+const {mapActions} = createNamespacedHelpers('classes') */
 export default {
     data() {
         return {

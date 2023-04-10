@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
-import api from '../http/api'
+import api from '@/http/api';
+import classes from './modules/classes'
 
 //创建仓库实例对象
 export default createStore({
@@ -40,5 +41,6 @@ export default createStore({
 }
   },
   modules: {
+    classes
   }
 })
