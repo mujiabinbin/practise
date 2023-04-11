@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import {createNamespacedHelpers} from 'vuex';
+const {mapActions,mapState} =createNamespacedHelpers('classes');
 export default {
    /* data() {
     return {
@@ -22,19 +24,22 @@ export default {
     }
    }, */
    mounted() {
-    
-    this.$store.dispatch('getclalistAsync')
+    this.getclalistAsync();
+    //this.$store.dispatch('getclalistAsync')
    },
    computed:{
+    ...mapState(['classdata']),
     cladata(){
-        return this.$store.state.cladata
+        return this.classdata
     }
    },
    methods: {
-   /*  async getclalist(){
-        const data = await this.api.claapi.claget();
-        this.cladata=data.data;
-    }, */
+    ...mapActions(['getclalistAsync']),
+
+    async getclalist(){
+        const data = await this.getclalistAsync();
+        //this.cladata=data.data;
+    },
    },
 }
 </script>
