@@ -53,20 +53,34 @@
 </template>
 
 <script>
+import {createNamespacedHelpers} from 'vuex';
+const {mapActions,mapState}=createNamespacedHelpers('stu');
 export default {
     data() {
         return {
-            stulist: [],
+            //stulist: [],
             pagedata: {
                 pagesize: 3,
                 currentpage: 1,
             },
-            total: 0,
-            pages: 1,
+            //total: 0,
+            //pages: 1,
         };
     },
     mounted() {
         this.getstulist();
+    },
+    computed:{
+        ...mapState(['studata','totaldata','pagesdata']),
+        stulist(){
+            return this.studata
+        },
+        total(){
+            return this.totaldata
+        },
+        pages(){
+            return this.pagesdata
+        }
     },
     watch: {
         pagedata: {
@@ -77,11 +91,12 @@ export default {
         },
     },
     methods: {
+        ...mapActions(['getstulistAsync']),
         async getstulist() {
-            const data = await this.api.stuapi.get(this.pagedata);
-            this.stulist = data.data.data.data;
-            this.total = data.data.data.total;
-            this.pages = data.data.data.pages;
+            const data = await this.getstulistAsync(this.pagedata);
+            //this.stulist = data.data.data.data;
+            //this.total = data.data.data.total;
+            //this.pages = data.data.data.pages;
         },
         async delstu(_id) {
             const data = await this.api.stuapi.delstu({ _id: _id });

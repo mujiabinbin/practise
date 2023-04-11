@@ -20,25 +20,43 @@
 </template>
 
 <script>
+import {createNamespacedHelpers} from 'vuex';
+const{mapActions:claActions,mapState:claState}=createNamespacedHelpers('classes');
+const{mapActions:subActions,mapState:subState}=createNamespacedHelpers('subs');
 export default {
   data() {
     return {
       username:'',
       userage:'',
       usergender:'',
-      usersubname:'',
+      //usersubname:'',
       userclaname:'',
       picname:'',
       picurl:'',
-      subdata:[],
-      cladata:[],
+      //subdata:[],
+      //cladata:[],
       subid:{}
     }
   },
   mounted() {
     this.getsublist()
   },
+  computed:{
+    ...subState(['sublistdata']),
+    ...claState(['classdatabysub','subname']),
+    subdata(){
+      return this.sublistdata
+    },
+    cladata(){
+      return this.classdatabysub
+    },
+    usersubname(){
+      return this.subname
+    }
+  },
 methods: {
+  ...subActions(['getsublistAsync']),
+  ...claActions(['getclassbysubAsync']),
   async addstu(){
    const res= await this.api.stuapi.addstu({username:this.username,userage:this.userage,usergender:this.usergender,usersubname:this.usersubname,userclaname:this.userclaname,picname:this.picname});
    if(res.status==200){
@@ -48,13 +66,13 @@ methods: {
    }
   },
   async getsublist(){
-        const data = await this.api.subapi.subget();
-        this.subdata=data.data;
+        const data = await this.getsublistAsync();
+        //this.subdata=data.data;
     },
     async searchsub(subid){
-        const data = await this.api.subapi.searchsub(subid);
-        this.cladata=data.data[0].claid;
-        this.usersubname=data.data[0].subname
+        const data = await this.getclassbysubAsync(subid);
+        //this.cladata=data.data[0].claid;
+        //this.usersubname=data.data[0].subname
     },
   async uploadimg(event){
     //通过event拿到图片信息

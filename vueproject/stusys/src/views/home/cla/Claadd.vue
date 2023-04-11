@@ -8,7 +8,8 @@
 
 <script>
 //非模块化
-import { mapActions } from 'vuex'
+import { createNamespacedHelpers } from 'vuex';
+const {mapActions} =createNamespacedHelpers('classes');
 //模块化
 /* import { createNamespacedHelpers } from 'vuex';
 const {mapActions} = createNamespacedHelpers('classes') */
@@ -22,9 +23,8 @@ export default {
         ...mapActions(['addclaAsync']),
         async addcla(claadd){
             //const data = await this.api.claapi.addcla(claadd)
-            const data= await this.addclaAsync(this.claadd);
+            const data= await this.addclaAsync(claadd);
             this.$router.push('/home/clalist')
-            console.log(data)
         }
     },
 

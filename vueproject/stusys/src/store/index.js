@@ -1,12 +1,14 @@
 import { createStore } from 'vuex';
 import api from '@/http/api';
-import classes from './modules/classes'
+import classes from './modules/classes';
+import stu from './modules/stu';
+import subs from './modules/subs'
 
 //创建仓库实例对象
 export default createStore({
   state: {
     num:0,
-    cladata:[]
+    
   },
   getters: {
     sum(state){
@@ -23,24 +25,13 @@ export default createStore({
    INPUTNUM(state,payload){
       state.num=payload
    },
-   GETCLADATA(state,payload){
-      state.cladata=payload
-   }
+   
 
   },
   actions: {
-    async getclalistAsync(context){
-      const data = await api.claapi.claget();
-      //state.cladata=data.data;
-      context.commit('GETCLADATA',data.data)
-  },
-
-  async addclaAsync(context,payload){
-    const data = await api.claapi.addcla(payload);
-    return data
-}
+    
   },
   modules: {
-    classes
+    classes,stu,subs
   }
 })

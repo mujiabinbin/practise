@@ -24,6 +24,9 @@
   </template>
   
   <script>
+  import { createNamespacedHelpers } from 'vuex';
+  const {mapActions,mapState} = createNamespacedHelpers('subs');
+  const {mapActions:claActions,mapState:claState} = createNamespacedHelpers('classes');
   export default {
      data() {
         return {
@@ -31,28 +34,40 @@
               subname:'',
               claid:[]
             },
-            subdata:[]
+            //subdata:[]
         }
      },
      mounted() {
     this.getclalist(),
-    this.getsublist()
+    this.getsubdata()
+   },
+   computed:{
+    ...claState(['classdata']),
+    ...mapState(['sublistdata']),
+    cladata(){
+        return this.classdata
+    },
+    subdata(){
+      return this.sublistdata
+    }
    },
    methods: {
+    ...mapActions(['getsublistAsync']),
+    ...claActions(['getclalistAsync']),
     async getclalist(){
-        const data = await this.api.claapi.claget();
-        this.cladata=data.data;
+        const data = await this.getclalistAsync();
+        //this.cladata=data.data;
     },
-    async subadd(subadd){
-        const data=await this.api.subapi.addsub(this.subadddata);
-        this.getsublist();
+    async subadd(subadddata){
+        const data=await this.api.subapi.addsub(subadddata);
+        this.getsubdata();
         this.subadddata.subname='';
         this.subadddata.claid=[];
 
     },
-    async getsublist(){
-        const data = await this.api.subapi.subget();
-        this.subdata=data.data;
+    async getsubdata(){
+        const data = await this.getsublistAsync();
+        //this.subdata=data.data;
     },
    },
      
