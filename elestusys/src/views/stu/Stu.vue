@@ -8,29 +8,29 @@
         </el-aside>
         <el-main>
           <h1>学生列表</h1>
-          <el-table :data="stulist" style="width: 100%">
-            <el-table-column
-              fixed
-              prop="username"
-              label="姓名"
-              width="150"
-            />
-            <el-table-column prop="userage" label="年龄" width="120" />
-            <el-table-column
-              prop="usergender"
-              label="性别"
-              width="120"
-            />
-            <el-table-column
-              prop="usersubname"
-              label="专业"
-              width="120"
-            />
-            <el-table-column
-              prop="userclaname"
-              label="班级"
-              width="600"
-            />
+          <el-table
+            :stripe="true"
+            :border="true"
+            empty-text="无数据"
+            :data="stulist"
+            style="width: 100%"
+          >
+            <el-table-column fixed prop="username" label="姓名" />
+            <el-table-column prop="userage" label="年龄" />
+            <el-table-column prop="usergender" label="性别" />
+            <el-table-column prop="usersubname" label="专业" />
+            <el-table-column prop="userclaname" label="班级" />
+            <el-table-column label="头像" prop="stusrc" align="center">
+              <template #default="scope">
+                <el-image style="width: 50px" :preview-src-list="stupic" :src="scope.row.stusrc" fit="cover" preview-teleported />
+              </template>
+             <!--  <template slot-scope="scope">s
+                <div v-for="item in scope.row.stusrc" :key="item">
+                  <img :src="item" width="40" height="40" alt="" />
+                </div>
+              </template> -->
+              <!--  <el-image style="width: 50px" :preview-src-list="stupic" :src="stusrc" fit="cover" />   -->
+            </el-table-column>
             <el-table-column fixed="right" label="操作" width="120">
               <template #default>
                 <el-button link type="primary" size="small">编辑</el-button>
@@ -38,6 +38,7 @@
               </template>
             </el-table-column>
           </el-table>
+          
         </el-main>
       </el-container>
     </el-container>
@@ -46,6 +47,7 @@
   
   <script>
 import Menu from "@/components/Menu.vue";
+const fits = ["fill", "contain", "cover", "none", "scale-down"];
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers("stu");
 export default {
@@ -62,7 +64,7 @@ export default {
     this.getstulist();
   },
   computed: {
-    ...mapState(["studata", "totaldata", "pagesdata"]),
+    ...mapState(["studata", "totaldata", "pagesdata", "stupresrc"]),
     stulist() {
       return this.studata;
     },
@@ -71,6 +73,9 @@ export default {
     },
     pages() {
       return this.pagesdata;
+    },
+    stupic() {
+      return this.stupresrc;
     },
   },
   watch: {

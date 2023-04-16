@@ -4,7 +4,9 @@ export default{
     state: {
         studata:[],
         totaldata:0,
-        pagesdata:1
+        pagesdata:1,
+        stupresrc:[],
+        stusrc:''
 
       },
       getters: {
@@ -13,9 +15,27 @@ export default{
       mutations: {
        
         SETSTULIST(state,payload){
-          state.studata=payload.data;
+          
           state.totaldata=payload.total;
-          state.pagesdata=payload.pages
+          state.pagesdata=payload.pages;
+          state.stupresrc= payload.data.map(function(item){
+            if(item.picname){
+              return `http://localhost:3000/img/${item.picname}`
+            }else{
+              return 'http://localhost:3000/img/default.jpg'
+            }
+          });
+          state.studata=payload.data.map(function(item){
+            if(item.picname){
+              state.stusrc=`http://localhost:3000/img/${item.picname}`
+              return {...item,stusrc:state.stusrc}
+            }else{
+              state.stusrc=`http://localhost:3000/img/default.jpg`
+              return {...item,stusrc:state.stusrc}
+            };
+           
+          })
+          console.log(state.studata);
         }
       },
       actions: {
