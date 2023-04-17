@@ -15,7 +15,7 @@ export default{
       mutations: {
        
         SETSTULIST(state,payload){
-          
+          //Object.assign(state,payload)//简便方法：stata中属性名与接口返回属性名相同，可以将payload的属性及属性值合并到state中
           state.totaldata=payload.total;
           state.pagesdata=payload.pages;
           state.stupresrc= payload.data.map(function(item){
@@ -35,7 +35,6 @@ export default{
             };
            
           })
-          console.log(state.studata);
         }
       },
       actions: {
