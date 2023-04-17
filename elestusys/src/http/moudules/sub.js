@@ -3,7 +3,7 @@ const subapi={
     subget(){
         return axios({
             url:'/subjects/get',
-            method:'GET',
+            //method:'GET',
         })
     },
     addsub(sub){
