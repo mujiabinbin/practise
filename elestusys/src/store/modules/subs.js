@@ -10,7 +10,7 @@ export default{
       mutations: {
        
         SETSUBLIST(state,payload){
-          state.sublistdata=payload
+          state.sublistdata=payload;
         }
       },
       actions: {
