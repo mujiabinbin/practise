@@ -16,6 +16,9 @@
         <el-menu-item index="/subject">
           <span>专业管理</span>
         </el-menu-item>
+        <el-menu-item index="/cla">
+          <span>班级管理</span>
+        </el-menu-item>
       </el-menu>
 </template>
 
@@ -26,5 +29,7 @@ export default {
 </script>
 
 <style>
+.elmenu >>>{
 
+}
 </style>

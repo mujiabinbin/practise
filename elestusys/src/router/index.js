@@ -3,6 +3,7 @@ import Home from '../views/home/Home.vue'
 import Stu from '../views/stu/Stu.vue'
 import StuAdd from '../views/stu/StuAdd.vue'
 import Subject from '../views/sub/Sub.vue'
+import Cla from '../views/cla/Cla.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/subject',
     name: 'subject',
     component: Subject
+  },
+  {
+    path: '/cla',
+    name: 'cla',
+    component: Cla
   },
 ]
 
