@@ -17,30 +17,56 @@
             <el-table-column fixed prop="username" label="姓名" />
             <el-table-column prop="userage" label="年龄" />
             <el-table-column prop="usergender" label="性别" />
-            <el-table-column prop="usersubname" label="专业" >
-            <template #default="scope">
-               {{ scope.row.usersubname ? scope.row.usersubname : '无专业信息' }}
-              </template>
-          </el-table-column> 
-            
-            <el-table-column prop="userclaname" label="班级" >
+            <el-table-column prop="usersubname" label="专业">
               <template #default="scope">
-               {{ scope.row.userclaname ? scope.row.userclaname : '无班级信息' }}
+                {{
+                  scope.row.usersubname ? scope.row.usersubname : "无专业信息"
+                }}
               </template>
-          </el-table-column> 
+            </el-table-column>
+
+            <el-table-column prop="userclaname" label="班级">
+              <template #default="scope">
+                {{
+                  scope.row.userclaname ? scope.row.userclaname : "无班级信息"
+                }}
+              </template>
+            </el-table-column>
             <el-table-column label="头像" prop="stusrc" align="center">
               <template #default="scope">
-                <el-image style="width: 50px" :preview-src-list="stupic" :src="scope.row.stusrc" fit="cover" preview-teleported />
+                <el-image
+                  style="width: 50px"
+                  :preview-src-list="stupic"
+                  :src="scope.row.stusrc"
+                  fit="cover"
+                  preview-teleported
+                />
               </template>
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="120">
               <template #default="scope">
                 <el-button link type="primary" size="small">编辑</el-button>
-                <el-button link type="primary" size="small" @click="delstu(scope.row._id)">删除</el-button>
+                <el-button
+                  link
+                  type="primary"
+                  size="small"
+                  @click="delstu(scope.row._id)"
+                  >删除</el-button
+                >
               </template>
-            </el-table-column> 
+            </el-table-column>
           </el-table>
-          
+          <el-pagination
+            :background="true"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="pagedata.currentpage"
+            :page-sizes="[3, 5, 10]"
+            :page-size="pagedata.pagesize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total"
+          >
+          </el-pagination>
         </el-main>
       </el-container>
     </el-container>
@@ -49,7 +75,7 @@
   
   <script>
 import Menu from "@/components/Menu.vue";
-import { ref } from 'vue';
+import { ref } from "vue";
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers("stu");
 
@@ -58,7 +84,7 @@ export default {
   data() {
     return {
       pagedata: {
-        pagesize: 10,
+        pagesize: 3,
         currentpage: 1,
       },
     };
@@ -100,11 +126,17 @@ export default {
       alert(data.data.msg);
       this.getstulist();
     },
+    handleSizeChange(val) {
+      this.pagedata.pagesize = val;
+    },
+    handleCurrentChange(val) {
+      this.pagedata.currentpage = val;
+    },
   },
 };
 </script>
   
-  <style>
+  <style scoped>
 .container {
   height: 100vh;
 }
@@ -123,5 +155,8 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
+}
+.el-pagination {
+  margin-top: 20px;
 }
 </style>
