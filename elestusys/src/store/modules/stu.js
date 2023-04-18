@@ -41,6 +41,10 @@ export default{
         async getstulistAsync(context,payload){
           const data= await api.stuapi.get(payload);
           context.commit('SETSTULIST',data.data.data)
+        },
+        async stuaddAsync(context,payload){
+         const data= await api.stuapi.addstu(payload);
+         return data
         }
             
       },
