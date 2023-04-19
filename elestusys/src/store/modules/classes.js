@@ -16,6 +16,7 @@ export default{
       SETCLADATABYSUB(state,payload){
         state.classdatabysub=payload.claid;
         state.subname=payload.subname
+        console.log(state.classdatabysub);
       }
     
       },

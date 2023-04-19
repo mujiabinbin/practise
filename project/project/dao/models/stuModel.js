@@ -15,10 +15,10 @@ const stuschema = new Schema({
 		//default: `2023-09-18 11:00` //如果前端未传数据，就是用这个
 		default: moment().format(`YYYY-MM-DD HH:mm`) //或YYYY年MM月DD日
 	},
-	classid: {
+	/* classid: {
 		type: Schema.Types.ObjectId,
 		ref: `clamodel` //要关联的集合模型名称
-	} ,//一对一
+	} , *///一对一
 	/* classid:【 {
 		type: Schema.Types.ObjectId,
 		ref: `` //要关联的集合模型名称

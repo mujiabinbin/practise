@@ -11,7 +11,7 @@ export default{
        
         SETSUBLIST(state,payload){
           state.sublistdata=payload;
-          console.log(state.sublistdata);
+          
         }
       },
       actions: {
