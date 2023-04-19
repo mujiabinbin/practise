@@ -29,11 +29,6 @@ module.exports.stu = async function({
 	const pages = Math.ceil(total / pagesize) //向上取整，floor（向下取整）
 	const data = await stumodel.find({
 		[searchtype]: searchname
-	}).populate({
-		path: `classid`,
-		populate: {
-			path: `teaid`
-		}
 	}).limit(pagesize - 0).skip((currentpage - 1) * pagesize);
 	//.limit(pagesize-0//字符串转数字).skip((currentsize-1)*pagesize); //limit限制返回条数,skip跳过多少条数据
 	/* [searchedata.searchtype]: {
