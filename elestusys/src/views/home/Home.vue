@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container class="container">
-      <el-header>学生管理系统</el-header>
+      <el-header>学生管理系统{{ $store.state.userinfo }}</el-header>
       <el-container>
         <el-aside width="200px">
          <Menu></Menu>
