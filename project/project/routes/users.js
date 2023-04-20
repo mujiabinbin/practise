@@ -70,6 +70,8 @@ router.post('/reg', async function(req, res, next) {
 router.get('/islogin', async function(req, res, next) {
 	//获取token，拿到用户信息
 	const headerstoken = req.get(`authorization`);
+	
+	//console.log(headerstoken);
 	const token = headerstoken.split(" ")[1];
 	const {
 		username
