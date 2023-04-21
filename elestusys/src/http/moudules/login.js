@@ -12,10 +12,10 @@ const loginapi={
     getuserinfo(){
         return axios({
             url:"/users/islogin",
-            headers:{
+            /* headers:{
                 //method为get省略不写，但还是有参数，通过headers传
                 Authorization:`bearer ` + localStorage.token
-            },
+            }, */
         })
     }
 
