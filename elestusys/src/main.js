@@ -8,6 +8,11 @@ import 'element-plus/dist/index.css'
 import router from './router'
 import store from './store'
 const app= createApp(App).use(store).use(ElementPlus).use(router);
+app.directive('auth',{
+    mounted(el, binding, vnode, prevVnode) {
+        console.log(el);
+    }
+})
 app.config.globalProperties.api = api;
 axios.defaults.baseURL='http://localhost:3000';
 app.mount('#app')

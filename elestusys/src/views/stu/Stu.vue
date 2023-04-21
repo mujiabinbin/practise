@@ -26,6 +26,11 @@
             </el-table-column>
 
             <el-table-column prop="userclaname" label="班级">
+              <!--  <template #default="scope">
+                {{
+                  scope.row.userclaname | isclaname
+                }}
+              </template>  -->
               <template #default="scope">
                 {{
                   scope.row.userclaname ? scope.row.userclaname : "无班级信息"
@@ -50,6 +55,7 @@
                   link
                   type="primary"
                   size="small"
+                  v-auth
                   @click="delstu(scope.row._id)"
                   >删除</el-button
                 >
@@ -74,12 +80,14 @@
 </template>
   
   <script>
+  
 import Menu from "@/components/Menu.vue";
 import { ref } from "vue";
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers("stu");
 
 export default {
+  
   components: { Menu },
   data() {
     return {
@@ -89,6 +97,16 @@ export default {
       },
     };
   },
+  filters:{
+    isclaname(val){
+     if(val){
+      return val
+     }else{
+      return 'no class data'
+     }
+    }
+  },
+  
   created() {
     this.getstulist();
   },
