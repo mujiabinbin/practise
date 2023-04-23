@@ -8,12 +8,18 @@ import Login from '../views/login/Login.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import api from '@/http/api'
 import store from '@/store/index'
-
+import Charts from '@/views/home/Charts.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
     component: Home,
+    children:[
+      {
+        path:'',//希望home打开就显示此组件，路径空不写
+        name:'/home',//路径为空，name属性写home的name，home的name不写
+        component:Charts
+      }
+    ],
     beforeEnter: async(to, from, next) => {
       const token=localStorage.token;
       if(token){

@@ -6,7 +6,9 @@
         <el-aside width="200px">
          <Menu></Menu>
         </el-aside>
-        <el-main></el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>

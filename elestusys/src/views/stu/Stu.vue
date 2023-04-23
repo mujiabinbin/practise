@@ -84,19 +84,13 @@
 import Menu from "@/components/Menu.vue";
 import { ref } from "vue";
 import { createNamespacedHelpers } from "vuex";
+import mixpagedata from '@/mixins/pagedatamix' 
 const { mapActions, mapState } = createNamespacedHelpers("stu");
 
 export default {
   
   components: { Menu },
-  data() {
-    return {
-      pagedata: {
-        pagesize: 3,
-        currentpage: 1,
-      },
-    };
-  },
+  mixins:[mixpagedata],
   filters:{
     isclaname(val){
      if(val){
@@ -144,12 +138,7 @@ export default {
       alert(data.data.msg);
       this.getstulist();
     },
-    handleSizeChange(val) {
-      this.pagedata.pagesize = val;
-    },
-    handleCurrentChange(val) {
-      this.pagedata.currentpage = val;
-    },
+   
   },
 };
 </script>
