@@ -5,18 +5,20 @@
 		<title></title>
 	</head>
 	<body>
-        <div id="app">{{message}}</div>
+        <div id="app">{{message}}</div> 
         <!-- <script src="vue.global.js"></script> -->
         <script src="myvue.js"></script>
         <script>
-            new Vue({
+           const vm= new Vue({
                 el:"#app",
                 data() {
                     return {
-                      message: 'Hello Vue!'
+                      message: 'Hello Vue!',
+                      name:'zhangsan',
+                      age:20,
+                      gender:'male'
                     }
                   }
-
             })
         </script>
 	</body>
