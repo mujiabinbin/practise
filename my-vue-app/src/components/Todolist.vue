@@ -16,7 +16,19 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue';
+import { computed, reactive ,watch,watchEffect,onMounted} from 'vue';
+onMounted(()=>{})
+watch(()=>{
+    return state.id // 要侦听的数据
+},()=>{
+    console.log('数据发生变化')//侦听的数据发生变化要执行的函数
+})
+
+watchEffect(()=>{
+    console.log(state.id)
+    console.log(state.addname)
+})
+
 const state= reactive({
     todolist:[
         {id:1,name:"数学",done:false},
