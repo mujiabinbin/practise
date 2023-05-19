@@ -14,5 +14,5 @@ app.directive('auth',{
     }
 })
 app.config.globalProperties.api = api;
-axios.defaults.baseURL='http://localhost:3000';
+axios.defaults.baseURL='http://120.55.77.129:3000';
 app.mount('#app')

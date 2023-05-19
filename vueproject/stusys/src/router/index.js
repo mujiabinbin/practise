@@ -13,14 +13,14 @@ import Counter from '../components/Counter'
 
 
 const routes = [
-  {
+  /* {
     //域名重定向，浏览器访问url会被重定向到redirect地址
     path: '/',
     redirect: '/home'
-  },
+  }, */
   {
     //路由信息对象
-    path: '/home',
+    path: '/',
     component: Home,
     beforeEnter: (to, from, next) => {
       if (localStorage.token) {
@@ -81,10 +81,10 @@ const routes = [
     path: '/reg',
     component: Reg
   },
-  {
+  /* {
     path: '/:pathMatch(.*)*',
     component: err
-  }
+  } */
 
 
 ]
