@@ -8,6 +8,6 @@ import api from './http/api';
 //后续在组件中通过this.$store获取此实例对象
 const app= createApp(App).use(store).use(router);
 app.config.globalProperties.api = api;
-axios.defaults.baseURL='http://localhost:3000';
+axios.defaults.baseURL='120.55.77.129:3000';
 //后续在组件中通过this.$router获取此实例对象
 app.mount('#app')

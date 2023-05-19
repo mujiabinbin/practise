@@ -26,7 +26,7 @@
                 <td>{{ item.usersubname ? item.usersubname : "暂无" }}</td>
                 <td>{{ item.userclaname ? item.userclaname : "暂无" }}</td>
                 <td>
-                    <img :src="`http://localhost:3000/img/${item.picname ? item.picname : 'default.jpg'
+                    <img :src="`http://120.55.77.129:3000/img/${item.picname ? item.picname : 'default.jpg'
                         }`" />
                 </td>
                 <td>
