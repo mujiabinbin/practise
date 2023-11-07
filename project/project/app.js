@@ -12,9 +12,10 @@ var classRouter = require('./routes/class');
 var subjectsRouter = require('./routes/subjects');
 var teachersRouter = require('./routes/teachers');
 var picsRouter = require('./routes/pics');
-var cors=require('cors');
+
 
 var app = express();
+var cors = require('cors');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
